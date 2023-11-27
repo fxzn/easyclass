@@ -1,0 +1,17 @@
+section.services {
+    padding-top: 8rem;
+  }
+  section.services .content .services-title {
+    font-weight: var(--font-semibold);
+  }
+
+  .content{
+    padding-top: 1rem;
+  }
+  .content img {
+    max-width: 100%;
+    height: 100px; /* Set a specific height for all images */
+    object-fit: cover; /* Maintain aspect ratio while covering the specified height */
+    margin-bottom: 15px; /* Add some bottom margin for spacing */
+  }
+

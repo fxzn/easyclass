@@ -1,0 +1,167 @@
+/* Reset box shadow on accordion button focus */
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+/* Variables CSS */
+
+:root {
+  --red-color: #f81745;
+  --red-pink: #212121;
+  --red-black: #fa80ab;
+}
+
+
+:root {
+  /* Colors */
+  --primary-color: #ba2530;
+  --primary-light-color: #ffd6d7;
+  --yellow-color: #fec65e;
+  --white-color: #ffffff;
+  --black-color: #323232;
+  /* Font & Typography */
+  --body-font: "Poppins", sans-serif;
+  --biggest-font-size: 58px;
+  --h1-font-size: 45px;
+  --normal-font-size: 18px;
+  --small-font-size: 16px;
+  --smaller-font-size: 14px;
+  /* Font Weight */
+  --font-semibold: 600;
+  --font-medium: 500;
+}
+
+body {
+  font-family: var(--body-font);
+}
+
+
+
+.accordion-button:focus {
+  box-shadow: none !important;
+  background-color: none;
+}
+
+/* Custom styling for radio button */
+.custom-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  outline: none;
+  margin-top: 3px;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.kotakcourse {
+  width: 350px;
+  height: 250x;
+  background-color: #fff;
+  border: var(--red-pink);
+  border-radius: 20px;
+}
+
+.level .img{
+  width: 15px;
+  height: 15px;
+ 
+}
+
+.kotakcourse .title {
+
+color: var(--red-black);
+font-size: 15px;
+font-weight: 700;
+line-height: 14px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.kotakcourse .desc {
+font-size: 14px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0em;
+text-align: left;
+line-height: 1.5;
+}
+
+.infocourse p {
+
+font-size: 10px;
+font-weight: 600;
+line-height: 14px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.search {
+  width: 250px;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 20px;
+  border: solid 2px var(--red-color);
+}
+
+.search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--red-black);
+  width: 100%;
+}
+
+.search input:focus {
+  border: none;
+  outline: none;
+}
+
+@media only screen and (max-width: 767px) {
+  /* Navbar */
+  .navbar-toggler {
+    display: block;
+  }
+
+  .sidebar {
+    width: 70% !important; 
+    background-color: var(--red-color);
+  }
+
+  /* Search Input in Navbar */
+  .search {
+    margin: 10px 0;
+    width: 100%;
+    
+  }
+
+  /* Course Filters */
+  .accordion-item {
+    width: 100%;
+  }
+
+  .accordion-header {
+    background-color: #dc3545;
+    
+  }
+
+  
+  /* Course Cards */
+  .kotakcourse {
+    margin: 5px;
+  }
+
+  /* Footer */
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}
+

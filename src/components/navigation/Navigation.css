@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --red-color: #f81745;
+  --black-color: #212121;
+  --pink-color: #fa80ab;
+  --white-color: #ffffff;
+}
+
+.navbar-brand {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.navbar {
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+.nav-item{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav-link{
+  color: var(--black-color);
+}
+
+.nav-link:hover{
+  color: var(--red-color);
+}
+
+.drop-shadow {
+  box-shadow: 0px 4px 28px rgba(0, 0, 0, 0.04);
+}
+
+.btn-navbar {
+  margin-right: auto;
+  margin-left: 20px;
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+.btn-navbar {
+  margin-right: auto;
+  margin-left: 20px;
+  border-radius: 14px;
+  width: 100px;
+}
+
+.btn-navbar:hover {
+  background-color: var(--red-color);
+  color: var(--white-color);
+}
+
+.notif-bell {
+  font-size: 1.5rem; 
+  margin-right: 15px; 
+  color: var(--black-color);
+}
+
+/* Set background color to white */
+.profil {
+  background-color: white;
+}
+
+/* Style the profile dropdown */
+.profil .dropdown-menu {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Add transition for smoother effects */
+}
+
+/* Style the dropdown items */
+.profil .dropdown-menu a {
+  color: #333;
+  padding: 10px 20px; /* Add padding for better spacing */
+  transition: background-color 0.3s ease;
+  font-size: 15px; /* Add transition for smoother effects */
+}
+
+/* Style the dropdown items on hover */
+.profil .dropdown-menu a:hover {
+  background-color: #f5f5f5;
+  color: #555; /* Change text color on hover */
+}
+
+/* Style the font-awesome icon color */
+.profil .dropdown-toggle {
+  color: #333;
+  transition: color 0.3s ease; /* Add transition for smoother effects */
+}
+
+/* Style the icon on hover */
+.profil .dropdown-toggle:hover {
+  color: #555;
+}
+
+/* Add some space between the icon and text */
+.profil .dropdown-toggle::after {
+  margin-left: 5px;
+}
+
+/* Adjust the position of the dropdown */
+.profil .dropdown-menu {
+  margin-top: 8px;
+}
+
+/* Optional: Style the navbar toggle icon for responsiveness */
+.navbar-toggler-icon {
+  background-color: #333;
+}
+
+
+
+
+
+
