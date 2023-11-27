@@ -95,7 +95,7 @@ function Login() {
                 </button>
                 <p className="text">
                   Forgotten your password or your login details?
-                  <Link to="/auth/resetpassword">Reset password</Link>
+                  <Link to="/auth/resetPassword">Reset password</Link>
                 </p>
               </div>
             </form>
@@ -109,9 +109,9 @@ function Login() {
             <div className="text-slider">
               <div className="text-wrap">
                 <div className="text-group">
-                  <h2>Create your own courses</h2>
-                  <h2>Customize as you like</h2>
-                  <h2>Invite students to your class</h2>
+                  <h4>Create your own courses</h4>
+                  <h4>Customize as you like</h4>
+                  <h4>Invite students to your class</h4>
                 </div>
               </div>
               <div className="bullets">

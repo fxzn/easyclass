@@ -9,6 +9,7 @@ import Akun from './pages/akun/Akun';
 import ChangePass from './pages/akun/ChangePass';
 import History from './pages/akun/History';
 import Course from './pages/course/Course';
+import ResetPaswd from './auth/ResetPaswd';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/History" element={<History />} />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
+        <Route path="/auth/resetPassword" element={<ResetPaswd />} />
         <Route path="/course" element={<Course/>} />
         <Route />
       </Routes>

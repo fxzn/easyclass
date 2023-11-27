@@ -91,6 +91,10 @@ function Register() {
                   <label>Email</label>
                 </div>
                 <div className="input-wrap">
+                  <input type="email" className="input-field" autoComplete="off" required />
+                  <label>Number Phone</label>
+                </div>
+                <div className="input-wrap">
                   <input type="password" minLength="4" className="input-field" autoComplete="off" required />
                   <label>Password</label>
                 </div>
@@ -101,7 +105,7 @@ function Register() {
                 </Link>
                 <p className="text">
                   if you forget your password
-                  <Link to="/resetPassword"> Reset Password</Link>
+                  <Link to="/auth/resetPassword"> Reset Password</Link>
                 </p>
               </div>
             </form>
@@ -115,9 +119,9 @@ function Register() {
             <div className="text-slider">
               <div className="text-wrap">
                 <div className="text-group">
-                  <h2>Create your own courses</h2>
-                  <h2>Customize as you like</h2>
-                  <h2>Invite students to your class</h2>
+                  <h4>Create your own courses</h4>
+                  <h4>Customize as you like</h4>
+                  <h4>Invite students to your class</h4>
                 </div>
               </div>
               <div className="bullets">

@@ -278,8 +278,8 @@ main.sign-up-mode .carousel {
   transition: 0.5s;
 }
 
-.text-group h2 {
-  line-height: 2.2rem;
+.text-group h4 {
+  line-height: 30px;
   font-weight: 600;
   font-size: 1.6rem;
 }

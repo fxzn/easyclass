@@ -35,7 +35,7 @@ function Header() {
                 </h1>
                 <h4 className="text-home-reguler fw-normal text-secondary">We find concepts that are suitable and suitable for efficient learning of the course so that it is easy to understand the material!</h4>
                 <div className="home-btn mt-5">
-                  <Link to="/register" className="btn btn-primary shadow-none">
+                  <Link to="/auth/register" className="btn btn-primary shadow-none">
                     Join now
                   </Link>
                   <a href="#" className="btn btn-video-play" onClick={openModal}>
