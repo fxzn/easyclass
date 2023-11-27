@@ -109,17 +109,17 @@ function NavigationBars() {
                         id="basic-nav-dropdown"
                       >
                         <NavDropdown.Item href="/akun">
-                          <FontAwesomeIcon icon={faUser} /> Profil Saya
+                          <FontAwesomeIcon icon={faUser}  className="icon" /> Profil Saya
                         </NavDropdown.Item>
                         <NavDropdown.Item href="/ChangePass">
-                          <FontAwesomeIcon icon={faLock} /> Ubah Password
+                          <FontAwesomeIcon icon={faLock}  className="icon" /> Ubah Password
                         </NavDropdown.Item>
                         <NavDropdown.Item href="/History">
-                          <FontAwesomeIcon icon={faHistory} /> History
+                          <FontAwesomeIcon icon={faHistory} className="icon" /> History
                           Pembayaran
                         </NavDropdown.Item>
                         <NavDropdown.Item href="/">
-                          <FontAwesomeIcon icon={faSignOutAlt} /> Log Out
+                          <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Log Out
                         </NavDropdown.Item>
                       </NavDropdown>
                     </Nav>
