@@ -126,9 +126,6 @@ function NavigationBars() {
                     <Link to="/auth/login" className="btn btn-navbar">
                       Login
                     </Link>
-                    {/* <Link to="/akun" className="btn btn-navbar">
-                      Profile
-                    </Link> */}
                   </>
                 )}
               </div>

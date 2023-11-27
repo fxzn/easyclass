@@ -1,8 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
-body {
-  font-family: "Poppins", sans-serif;
-}
 
 :root {
   --red-color: #f81745;
@@ -17,8 +13,9 @@ body {
 }
 
 .navbar {
-  padding: 12px 0;
+  padding: 12px 12px;
   transition: all 0.5s ease;
+
 }
 
 .nav-item{
@@ -110,11 +107,6 @@ body {
 /* Adjust the position of the dropdown */
 .profil .dropdown-menu {
   margin-top: 8px;
-}
-
-/* Optional: Style the navbar toggle icon for responsiveness */
-.navbar-toggler-icon {
-  background-color: #333;
 }
 
 

@@ -1,8 +1,5 @@
 /* Reset box shadow on accordion button focus */
 /* Google Font */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-/* Variables CSS */
-
 :root {
   --red-color: #f81745;
   --red-pink: #212121;

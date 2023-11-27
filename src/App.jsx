@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./App.css";
 import { Routes, Route } from 'react-router-dom';
 import Login from './auth/Login';
 import Register from './auth/Register';
@@ -9,7 +9,9 @@ import Akun from './pages/akun/Akun';
 import ChangePass from './pages/akun/ChangePass';
 import History from './pages/akun/History';
 import Course from './pages/course/Course';
+import Dashboard from './users/admin/Page/Dashboard';
 import ResetPaswd from './auth/ResetPaswd';
+import DetailCourse from "./pages/course/DetailCourse";
 
 
 function App() {
@@ -25,7 +27,9 @@ function App() {
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
         <Route path="/auth/resetPassword" element={<ResetPaswd />} />
-        <Route path="/course" element={<Course/>} />
+        <Route path="/detailcourse" element={<DetailCourse />} />
+        <Route path="/course" element={<Course />} />
+        <Route path="/admin" element={<Dashboard/>} />
         <Route />
       </Routes>
     </>

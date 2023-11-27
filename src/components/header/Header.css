@@ -1,6 +1,4 @@
-/* Google Font */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-/* Variables CSS */
+
 :root {
   /* Colors */
   --red-color: #f81745;
@@ -22,6 +20,7 @@
 
 body {
   font-family: var(--body-font);
+  background-color: #ffffff;
 }
 
 a,
