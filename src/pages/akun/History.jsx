@@ -1,6 +1,7 @@
 import Footerr from '../../components/footer/footer';
 import NavigationBars from '../../components/navigation/NavigationBars';
 import React from 'react';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBell,
@@ -8,9 +9,13 @@ import {
   faLock,
   faHistory,
   faSignOutAlt,
+  faSearch,
+  faClock,
+  faBook,
+  faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import './Akun.css';
+import imgcourse from '../../assets/image.png';
 
 const UserProfile = () => {
   return (
@@ -53,8 +58,112 @@ const UserProfile = () => {
                 </Link>
               </div>
 
-{/* isi disini mas */}
+              {/* card */}
 
+              <Row className="kard">
+              <h2>Riwayat Pembayaran</h2>
+                <Col md={12} className="d-flex justify-content-center mt-3">
+                  <Card
+                    className="cardkursus"
+                    style={{ width: '400px', height: '180px' }}
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={imgcourse}
+                      style={{ height: '80px' }}
+                    />
+                    <Card.Body>
+                      <div className="title mt-0">UI/UX Design</div>
+
+                      <Card.Text className="desc mt-0">
+                        Belajar Web Designer dengan Figma by Angela Doe
+                      </Card.Text>
+                      <div
+                        className="d-flex infocourse"
+                        style={{ margin: '-8px 0' }}
+                      >
+                        <div className="level me-4 d-flex">
+                          <div>
+                            <FontAwesomeIcon icon={faStar} className="img" />
+                          </div>
+                          <p className="ms-1 mt-0"> Intermediate Level</p>
+                        </div>
+                        <div className="level me-4 d-flex">
+                          <div>
+                            <FontAwesomeIcon icon={faBook} className="img" />
+                          </div>
+                          <p className="ms-1 mt-0">10 modul</p>
+                        </div>
+                        <div className="level me-4 d-flex">
+                          <div>
+                            <FontAwesomeIcon icon={faClock} className="img" />
+                          </div>
+                          <p className="ms-1 mt-0">120 menit</p>
+                        </div>
+                      </div>
+
+                      <Button
+                        variant="danger"
+                        style={{ height: '18px', fontSize: '10px' }}
+                        className="d-flex align-items-center justify-content-center"
+                      >
+                        Premium
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+
+                <Col md={12} className="d-flex justify-content-center mt-3">
+                  <Card
+                    className="cardkursus"
+                    style={{ width: '400px', height: '180px' }}
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={imgcourse}
+                      style={{ height: '80px' }}
+                    />
+                    <Card.Body>
+                      <div className="title mt-0">UI/UX Design</div>
+
+                      <Card.Text className="desc mt-0">
+                        Belajar Web Designer dengan Figma by Angela Doe
+                      </Card.Text>
+                      <div
+                        className="d-flex infocourse"
+                        style={{ margin: '-8px 0' }}
+                      >
+                        <div className="level me-4 d-flex">
+                          <div>
+                            <FontAwesomeIcon icon={faStar} className="img" />
+                          </div>
+                          <p className="ms-1 mt-0"> Intermediate Level</p>
+                        </div>
+                        <div className="level me-4 d-flex">
+                          <div>
+                            <FontAwesomeIcon icon={faBook} className="img" />
+                          </div>
+                          <p className="ms-1 mt-0">10 modul</p>
+                        </div>
+                        <div className="level me-4 d-flex">
+                          <div>
+                            <FontAwesomeIcon icon={faClock} className="img" />
+                          </div>
+                          <p className="ms-1 mt-0">120 menit</p>
+                        </div>
+                      </div>
+
+                      <Button
+                        variant="danger"
+                        style={{ height: '18px', fontSize: '10px' }}
+                        className="d-flex align-items-center justify-content-center"
+                      >
+                        Premium
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>

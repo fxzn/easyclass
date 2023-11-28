@@ -10,7 +10,6 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import './Akun.css';
 
 const UserProfile = () => {
   return (
