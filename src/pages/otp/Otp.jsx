@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Otp.css'; // Pastikan mengganti dengan nama file yang benar
 
 const OTPPage = () => {
@@ -63,7 +63,7 @@ const OTPPage = () => {
           ))}
         </div>
         <div className="submit-button-container">
-          <button type="submit">Verifikasi OTP</button>
+          <button className='btn-submit-otp' type="submit">Verifikasi OTP</button>
         </div>
       </form>
       <p>Kirim Ulang OTP dalam {resendTimer} detik</p>

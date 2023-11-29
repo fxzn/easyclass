@@ -12,9 +12,9 @@ import ChangePass from './pages/akun/ChangePass';
 import History from './pages/akun/History';
 import Course from './pages/course/Course';
 import CourseRun from "./pages/course/CoursePage";
-import Dashboard from './users/admin/Page/Dashboard';
 import ResetPaswd from './auth/ResetPaswd';
 import DetailCourse from "./pages/course/DetailCourse";
+import Admin from "./users/admin/Admin";
 
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
         <Route path="/detailcourse" element={<DetailCourse />} />
         <Route path="/course" element={<Course />} />
         <Route path="/courserun" element={<CourseRun />} />
-        <Route path="/admin" element={<Dashboard/>} />
+        <Route path="/admin" element={<Admin/>} />
         <Route />
       </Routes>
     </>

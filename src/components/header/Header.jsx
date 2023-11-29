@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import VideoHome from "./VideoHome";
 import { useState } from "react";
 import Services from "../services/Services";
+import Course from "../course/Course";
 
 
 function Header() {
@@ -54,6 +55,7 @@ function Header() {
         </div>
       </section>
       <VideoHome isOpen={isModalOpen} onClose={closeModal} />
+      <Course/>
       <Services/>
 
       

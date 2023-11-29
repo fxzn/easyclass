@@ -1,15 +1,12 @@
 import Footerr from '../../components/footer/footer';
 import NavigationBars from '../../components/navigation/NavigationBars';
-import React from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faBell,
   faUser,
   faLock,
   faHistory,
   faSignOutAlt,
-  faSearch,
   faClock,
   faBook,
   faStar,
