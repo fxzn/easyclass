@@ -5,58 +5,13 @@ import { Link } from "react-router-dom";
 import { faBell, faUser, faLock, faHistory, faSignOutAlt, faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
 import Footerr from "../../components/footer/footer";
+import NavigationBars from "../../components/navigation/NavigationBars";
 
 function Course() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light sticky-top bg-danger py-3">
-        <div className="container">
-          <a className="navbar-brand text-white" href="#">
-            easyclass
-          </a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="sidebar offcanvas offcanvas-end" tabIndex={-1} id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div className="offcanvas-header">
-              <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                easyclass
-              </h5>
-              <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div className="offcanvas-body">
-              <div className="navbar-nav me-auto mb-lg-0 search ms-5 p-3">
-                <input type="text" />
-                <div className="iconsearh m-1 text-danger">
-                  <FontAwesomeIcon icon={faSearch} />
-                </div>
-              </div>
-              <div className="navbar-nav justify-content-end flex-grow-1 pe-3 ">
-                <Link to="/notifikasi" className="notif-bell me-5">
-                  <FontAwesomeIcon className="text-white" icon={faBell} />
-                </Link>
-                {/* profile */}
-                <Nav className="profill">
-                  <NavDropdown title={<FontAwesomeIcon className="text-white" icon={faUser} />} id="basic-nav-dropdown" >
-                    <NavDropdown.Item href="/akun">
-                      <FontAwesomeIcon icon={faUser} /> Profil Saya
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/ChangePass">
-                      <FontAwesomeIcon icon={faLock} /> Ubah Password
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/History">
-                      <FontAwesomeIcon icon={faHistory} /> History Pembayaran
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/">
-                      <FontAwesomeIcon icon={faSignOutAlt} /> Log Out
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </Nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+
+      <NavigationBars/>
 
       <Container className="mt-5">
         <Row>
