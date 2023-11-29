@@ -61,7 +61,7 @@ const UserProfile = () => {
               {/* card */}
 
               <Row className="kard">
-              <h2>Riwayat Pembayaran</h2>
+                <h2>Riwayat Pembayaran</h2>
                 <Col md={12} className="d-flex justify-content-center mt-3">
                   <Card
                     className="cardkursus"
