@@ -54,12 +54,6 @@
   color: var(--white-color);
 }
 
-.notif-bell {
-  font-size: 1.5rem; 
-  margin-right: 15px; 
-  color: var(--black-color);
-}
-
 /* Set background color to white */
 .profil {
   background-color: white;
@@ -113,6 +107,21 @@
   margin-right: 7px; 
 }
 
+.notif-bell {
+  color: var(--black-color);
+
+}
+
+/* .notification-dropdown {
+  
+} */
+
+.notification-item {
+  /* Tambahkan gaya untuk setiap item notifikasi di sini */
+  color: #333; /* warna teks */
+  font-size: 14px; /* ukuran font */
+  max-width: auto;
+}
 
 
 

@@ -9,7 +9,8 @@ import {
   faHistory,
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import {  Nav, NavDropdown } from 'react-bootstrap';
+import { Nav, NavDropdown } from 'react-bootstrap';
+import 'react-toastify/dist/ReactToastify.css';
 
 function NavigationBars() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,6 +27,13 @@ function NavigationBars() {
       nav.classList.remove('drop-shadow');
     }
   });
+
+  const notifikasiData = [
+    { id: 1, text: 'Notifikasi 1', link: '/Notifikasi' },
+    { id: 2, text: 'Notifikasi 2', link: '/Notifikasi' },
+    { id: 3, text: 'Notifikasi 3', link: '/Notifikasi' },
+    // Tambahkan data notifikasi sesuai kebutuhan
+  ];
 
   return (
     <>
@@ -68,10 +76,13 @@ function NavigationBars() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                <Link to="/course" className="nav-link mx-3" href="index.html">
+                  <Link
+                    to="/course"
+                    className="nav-link mx-3"
+                    href="index.html"
+                  >
                     Course
                   </Link>
-                  
                 </li>
                 <li className="nav-item">
                   <Link
@@ -99,9 +110,29 @@ function NavigationBars() {
                   </button>
                 ) : (
                   <>
-                    <Link to="/notifikasi" className="notif-bell">
+                    {/* <Link to="/notifikasi" className="notif-bell">
                       <FontAwesomeIcon icon={faBell} />
-                    </Link>
+                    </Link> */}
+                    {/* notiikasi */}
+
+                    <Nav className="notif-bell">
+                      <NavDropdown
+                        title={<FontAwesomeIcon icon={faBell} />}
+                        id="basic-nav-dropdown"
+                        className="notification-dropdown"
+                      >
+                        {notifikasiData.map((notifikasi) => (
+                          <NavDropdown.Item
+                            key={notifikasi.id}
+                            href={notifikasi.link}
+                            className="notification-item"
+                          >
+                            {notifikasi.text}
+                          </NavDropdown.Item>
+                        ))}
+                      </NavDropdown>
+                    </Nav>
+
                     {/* profile */}
                     <Nav className="profil">
                       <NavDropdown
@@ -109,17 +140,23 @@ function NavigationBars() {
                         id="basic-nav-dropdown"
                       >
                         <NavDropdown.Item href="/akun">
-                          <FontAwesomeIcon icon={faUser}  className="icon" /> Profil Saya
+                          <FontAwesomeIcon icon={faUser} className="icon" />{' '}
+                          Profil Saya
                         </NavDropdown.Item>
                         <NavDropdown.Item href="/ChangePass">
-                          <FontAwesomeIcon icon={faLock}  className="icon" /> Ubah Password
+                          <FontAwesomeIcon icon={faLock} className="icon" />{' '}
+                          Ubah Password
                         </NavDropdown.Item>
                         <NavDropdown.Item href="/History">
-                          <FontAwesomeIcon icon={faHistory} className="icon" /> History
-                          Pembayaran
+                          <FontAwesomeIcon icon={faHistory} className="icon" />{' '}
+                          History Pembayaran
                         </NavDropdown.Item>
                         <NavDropdown.Item href="/">
-                          <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Log Out
+                          <FontAwesomeIcon
+                            icon={faSignOutAlt}
+                            className="icon"
+                          />{' '}
+                          Log Out
                         </NavDropdown.Item>
                       </NavDropdown>
                     </Nav>
