@@ -1,8 +1,8 @@
 import "./courses.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Accordion, Button, Card, Col, Container, Form, Nav, NavDropdown, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { faBell, faUser, faLock, faHistory, faSignOutAlt, faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
+import { Accordion, Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+
+import { faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
 import Footerr from "../../components/footer/footer";
 import NavigationBars from "../../components/navigation/NavigationBars";
@@ -11,9 +11,8 @@ function Course() {
   return (
     <>
 
-      <NavigationBars/>
-
-      <Container className="mt-5">
+      <NavigationBars />
+      <Container className="content">
         <Row>
           <Col md={3}>
             <Accordion defaultActiveKey="0">
@@ -51,7 +50,7 @@ function Course() {
                       {/* Add more Form.Check as needed */}
                     </Form>
                   </div>
-                  <Button variant="white" className="text-danger mt-4 w-100">
+                  <Button variant="white" className="text-danger mt-5 w-100">
                     Hapus Filter
                   </Button>
                 </Accordion.Body>
@@ -91,77 +90,20 @@ function Course() {
             {/* Card */}
             <Row className="mt-4">
               <Col md={6} className="d-flex justify-content-center mt-3">
-                <Card className="kotakcourse">
-                  <Card.Img variant="top" src={imgcourse} />
+              <Card className="kotakcourse">
+                  <Card.Img className="img-card" variant="top" src={imgcourse} />
                   <Card.Body>
-                    <div className="title mt-2">UI/UX Design</div>
-
-                    <Card.Text className="desc mt-3">Belajar Web Designer dengan Figma by Angela Doe</Card.Text>
-                    <div className="d-flex infocourse">
-                      <div className="level me-4 d-flex">
-                        <div>
-                          <FontAwesomeIcon icon={faStar} className="img" />
-                        </div>
-                        <p className="ms-1 mt-1"> Intermediate Level</p>
-                      </div>
-                      <div className="level me-4 d-flex">
-                        <div>
-                          <FontAwesomeIcon icon={faBook} className="img" />
-                        </div>
-                        <p className="ms-1 mt-1">10 modul</p>
-                      </div>
-                      <div className="level me-4 d-flex">
-                        <div>
-                          <FontAwesomeIcon icon={faClock} className="img" />
-                        </div>
-                        <p className="ms-1 mt-1">120 menit</p>
+                    <div className="d-flex justify-content-between">
+                      <div className="title ">UI/UX Design</div>
+                      <div className="rating d-flex ">
+                        <FontAwesomeIcon icon={faStar} className="img text-warning me-1" />
+                        <p>4.5</p>
                       </div>
                     </div>
 
-                    <Button variant="danger">Premium</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-
-              <Col md={6} className="d-flex justify-content-center mt-3">
-                <Card className="kotakcourse">
-                  <Card.Img variant="top" src={imgcourse} />
-                  <Card.Body>
-                    <div className="title mt-2">UI/UX Design</div>
-
-                    <Card.Text className="desc mt-3">Belajar Web Designer dengan Figma by Angela Doe</Card.Text>
-                    <div className="d-flex infocourse">
-                      <div className="level me-4 d-flex">
-                        <div>
-                          <FontAwesomeIcon icon={faStar} className="img" />
-                        </div>
-                        <p className="ms-1 mt-1"> Intermediate Level</p>
-                      </div>
-                      <div className="level me-4 d-flex">
-                        <div>
-                          <FontAwesomeIcon icon={faBook} className="img" />
-                        </div>
-                        <p className="ms-1 mt-1">10 modul</p>
-                      </div>
-                      <div className="level me-4 d-flex">
-                        <div>
-                          <FontAwesomeIcon icon={faClock} className="img" />
-                        </div>
-                        <p className="ms-1 mt-1">120 menit</p>
-                      </div>
-                    </div>
-
-                    <Button variant="danger">Premium</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={6} className="d-flex justify-content-center mt-3">
-                <Card className="kotakcourse">
-                  <Card.Img variant="top" src={imgcourse} />
-                  <Card.Body>
-                    <div className="title mt-2">UI/UX Design</div>
-
-                    <Card.Text className="desc mt-3">Belajar Web Designer dengan Figma by Angela Doe</Card.Text>
+                    <Card.Text><div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
+                    <div>by Angela Doe</div>
+                    </Card.Text>
                     <div className="d-flex infocourse">
                       <div className="level me-4 d-flex">
                         <div>
@@ -188,12 +130,20 @@ function Course() {
                 </Card>
               </Col>
               <Col md={6} className="d-flex justify-content-center mt-3">
-                <Card className="kotakcourse">
-                  <Card.Img variant="top" src={imgcourse} />
+              <Card className="kotakcourse">
+                  <Card.Img className="img-card" variant="top" src={imgcourse} />
                   <Card.Body>
-                    <div className="title mt-2">UI/UX Design</div>
+                    <div className="d-flex justify-content-between">
+                      <div className="title ">UI/UX Design</div>
+                      <div className="rating d-flex ">
+                        <FontAwesomeIcon icon={faStar} className="img text-warning me-1" />
+                        <p>4.5</p>
+                      </div>
+                    </div>
 
-                    <Card.Text className="desc mt-3">Belajar Web Designer dengan Figma by Angela Doe</Card.Text>
+                    <Card.Text><div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
+                    <div>by Angela Doe</div>
+                    </Card.Text>
                     <div className="d-flex infocourse">
                       <div className="level me-4 d-flex">
                         <div>
@@ -223,7 +173,7 @@ function Course() {
           </Col>
         </Row>
       </Container>
-     <Footerr></Footerr>
+      <Footerr></Footerr>
     </>
   );
 }

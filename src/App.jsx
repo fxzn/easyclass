@@ -11,6 +11,7 @@ import Akun from './pages/akun/Akun';
 import ChangePass from './pages/akun/ChangePass';
 import History from './pages/akun/History';
 import Course from './pages/course/Course';
+import CourseRun from "./pages/course/CoursePage";
 import Dashboard from './users/admin/Page/Dashboard';
 import ResetPaswd from './auth/ResetPaswd';
 import DetailCourse from "./pages/course/DetailCourse";
@@ -33,6 +34,7 @@ function App() {
         <Route path="/auth/resetPassword" element={<ResetPaswd />} />
         <Route path="/detailcourse" element={<DetailCourse />} />
         <Route path="/course" element={<Course />} />
+        <Route path="/courserun" element={<CourseRun />} />
         <Route path="/admin" element={<Dashboard/>} />
         <Route />
       </Routes>

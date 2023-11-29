@@ -37,6 +37,10 @@ body {
   background-color: none;
 }
 
+.content {
+  margin-top: 100px;
+}
+
 /* Custom styling for radio button */
 .custom-radio {
   -webkit-appearance: none;
@@ -53,12 +57,18 @@ body {
 }
 
 .kotakcourse {
-  width: 350px;
+  width: 450px;
   height: 250x;
-  background-color: #fff;
+  background-color: #faf5f5;
   border: var(--red-pink);
   border-radius: 20px;
+  padding: 2px;
+  overflow: hidden;
+  box-shadow: 0px 4px 28px rgba(0, 0, 0, 0.04);
+   
 }
+
+
 
 .level .img{
   width: 15px;
@@ -78,7 +88,7 @@ text-align: left;
 }
 
 .kotakcourse .desc {
-font-size: 14px;
+font-size: 17px;
 font-weight: 400;
 line-height: 14px;
 letter-spacing: 0em;
@@ -88,7 +98,7 @@ line-height: 1.5;
 
 .infocourse p {
 
-font-size: 10px;
+font-size: 15px;
 font-weight: 600;
 line-height: 14px;
 letter-spacing: 0em;
@@ -120,17 +130,19 @@ text-align: left;
   outline: none;
 }
 
+.rating {
+  
+font-size: 15px;
+font-weight: 600;
+line-height: 14px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
 @media only screen and (max-width: 767px) {
   /* Navbar */
-  .navbar-toggler {
-    display: block;
-  }
-
-  .sidebar {
-    width: 70% !important; 
-    background-color: var(--red-color);
-  }
-
+ 
   /* Search Input in Navbar */
   .search {
     margin: 10px 0;
@@ -143,10 +155,7 @@ text-align: left;
     width: 100%;
   }
 
-  .accordion-header {
-    background-color: #dc3545;
-    
-  }
+ 
 
   
   /* Course Cards */
