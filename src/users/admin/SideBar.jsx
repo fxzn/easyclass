@@ -26,59 +26,10 @@ function SideBar() {
               <i className="fa fa-tachometer-alt me-2" />
               Dashboard
             </a>
-            <div className="nav-item dropdown">
-              <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <i className="fa fa-laptop me-2" />
-                Elements
-              </a>
-              <div className="dropdown-menu bg-transparent border-0">
-                <a href="button.html" className="dropdown-item">
-                  Buttons
-                </a>
-                <a href="typography.html" className="dropdown-item">
-                  Typography
-                </a>
-                <a href="element.html" className="dropdown-item">
-                  Other Elements
-                </a>
-              </div>
-            </div>
-            <a href="widget.html" className="nav-item nav-link">
-              <i className="fa fa-th me-2" />
-              Widgets
+            <a href="index.html" className="nav-item nav-link active">
+              <i className="fa fa-tachometer-alt me-2" />
+              Kelola Kelas
             </a>
-            <a href="form.html" className="nav-item nav-link">
-              <i className="fa fa-keyboard me-2" />
-              Forms
-            </a>
-            <a href="table.html" className="nav-item nav-link">
-              <i className="fa fa-table me-2" />
-              Tables
-            </a>
-            <a href="chart.html" className="nav-item nav-link">
-              <i className="fa fa-chart-bar me-2" />
-              Charts
-            </a>
-            <div className="nav-item dropdown">
-              <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <i className="far fa-file-alt me-2" />
-                Pages
-              </a>
-              <div className="dropdown-menu bg-transparent border-0">
-                <a href="signin.html" className="dropdown-item">
-                  Sign In
-                </a>
-                <a href="signup.html" className="dropdown-item">
-                  Sign Up
-                </a>
-                <a href="404.html" className="dropdown-item">
-                  404 Error
-                </a>
-                <a href="blank.html" className="dropdown-item">
-                  Blank Page
-                </a>
-              </div>
-            </div>
           </div>
         </nav>
       </div>
