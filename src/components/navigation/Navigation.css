@@ -109,19 +109,10 @@
 
 .notif-bell {
   color: var(--black-color);
-
+  margin-top: 8px;
 }
 
-/* .notification-dropdown {
-  
-} */
 
-.notification-item {
-  /* Tambahkan gaya untuk setiap item notifikasi di sini */
-  color: #333; /* warna teks */
-  font-size: 14px; /* ukuran font */
-  max-width: auto;
-}
 
 
 
