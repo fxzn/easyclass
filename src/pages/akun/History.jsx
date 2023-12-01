@@ -79,12 +79,13 @@ const UserProfile = () => {
                       <Card.Text className="desc mt-0" id="text2">
                         Belajar Web Designer dengan Figma by Angela Doe
                       </Card.Text>
+                      
                       <div
-                        className="d-flex infocourse"
+                        className="d-flex infocourse1"
                         style={{ margin: '-8px 0' }}
                       >
                         <div className="level me-4 d-flex">
-                          <div>
+                          <div className="ket">
                             <FontAwesomeIcon icon={faStar} className="img" />
                           </div>
                           <p className="ms-1 mt-0"> Intermediate Level</p>
@@ -133,7 +134,7 @@ const UserProfile = () => {
                         Belajar Web Designer dengan Figma by Angela Doe
                       </Card.Text>
                       <div
-                        className="d-flex infocourse"
+                        className="d-flex infocourse1"
                         style={{ margin: '-8px 0' }}
                       >
                         <div className="level me-4 d-flex">
