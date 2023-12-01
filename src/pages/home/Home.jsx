@@ -1,4 +1,4 @@
-import Footerr from "../../components/footer/footer"
+import Footerr from "../../components/footer/footer";
 import Header from "../../components/header/Header"
 import "./Home.css";
 
