@@ -1,12 +1,15 @@
 import Footerr from '../../components/footer/footer';
 import NavigationBars from '../../components/navigation/NavigationBars';
+import React from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faBell,
   faUser,
   faLock,
   faHistory,
   faSignOutAlt,
+  faSearch,
   faClock,
   faBook,
   faStar,
@@ -70,9 +73,10 @@ const UserProfile = () => {
                       style={{ height: '80px' }}
                     />
                     <Card.Body>
-                      <div className="title mt-0">UI/UX Design</div>
-
-                      <Card.Text className="desc mt-0">
+                      <div className="title mt-0" id="text1">
+                        UI/UX Design
+                      </div>
+                      <Card.Text className="desc mt-0" id="text2">
                         Belajar Web Designer dengan Figma by Angela Doe
                       </Card.Text>
                       <div
@@ -121,9 +125,11 @@ const UserProfile = () => {
                       style={{ height: '80px' }}
                     />
                     <Card.Body>
-                      <div className="title mt-0">UI/UX Design</div>
+                      <div className="title mt-0" id="text1">
+                        UI/UX Design
+                      </div>
 
-                      <Card.Text className="desc mt-0">
+                      <Card.Text className="desc mt-0" id="text2">
                         Belajar Web Designer dengan Figma by Angela Doe
                       </Card.Text>
                       <div
