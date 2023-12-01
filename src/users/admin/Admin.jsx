@@ -1,6 +1,6 @@
 import SideBar from "./SideBar";
 import StatistikCard from "./StatistikCard";
-import "./Style.css";
+// import "./Style.css";
 import Tabel from "./Tabel";
 
 function Admin() {
