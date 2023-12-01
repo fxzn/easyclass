@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
-import './Otp.css'; // Pastikan mengganti dengan nama file yang benar
+import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import './Otp.css';
 
 const OTPPage = () => {
   const [otp, setOTP] = useState(Array(6).fill(''));
@@ -31,7 +34,7 @@ const OTPPage = () => {
       setOTPValid(true);
       // TODO: Tambahkan logika untuk melanjutkan ke halaman berikutnya
     } else {
-      setError('OTP tidak valid. Silakan coba lagi.');
+      setError('Maaf, kode OTP salah!');
       setOTPValid(false);
     }
   };
@@ -47,28 +50,42 @@ const OTPPage = () => {
   }, []);
 
   return (
-    <div className="otp-container">
-      <h2>Masukkan Kode OTP</h2>
-      <p>Ketik 6 digit kode yang dikirimkan ke J*****@gmail.com</p>
-      <form onSubmit={handleSubmit}>
-        <div className="otp-input-container">
-          {otp.map((digit, index) => (
-            <input
-              key={index}
-              type="text"
-              value={digit}
-              onChange={(e) => handleOTPChange(e, index)}
-              maxLength="1"
-            />
-          ))}
-        </div>
-        <div className="submit-button-container">
-          <button className='btn-submit-otp' type="submit">Verifikasi OTP</button>
-        </div>
-      </form>
-      <p>Kirim Ulang OTP dalam {resendTimer} detik</p>
-      {otpValid && <p className="success-message">OTP Valid! Anda dapat melanjutkan.</p>}
-      {error && !otpValid && <p className="error-message">{error}</p>}
+    <div className="otp">
+      <div className="otp-container">
+        <span className="arrow">
+          <Link to="/">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </Link>
+        </span>
+        <h4>Masukkan OTP</h4>
+        <p id="p1">Ketik 6 digit kode yang dikirimkan ke J*****@gmail.com</p>
+        <form onSubmit={handleSubmit}>
+          <div className="otp-input-container">
+            {otp.map((digit, index) => (
+              <input
+                className="input"
+                key={index}
+                type="text"
+                value={digit}
+                onChange={(e) => handleOTPChange(e, index)}
+                maxLength="1"
+              />
+            ))}
+          </div>
+          <p>Kirim Ulang OTP dalam {resendTimer} detik</p>
+          <div className="submit-button-container">
+            <button className="tombol" type="submit">
+              Simpan
+            </button>
+            <div className="atention">
+              {otpValid && (
+                <p className="success-message">Registrasi berhasil</p>
+              )}
+              {error && !otpValid && <p className="error-message">{error}</p>}
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
