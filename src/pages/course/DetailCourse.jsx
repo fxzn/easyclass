@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./DetailCourse.css";
+import "./Detailcourse.css";
 import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
