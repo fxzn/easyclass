@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faHistory, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./Akun.css";
+import Footerr from "../../components/footer/Footerr";
 
 const Akun = () => {
   const [profilePicture, setProfilePicture] = useState(null);
@@ -132,6 +133,7 @@ const Akun = () => {
           </div>
         </div>
       </section>
+      <Footerr/>
     </>
   );
 };

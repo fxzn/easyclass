@@ -282,6 +282,9 @@ main.sign-up-mode .carousel {
   line-height: 30px;
   font-weight: 600;
   font-size: 1.6rem;
+  color: #151111;
+  align-items: center;
+  justify-content: center;
 }
 
 .bullets {

@@ -1,4 +1,5 @@
 
+import Footerr from "../../components/footer/Footerr";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import "./About.css"; // You may need to create an About.css file for styling
 
@@ -36,6 +37,7 @@ function About() {
           </div>
         </div>
       </section>
+      <Footerr/>
     </>
   );
 }

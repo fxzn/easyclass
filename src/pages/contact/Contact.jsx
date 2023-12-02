@@ -1,4 +1,5 @@
 
+import Footerr from "../../components/footer/Footerr";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import "./Contact.css";
 
@@ -96,6 +97,7 @@ function Contact() {
           </div>
         </div>
       </section>
+      <Footerr/>
     </>
   );
 }

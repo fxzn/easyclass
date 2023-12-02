@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faHistory, faSignOutAlt, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import imgcourse from "../../assets/image.png";
+import Footerr from "../../components/footer/Footerr";
 
 const History = () => {
   return (
@@ -132,6 +133,7 @@ const History = () => {
           </div>
         </div>
       </section>
+      <Footerr/>
     </>
   );
 };

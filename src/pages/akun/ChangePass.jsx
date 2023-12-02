@@ -2,6 +2,7 @@ import NavigationBars from "../../components/navigation/NavigationBars";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faHistory, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Footerr from "../../components/footer/Footerr";
 
 const ChangePass = () => {
   return (
@@ -69,6 +70,7 @@ const ChangePass = () => {
           </div>
         </div>
       </section>
+      <Footerr/>
     </>
   );
 };
