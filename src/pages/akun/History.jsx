@@ -1,20 +1,11 @@
-import NavigationBars from '../../components/navigation/NavigationBars';
-import { Button, Card, Col, Row } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUser,
-  faLock,
-  faHistory,
-  faSignOutAlt,
-  faClock,
-  faBook,
-  faStar,
-} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import imgcourse from '../../assets/image.png';
-import Footer from '../../components/footer/footer';
+import NavigationBars from "../../components/navigation/NavigationBars";
+import { Button, Card, Col, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock, faHistory, faSignOutAlt, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import imgcourse from "../../assets/image.png";
 
-const UserProfile = () => {
+const History = () => {
   return (
     <>
       <NavigationBars />
@@ -26,7 +17,7 @@ const UserProfile = () => {
             </div>
             <div className="profileFormm">
               <div className="profileInfo">
-                <Link to="/Akun">
+                <Link to="/userprofile">
                   <h1>
                     <FontAwesomeIcon icon={faUser} />
                     <span className="link-text">Profil Saya</span>
@@ -60,15 +51,8 @@ const UserProfile = () => {
               <Row className="kard">
                 <h2>Riwayat Pembayaran</h2>
                 <Col md={12} className="d-flex justify-content-center mt-3">
-                  <Card
-                    className="cardkursus"
-                    style={{ width: '400px', height: '180px' }}
-                  >
-                    <Card.Img
-                      variant="top"
-                      src={imgcourse}
-                      style={{ height: '80px' }}
-                    />
+                  <Card className="cardkursus" style={{ width: "400px", height: "180px" }}>
+                    <Card.Img variant="top" src={imgcourse} style={{ height: "80px" }} />
                     <Card.Body>
                       <div className="title mt-0" id="text1">
                         UI/UX Design
@@ -76,11 +60,8 @@ const UserProfile = () => {
                       <Card.Text className="desc mt-0" id="text2">
                         Belajar Web Designer dengan Figma by Angela Doe
                       </Card.Text>
-                      
-                      <div
-                        className="d-flex infocourse1"
-                        style={{ margin: '-8px 0' }}
-                      >
+
+                      <div className="d-flex infocourse1" style={{ margin: "-8px 0" }}>
                         <div className="level me-4 d-flex">
                           <div className="ket">
                             <FontAwesomeIcon icon={faStar} className="img" />
@@ -101,11 +82,7 @@ const UserProfile = () => {
                         </div>
                       </div>
 
-                      <Button
-                        variant="danger"
-                        style={{ height: '18px', fontSize: '10px' }}
-                        className="d-flex align-items-center justify-content-center"
-                      >
+                      <Button variant="danger" style={{ height: "18px", fontSize: "10px" }} className="d-flex align-items-center justify-content-center">
                         Premium
                       </Button>
                     </Card.Body>
@@ -113,15 +90,8 @@ const UserProfile = () => {
                 </Col>
 
                 <Col md={12} className="d-flex justify-content-center mt-3">
-                  <Card
-                    className="cardkursus"
-                    style={{ width: '400px', height: '180px' }}
-                  >
-                    <Card.Img
-                      variant="top"
-                      src={imgcourse}
-                      style={{ height: '80px' }}
-                    />
+                  <Card className="cardkursus" style={{ width: "400px", height: "180px" }}>
+                    <Card.Img variant="top" src={imgcourse} style={{ height: "80px" }} />
                     <Card.Body>
                       <div className="title mt-0" id="text1">
                         UI/UX Design
@@ -130,10 +100,7 @@ const UserProfile = () => {
                       <Card.Text className="desc mt-0" id="text2">
                         Belajar Web Designer dengan Figma by Angela Doe
                       </Card.Text>
-                      <div
-                        className="d-flex infocourse1"
-                        style={{ margin: '-8px 0' }}
-                      >
+                      <div className="d-flex infocourse1" style={{ margin: "-8px 0" }}>
                         <div className="level me-4 d-flex">
                           <div>
                             <FontAwesomeIcon icon={faStar} className="img" />
@@ -154,11 +121,7 @@ const UserProfile = () => {
                         </div>
                       </div>
 
-                      <Button
-                        variant="danger"
-                        style={{ height: '18px', fontSize: '10px' }}
-                        className="d-flex align-items-center justify-content-center"
-                      >
+                      <Button variant="danger" style={{ height: "18px", fontSize: "10px" }} className="d-flex align-items-center justify-content-center">
                         Premium
                       </Button>
                     </Card.Body>
@@ -169,9 +132,8 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-      <Footer/>
     </>
   );
 };
 
-export default UserProfile;
+export default History;

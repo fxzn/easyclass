@@ -4,8 +4,7 @@ import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
-import Footer from "../../components/footer/footer";
-
+import Footer from "../../components/footer/Footerr";
 
 function DetailCourse() {
   return (
@@ -86,7 +85,7 @@ function DetailCourse() {
                   </div>
                   <div className="position-relative">
                     <label className="position-absolute progress-text">90% Progress</label>
-                    <progress className="rounded-strip" id="progress" value="60" max="100" ></progress>
+                    <progress className="rounded-strip" id="progress" value="60" max="100"></progress>
                   </div>
                 </div>
 
@@ -97,7 +96,7 @@ function DetailCourse() {
                   </div>
                   <ol>
                     <li className="my-2 d-flex justify-content-between align-items-center">
-                      <p className="d-flex gap-3 align-items-center list-item" >
+                      <p className="d-flex gap-3 align-items-center list-item">
                         <span className="p-1 align-items-center justify-content-center">1.</span>
                         Anda yang ingin memahami poin penting design system
                       </p>
@@ -161,7 +160,7 @@ function DetailCourse() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

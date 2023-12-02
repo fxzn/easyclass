@@ -6,9 +6,6 @@ import homeimg from "../../assets/home.png";
 import { Link } from "react-router-dom";
 import VideoHome from "./VideoHome";
 import { useState } from "react";
-import Services from "../services/Services";
-import Course from "../course/Course";
-
 
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,7 +20,6 @@ function Header() {
 
   return (
     <>
-    
       <NavigationBars />
       <section className="home" id="home">
         <div className="container">
@@ -39,6 +35,7 @@ function Header() {
                   <Link to="/auth/register" className="btn btn-primary shadow-none">
                     Join now
                   </Link>
+                  <VideoHome isOpen={isModalOpen} onClose={closeModal} />
                   <a href="#" className="btn btn-video-play" onClick={openModal}>
                     <FontAwesomeIcon icon={faPlayCircle} />
                   </a>
@@ -54,11 +51,6 @@ function Header() {
           </div>
         </div>
       </section>
-      <VideoHome isOpen={isModalOpen} onClose={closeModal} />
-      <Course/>
-      <Services/>
-
-      
     </>
   );
 }

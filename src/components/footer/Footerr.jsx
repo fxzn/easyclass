@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-function Footer() {
+function Footerr() {
   return (
     <>
       <footer className="footer-section">
@@ -97,4 +97,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Footerr;

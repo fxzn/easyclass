@@ -1,15 +1,9 @@
-import NavigationBars from '../../components/navigation/NavigationBars';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUser,
-  faLock,
-  faHistory,
-  faSignOutAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import Footer from '../../components/footer/footer';
+import NavigationBars from "../../components/navigation/NavigationBars";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock, faHistory, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
-const UserProfile = () => {
+const ChangePass = () => {
   return (
     <>
       <NavigationBars />
@@ -21,7 +15,7 @@ const UserProfile = () => {
             </div>
             <div className="profileFormm">
               <div className="profileInfo">
-                <Link to="/Akun">
+                <Link to="/userprofile">
                   <h1>
                     <FontAwesomeIcon icon={faUser} />
                     <span className="link-text">Profil Saya</span>
@@ -50,37 +44,33 @@ const UserProfile = () => {
                 </Link>
               </div>
 
-              
-            <div className="contactForm">
-              
-              <div className="formBox">
-              <h2>Ubah Password</h2>
-                <div className="inputBox w100">
-                  <input type="password" name="oldPassword" id="oldPassword" required />
-                  <label htmlFor="oldPassword">Masukkan Password Lama</label>
-                </div>
-                <div className="inputBox w100">
-                  <input type="password" name="newPassword" id="newPassword" required />
-                  <label htmlFor="newPassword">Masukkan Password Baru</label>
-                </div>
-                <div className="inputBox w100">
-                  <input type="password" name="confirmPassword" id="confirmPassword" required />
-                  <label htmlFor="confirmPassword">Ulangi Password Baru</label>
-                </div>
-          
-                <div className="inputBox w100">
-                  <input type="submit" value="Submit" />
+              <div className="contactForm">
+                <div className="formBox">
+                  <h2>Ubah Password</h2>
+                  <div className="inputBox w100">
+                    <input type="password" name="oldPassword" id="oldPassword" required />
+                    <label htmlFor="oldPassword">Masukkan Password Lama</label>
+                  </div>
+                  <div className="inputBox w100">
+                    <input type="password" name="newPassword" id="newPassword" required />
+                    <label htmlFor="newPassword">Masukkan Password Baru</label>
+                  </div>
+                  <div className="inputBox w100">
+                    <input type="password" name="confirmPassword" id="confirmPassword" required />
+                    <label htmlFor="confirmPassword">Ulangi Password Baru</label>
+                  </div>
+
+                  <div className="inputBox w100">
+                    <input type="submit" value="Submit" />
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
-           
           </div>
         </div>
       </section>
-      <Footer/>
     </>
   );
 };
 
-export default UserProfile;
+export default ChangePass;

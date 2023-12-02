@@ -1,9 +1,18 @@
+import Footerr from "../../components/footer/Footerr"
+import Akun from "../../pages/akun/Akun"
+import ChangePass from "../../pages/akun/ChangePass"
+import History from "../../pages/akun/History"
 
 
-function user() {
+function User() {
   return (
-    <div>user</div>
+    <>
+    <Akun/>
+    <History/>
+    <ChangePass/>
+    <Footerr/>
+    </>
   )
 }
 
-export default user
+export default User

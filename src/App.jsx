@@ -27,7 +27,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/notifikasi" element={<Notifikasi />} />
         <Route path="/auth/otp" element={<Otp />} />
-        <Route path="/akun" element={<Akun />} />
+        <Route path="/userprofile" element={<Akun />} />
         <Route path="/ChangePass" element={<ChangePass />} />
         <Route path="/History" element={<History />} />
         <Route path="/auth/login" element={<Login />} />

@@ -67,13 +67,19 @@ function NavigationBars() {
                   <>
                     {" "}
                     {/* notiikasi */}
+                    <button className="btn btn-navbar" onClick={handleLogout}>
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
                     <Link to="/Notifikasi" className="notif-bell">
                       <FontAwesomeIcon icon={faBell} />
                     </Link>
                     {/* profile */}
                     <Nav className="profil">
                       <NavDropdown title={<FontAwesomeIcon icon={faUser} />} id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/akun">
+                        <NavDropdown.Item href="/userprofile">
                           <FontAwesomeIcon icon={faUser} className="icon" /> Profil Saya
                         </NavDropdown.Item>
                         <NavDropdown.Item href="/ChangePass">
@@ -87,12 +93,6 @@ function NavigationBars() {
                         </NavDropdown.Item>
                       </NavDropdown>
                     </Nav>
-                    <button className="btn btn-navbar" onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </>
-                ) : (
-                  <>
                     <Link to="/auth/login" className="btn btn-navbar">
                       Login
                     </Link>

@@ -1,18 +1,11 @@
+import NavigationBars from "../../components/navigation/NavigationBars";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock, faHistory, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import "./Akun.css";
 
-import NavigationBars from '../../components/navigation/NavigationBars';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUser,
-  faLock,
-  faHistory,
-  faSignOutAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import './Akun.css';
-import Footer from '../../components/footer/footer';
-
-const UserProfile = () => {
+const Akun = () => {
   const [profilePicture, setProfilePicture] = useState(null);
   const [imageSize, setImageSize] = useState(50);
 
@@ -35,7 +28,7 @@ const UserProfile = () => {
 
   const handleProfileChange = () => {
     // This function can be extended to update the profile on the server
-    console.log('Profile changed!');
+    console.log("Profile changed!");
   };
 
   const handleChooseFileClick = () => {
@@ -57,7 +50,7 @@ const UserProfile = () => {
             </div>
             <div className="profileFormm">
               <div className="profileInfo">
-                <Link to="/Akun">
+                <Link to="/userprofile">
                   <h1>
                     <FontAwesomeIcon icon={faUser} />
                     <span className="link-text">Profil Saya</span>
@@ -87,38 +80,29 @@ const UserProfile = () => {
               </div>
 
               <div className="contactForm">
-                 {/* prf */}
-              <div className="profile-picture-container">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      style={{ display: 'none' }}
-                    /> 
+                {/* prf */}
+                <div className="profile-picture-container">
+                  <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: "none" }} />
 
-                    <div
-                      className="profile-picture-button"
-                      onClick={handleChooseFileClick}
-                    >
-                      {profilePicture && (
-                        <div className="circular-profile-picture-container">
-                          <img
-                            src={profilePicture}
-                            alt=""
-                            className="circular-profile-picture"
-                            style={{
-                              width: `${imageSize}vw`, 
-                              height: 'auto',
-                            }}
-                            onClick={handleImageSizeChange}
-                          />
-                        </div>
-                      )}
-                    </div>
+                  <div className="profile-picture-button" onClick={handleChooseFileClick}>
+                    {profilePicture && (
+                      <div className="circular-profile-picture-container">
+                        <img
+                          src={profilePicture}
+                          alt=""
+                          className="circular-profile-picture"
+                          style={{
+                            width: `${imageSize}vw`,
+                            height: "auto",
+                          }}
+                          onClick={handleImageSizeChange}
+                        />
+                      </div>
+                    )}
                   </div>
-                       {/* prf end */}
+                </div>
+                {/* prf end */}
                 <div className="formBox">
-
                   <div className="inputBox w100">
                     <input type="text" name="" id="" required="" />
                     <span>Name</span>
@@ -148,9 +132,8 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-      <Footer/>
     </>
   );
 };
 
-export default UserProfile;
+export default Akun;

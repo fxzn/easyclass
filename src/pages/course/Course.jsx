@@ -4,12 +4,11 @@ import { Accordion, Button, Card, Col, Container, Form, Row } from "react-bootst
 import { faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
 import NavigationBars from "../../components/navigation/NavigationBars";
-import Footer from "../../components/footer/footer";
+import Footer from "../../components/footer/Footerr";
 
 function Course() {
   return (
     <>
-
       <NavigationBars />
       <Container className="content-course">
         <Row>
@@ -89,7 +88,7 @@ function Course() {
             {/* Card */}
             <Row className="mt-4">
               <Col md={6} className="d-flex justify-content-center mt-3">
-              <Card className="kotakcourse">
+                <Card className="kotakcourse">
                   <Card.Img className="img-card" variant="top" src={imgcourse} />
                   <Card.Body>
                     <div className="d-flex justify-content-between">
@@ -100,8 +99,9 @@ function Course() {
                       </div>
                     </div>
 
-                    <Card.Text><div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
-                    <div>by Angela Doe</div>
+                    <Card.Text>
+                      <div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
+                      <div>by Angela Doe</div>
                     </Card.Text>
                     <div className="d-flex infocourse">
                       <div className="level me-4 d-flex">
@@ -129,7 +129,7 @@ function Course() {
                 </Card>
               </Col>
               <Col md={6} className="d-flex justify-content-center mt-3">
-              <Card className="kotakcourse">
+                <Card className="kotakcourse">
                   <Card.Img className="img-card" variant="top" src={imgcourse} />
                   <Card.Body>
                     <div className="d-flex justify-content-between">
@@ -140,8 +140,9 @@ function Course() {
                       </div>
                     </div>
 
-                    <Card.Text><div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
-                    <div>by Angela Doe</div>
+                    <Card.Text>
+                      <div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
+                      <div>by Angela Doe</div>
                     </Card.Text>
                     <div className="d-flex infocourse">
                       <div className="level me-4 d-flex">
@@ -172,7 +173,7 @@ function Course() {
           </Col>
         </Row>
       </Container>
-      <Footer/>
+      <Footer />
     </>
   );
 }

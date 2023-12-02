@@ -5,7 +5,7 @@ import { Accordion, Button, Card, Col, Container, Form, ProgressBar, Row } from 
 import { faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
 import NavigationBars from "../../components/navigation/NavigationBars";
-import Footer from "../../components/footer/footer";
+import Footer from "../../components/footer/Footerr";
 
 function CourseRun() {
   return (
@@ -178,7 +178,7 @@ function CourseRun() {
           </Col>
         </Row>
       </Container>
-      <Footer/>
+      <Footer />
     </>
   );
 }
