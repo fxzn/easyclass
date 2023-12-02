@@ -1,4 +1,3 @@
-import Footerr from '../../components/footer/footer';
 import NavigationBars from '../../components/navigation/NavigationBars';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import imgcourse from '../../assets/image.png';
+import Footer from '../../components/footer/footer';
 
 const UserProfile = () => {
   return (
@@ -169,8 +169,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-
-      <Footerr />
+      <Footer/>
     </>
   );
 };

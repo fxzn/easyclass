@@ -1,15 +1,13 @@
-import Footerr from '../../components/footer/footer';
 import NavigationBars from '../../components/navigation/NavigationBars';
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faBell,
   faUser,
   faLock,
   faHistory,
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import Footer from '../../components/footer/footer';
 
 const UserProfile = () => {
   return (
@@ -80,8 +78,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-
-      <Footerr />
+      <Footer/>
     </>
   );
 };

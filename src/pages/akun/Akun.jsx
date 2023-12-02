@@ -1,16 +1,16 @@
-import Footerr from '../../components/footer/footer';
+
 import NavigationBars from '../../components/navigation/NavigationBars';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
   faLock,
   faHistory,
   faSignOutAlt,
-  faFileImage,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Akun.css';
+import Footer from '../../components/footer/footer';
 
 const UserProfile = () => {
   const [profilePicture, setProfilePicture] = useState(null);
@@ -148,8 +148,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-
-      <Footerr />
+      <Footer/>
     </>
   );
 };
