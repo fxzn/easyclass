@@ -4,7 +4,6 @@ import { Accordion, Button, Card, Col, Container, Form, Row } from "react-bootst
 import { faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
 import NavigationBars from "../../components/navigation/NavigationBars";
-import Footer from "../../components/footer/Footerr";
 
 function Course() {
   return (
@@ -173,7 +172,6 @@ function Course() {
           </Col>
         </Row>
       </Container>
-      <Footer />
     </>
   );
 }
