@@ -9,7 +9,6 @@ function Footerr() {
             <div className="col-md-5">
               <div className="col-md-10">
                 <a className="footer-brand">
-                  {/* <img src="" className="me-3" alt="brand" /> */}
                   <span className="text-dark">easyclass</span>
                   <p className="text-secondary mt-3">EasyClass is your go-to destination for online courses! Delve into a feast of knowledge, serving you the finest educational experiences with top-notch quality since its inception.</p>
                 </a>
