@@ -1,18 +1,17 @@
 import "./courses.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion, Button, Card, Col, Container, Form, Row } from "react-bootstrap";
-
 import { faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
-import Footerr from "../../components/footer/footer";
 import NavigationBars from "../../components/navigation/NavigationBars";
+import Footer from "../../components/footer/footer";
 
 function Course() {
   return (
     <>
 
       <NavigationBars />
-      <Container className="content">
+      <Container className="content-course">
         <Row>
           <Col md={3}>
             <Accordion defaultActiveKey="0">
@@ -173,7 +172,7 @@ function Course() {
           </Col>
         </Row>
       </Container>
-      <Footerr></Footerr>
+      <Footer/>
     </>
   );
 }

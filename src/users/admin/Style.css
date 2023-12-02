@@ -13,6 +13,9 @@
     z-index: 99;
 }
 
+.text-admin {
+    margin-top: 3rem;
+}
 
 /*** Spinner ***/
 #spinner {
@@ -30,9 +33,7 @@
 
 
 /*** Button ***/
-.btn {
-    transition: .5s;
-}
+
 
 .btn.btn-primary {
     color: #FFFFFF;
@@ -84,6 +85,7 @@
     min-height: 100vh;
     background: #FFFFFF;
     transition: 0.5s;
+    margin-top: -10px;
 }
 
 @media (min-width: 992px) {
@@ -123,6 +125,7 @@
 
 /*** Navbar ***/
 .sidebar .navbar .navbar-nav .nav-link {
+    margin-bottom: 5px;
     padding: 7px 20px;
     color: var(--dark);
     font-weight: 500;

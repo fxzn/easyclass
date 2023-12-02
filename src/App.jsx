@@ -14,7 +14,8 @@ import Course from './pages/course/Course';
 import CourseRun from "./pages/course/CoursePage";
 import ResetPaswd from './auth/ResetPaswd';
 import DetailCourse from "./pages/course/DetailCourse";
-import Admin from "./users/admin/Admin";
+import DashboardAdmin from "./users/admin/DashboardAdmin";
+import KelolaKelas from "./users/admin/KelolaKelas";
 
 
 function App() {
@@ -35,7 +36,8 @@ function App() {
         <Route path="/detailcourse" element={<DetailCourse />} />
         <Route path="/course" element={<Course />} />
         <Route path="/courserun" element={<CourseRun />} />
-        <Route path="/admin" element={<Admin/>} />
+        <Route path="/admin/dashboard" element={<DashboardAdmin />} />
+        <Route path="/admin/kelas" element={<KelolaKelas />} />
         <Route />
       </Routes>
     </>

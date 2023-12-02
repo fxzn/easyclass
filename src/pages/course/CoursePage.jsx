@@ -4,14 +4,14 @@ import { Accordion, Button, Card, Col, Container, Form, ProgressBar, Row } from 
 
 import { faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
-import Footerr from "../../components/footer/footer";
 import NavigationBars from "../../components/navigation/NavigationBars";
+import Footer from "../../components/footer/footer";
 
 function CourseRun() {
   return (
     <>
       <NavigationBars />
-      <Container className="content">
+      <Container className="content-course">
         <Row>
           <Col md={3}>
             <Accordion defaultActiveKey="0">
@@ -92,7 +92,7 @@ function CourseRun() {
                 <Card className="kotakcourse">
                   <Card.Img variant="top" src={imgcourse} />
                   <Card.Body>
-                  <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between">
                       <div className="title ">UI/UX Design</div>
                       <div className="rating d-flex ">
                         <FontAwesomeIcon icon={faStar} className="img text-warning me-1" />
@@ -100,8 +100,9 @@ function CourseRun() {
                       </div>
                     </div>
 
-                    <Card.Text><div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
-                    <div>by Angela Doe</div>
+                    <Card.Text>
+                      <div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
+                      <div>by Angela Doe</div>
                     </Card.Text>
                     <div className="d-flex infocourse">
                       <div className="level me-4 d-flex">
@@ -134,7 +135,7 @@ function CourseRun() {
                 <Card className="kotakcourse">
                   <Card.Img variant="top" src={imgcourse} />
                   <Card.Body>
-                  <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between">
                       <div className="title ">UI/UX Design</div>
                       <div className="rating d-flex ">
                         <FontAwesomeIcon icon={faStar} className="img text-warning me-1" />
@@ -142,8 +143,9 @@ function CourseRun() {
                       </div>
                     </div>
 
-                    <Card.Text><div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
-                    <div>by Angela Doe</div>
+                    <Card.Text>
+                      <div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
+                      <div>by Angela Doe</div>
                     </Card.Text>
                     <div className="d-flex infocourse">
                       <div className="level me-4 d-flex">
@@ -172,15 +174,11 @@ function CourseRun() {
                   </Card.Body>
                 </Card>
               </Col>
-
-             
-            
-            
             </Row>
           </Col>
         </Row>
       </Container>
-      <Footerr></Footerr>
+      <Footer/>
     </>
   );
 }

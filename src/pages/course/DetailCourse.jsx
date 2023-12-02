@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
+import Footer from "../../components/footer/footer";
 
 
 function DetailCourse() {
@@ -160,6 +161,7 @@ function DetailCourse() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
