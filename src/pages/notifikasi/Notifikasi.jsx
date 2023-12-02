@@ -2,8 +2,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NavigationBars from '../../components/navigation/NavigationBars';
-import Footerr from '../../components/footer/footer';
 import './Notifikasi.css';
+import Footer from '../../components/footer/footer';
 
 const UserProfile = () => {
   library.add(faBell);
@@ -63,7 +63,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-      <Footerr />
+      <Footer/>
     </>
   );
 };
