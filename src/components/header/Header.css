@@ -63,8 +63,6 @@ a:hover {
   border-radius: 8px;
   font-size: var(--small-font-size);
   font-weight: var(--font-medium);
-}
-.btn-primary {
   background-color: var(--red-color);
   border: none;
 }

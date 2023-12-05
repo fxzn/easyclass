@@ -5,8 +5,14 @@ import { faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-i
 import imgcourse from "../../assets/image.png";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
+import {  useNavigate } from "react-router-dom";
 
 function Course() {
+  const navigate = useNavigate();
+  
+  const handleCardClick = () => {
+    navigate('/detailcourse');
+  } 
   return (
     <>
       <NavigationBars />
@@ -88,6 +94,7 @@ function Course() {
             {/* Card */}
             <Row className="mt-4">
               <Col md={6} className="d-flex justify-content-center mt-3">
+                <div onClick={handleCardClick}>
                 <Card className="kotakcourse">
                   <Card.Img className="img-card" variant="top" src={imgcourse} />
                   <Card.Body>
@@ -127,8 +134,10 @@ function Course() {
                     <Button variant="danger">Premium</Button>
                   </Card.Body>
                 </Card>
+                </div>
               </Col>
               <Col md={6} className="d-flex justify-content-center mt-3">
+                <div onClick={handleCardClick}>
                 <Card className="kotakcourse">
                   <Card.Img className="img-card" variant="top" src={imgcourse} />
                   <Card.Body>
@@ -168,6 +177,7 @@ function Course() {
                     <Button variant="danger">Premium</Button>
                   </Card.Body>
                 </Card>
+                </div>
               </Col>
             </Row>
           </Col>

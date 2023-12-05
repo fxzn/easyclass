@@ -11,7 +11,7 @@ import Akun from './pages/akun/Akun';
 import ChangePass from './pages/akun/ChangePass';
 import History from './pages/akun/History';
 import Course from './pages/course/Course';
-import CourseRun from "./pages/course/CoursePage";
+import CourseRun from "./pages/course/CourseRun";
 import ResetPaswd from './auth/ResetPaswd';
 import DetailCourse from "./pages/course/DetailCourse";
 import DashboardAdmin from "./users/admin/DashboardAdmin";

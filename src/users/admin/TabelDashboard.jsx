@@ -1,18 +1,26 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardInfo from "./CardInfo";
 import NavAdmin from "./NavAdmin";
 import "./Style.css";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 function TabelDashboard() {
   return (
     <>
       <div className="content">
-        <NavAdmin/>
-        <CardInfo/>
+        <NavAdmin />
+        <CardInfo />
         <div className="container-fluid pt-4 px-4">
           <div className="row g-4">
             <div className="col-12">
               <div className="bg-light rounded h-100 p-4">
                 <h6 className="mb-4">Status Pembayaran</h6>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <button type="button" className="btn btn-tambahclass mb-3">
+                    Filter
+                    <FontAwesomeIcon icon={faFilter} className="ms-2" />
+                  </button>
+                </div>
                 <div className="table-responsive">
                   <table className="table">
                     <thead>

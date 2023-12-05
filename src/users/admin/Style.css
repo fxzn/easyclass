@@ -1,5 +1,10 @@
 /********** Template CSS **********/
 :root {
+    --red-color: #f81745;
+    --red-pink-color: #f15d7b;
+    --black-color: #212121;
+    --pink-color: #fa80ab;
+    --white-color: #ffffff;
     --primary: #009CFF;
     --light: #F3F6F9;
     --dark: #191C24;
@@ -12,6 +17,7 @@
     bottom: 45px;
     z-index: 99;
 }
+
 
 .text-admin {
     margin-top: 3rem;
@@ -34,7 +40,7 @@
 
 /*** Button ***/
 
-
+/* 
 .btn.btn-primary {
     color: #FFFFFF;
 }
@@ -63,7 +69,7 @@
     justify-content: center;
     font-weight: normal;
     border-radius: 50px;
-}
+} */
 
 
 /*** Layout ***/
