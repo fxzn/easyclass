@@ -94,8 +94,8 @@ function Course() {
             {/* Card */}
             <Row className="mt-4">
               <Col md={6} className="d-flex justify-content-center mt-3">
-                <div onClick={handleCardClick}>
-                <Card className="kotakcourse">
+                
+                <Card className="kotakcourse" onClick={handleCardClick}>
                   <Card.Img className="img-card" variant="top" src={imgcourse} />
                   <Card.Body>
                     <div className="d-flex justify-content-between">
@@ -105,7 +105,6 @@ function Course() {
                         <p>4.5</p>
                       </div>
                     </div>
-
                     <Card.Text>
                       <div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
                       <div>by Angela Doe</div>
@@ -134,11 +133,12 @@ function Course() {
                     <Button variant="danger">Premium</Button>
                   </Card.Body>
                 </Card>
-                </div>
+              
               </Col>
+
               <Col md={6} className="d-flex justify-content-center mt-3">
-                <div onClick={handleCardClick}>
-                <Card className="kotakcourse">
+               
+                <Card className="kotakcourse" onClick={handleCardClick}>
                   <Card.Img className="img-card" variant="top" src={imgcourse} />
                   <Card.Body>
                     <div className="d-flex justify-content-between">
@@ -177,7 +177,7 @@ function Course() {
                     <Button variant="danger">Premium</Button>
                   </Card.Body>
                 </Card>
-                </div>
+               
               </Col>
             </Row>
           </Col>
