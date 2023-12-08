@@ -1,9 +1,9 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBell } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import NavigationBars from "../../components/navigation/NavigationBars";
-import "./Notifikasi.css";
-import Footer from "../../components/footer/Footerr";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import NavigationBars from '../../components/navigation/NavigationBars';
+import Footerr from "../../components/footer/Footerr";
+import './Notifikasi.css';
 
 const UserProfile = () => {
   library.add(faBell);
@@ -12,13 +12,13 @@ const UserProfile = () => {
   const formatDate = () => {
     const date = new Date();
     const day = date.getDate();
-    const month = date.toLocaleString("id-ID", { month: "long" });
+    const month = date.toLocaleString('id-ID', { month: 'long' });
     const hour = date.getHours();
     const minutes = date.getMinutes();
 
     return {
       date: `${day} ${month}`,
-      time: `${hour}:${minutes < 10 ? "0" : ""}${minutes}`,
+      time: `${hour}:${minutes < 10 ? '0' : ''}${minutes}`,
     };
   };
 
@@ -26,9 +26,9 @@ const UserProfile = () => {
     <>
       <NavigationBars />
       <section>
-        <div className="container-profile">
+        <div className="cont-profile">
           <div className="profileForm">
-            <div className="akun-header">
+            <div className="notif-header">
               <h2>Notifikasi</h2>
             </div>
 
@@ -39,16 +39,17 @@ const UserProfile = () => {
                     <FontAwesomeIcon
                       icon={faBell}
                       style={{
-                        color: "white",
-                        backgroundColor: "#fa4c4c",
-                        borderRadius: "50%",
-                        padding: "5px",
+                        color: 'white',
+                        backgroundColor: '#fa4c4c',
+                        borderRadius: '50%',
+                        padding: '5px',
                       }}
                     />
                   </div>
                   <div className="detail">
                     <span className="time">
-                      {formatDate().date}, {formatDate().time} <span className="circle"></span>
+                      {formatDate().date}, {formatDate().time}{' '}
+                      <span className="circle"></span>
                     </span>
                     <span className="tulisan">Promosi</span>
                     <div className="keterangan">
@@ -62,7 +63,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      <Footerr />
     </>
   );
 };
