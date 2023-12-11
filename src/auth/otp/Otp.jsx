@@ -10,7 +10,7 @@ const OTPPage = () => {
   const [error, setError] = useState('');
   const [resendTimer, setResendTimer] = useState(60); // Inisialisasi timer dengan 60 detik
   const [otpValid, setOTPValid] = useState(false);
-  const [userEmail, setUserEmail] = useState(''); // Tambahkan state untuk menyimpan email
+  const [userEmail, setUserEmail] = useState(''); 
 
   const handleOTPChange = (e, index) => {
     const value = e.target.value;
@@ -20,7 +20,7 @@ const OTPPage = () => {
       newOTP[index] = value;
       setOTP(newOTP);
       setError('');
-      setOTPValid(false); // Reset status valid saat ada perubahan OTP
+      setOTPValid(false); 
     } else {
       setError('Harap masukkan angka.');
     }
@@ -36,11 +36,9 @@ const OTPPage = () => {
 
       if (response.data && response.data.success) {
         setOTPValid(true);
-        // Lanjutkan ke halaman berikutnya atau tindakan lain yang diinginkan
-        // Misalnya, pindah ke halaman lain setelah 2 detik
+       
         setTimeout(() => {
-          // TODO: Ganti dengan logika navigasi sesuai kebutuhan
-          // history.push('/halaman-berikutnya');
+          
           alert('OTP berhasil diverifikasi');
         }, 2000);
       } else {
@@ -55,12 +53,12 @@ const OTPPage = () => {
   };
 
   useEffect(() => {
-    // Pengaturan interval untuk mengurangi timer setiap detik
+    
     const intervalId = setInterval(() => {
       setResendTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 0));
     }, 1000);
 
-    // Membersihkan interval saat komponen dibongkar
+    
     return () => clearInterval(intervalId);
   }, []);
 

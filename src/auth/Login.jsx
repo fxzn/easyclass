@@ -37,7 +37,7 @@ function Login() {
       const { token } = response.data;
       console.log("Received token:", token);
 
-      // Pastikan bahwa token diterima sebelum menyimpan ke localStorage
+     
       if (token) {
         localStorage.setItem("token", token);
         console.log(localStorage.getItem("token"));
