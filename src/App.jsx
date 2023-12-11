@@ -6,7 +6,6 @@ import Home from './pages/home/Home';
 import Contact from './pages/contact/Contact';
 import About from './pages/about/About';
 import Notifikasi from './pages/notifikasi/Notifikasi';
-import Otp from './auth/otp/Otp';
 import Akun from './pages/akun/Akun';
 import ChangePass from './pages/akun/ChangePass';
 import History from './pages/akun/History';
@@ -16,6 +15,8 @@ import ResetPaswd from './auth/ResetPaswd';
 import DetailCourse from "./pages/course/DetailCourse";
 import DashboardAdmin from "./users/admin/DashboardAdmin";
 import KelolaKelas from "./users/admin/KelolaKelas";
+import Bars from "./pages/akun/Bar";
+import OTPPage from "./auth/otp/Otp";
 
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/notifikasi" element={<Notifikasi />} />
-        <Route path="/auth/otp" element={<Otp />} />
+        <Route path="/auth/otp" element={<OTPPage />} />
+        <Route path="/bar" element={<Bars />} />
         <Route path="/userprofile" element={<Akun />} />
         <Route path="/ChangePass" element={<ChangePass />} />
         <Route path="/History" element={<History />} />
