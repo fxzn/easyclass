@@ -5,8 +5,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
+import { useState } from "react";
+import ModalBeliCourse from "../../components/course/ModalBeliCourse";
+
+
 
 function DetailCourse() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  
   return (
     <>
       <NavigationBars />
@@ -44,7 +57,7 @@ function DetailCourse() {
                 </span>
               </div>
               <div>
-                <button className="btn btn-telegram">Join Telegram</button>
+                <button className="btn btn-telegram" onClick={handleOpenModal}>Beli kelas</button>
               </div>
             </div>
             <div>
@@ -160,6 +173,7 @@ function DetailCourse() {
           </div>
         </div>
       </div>
+      <ModalBeliCourse showModal={showModal} handleCloseModal={handleCloseModal} />
       <Footerr/>
     </>
   );

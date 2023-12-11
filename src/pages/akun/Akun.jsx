@@ -1,10 +1,11 @@
-import NavigationBars from "../../components/navigation/NavigationBars";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock, faHistory, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import "./Akun.css";
+import NavigationBars from '../../components/navigation/NavigationBars';
+import { useState } from 'react';
+import Bars from './Bar';
+import './Akun.css';
 import Footerr from "../../components/footer/Footerr";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Akun = () => {
   const [profilePicture, setProfilePicture] = useState(null);
@@ -29,7 +30,7 @@ const Akun = () => {
 
   const handleProfileChange = () => {
     // This function can be extended to update the profile on the server
-    console.log("Profile changed!");
+    console.log('Profile changed!');
   };
 
   const handleChooseFileClick = () => {
@@ -42,98 +43,91 @@ const Akun = () => {
 
   return (
     <>
-      <NavigationBars />
-      <section>
+      <div className="nav1">
+        <NavigationBars />
+      </div>
+      <section className="akunPage">
         <div className="container-profile">
           <div className="profileForm">
             <div className="akun-header">
               <h2>Akun</h2>
             </div>
+
             <div className="profileFormm">
-              <div className="profileInfo">
-                <Link to="/userprofile">
-                  <h1>
-                    <FontAwesomeIcon icon={faUser} />
-                    <span className="link-text">Profil Saya</span>
-                  </h1>
+              <span className="arrow1">
+                <Link to="/Bar">
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    style={{ fontSize: '24px', color: '#151515' }}
+                  />
                 </Link>
-                <hr />
-                <Link to="/ChangePass">
-                  <h1>
-                    <FontAwesomeIcon icon={faLock} />
-                    <span className="link-text">Ubah Password</span>
-                  </h1>
-                </Link>
-                <hr />
-                <Link to="/History">
-                  <h1>
-                    <FontAwesomeIcon icon={faHistory} />
-                    <span className="link-text">Riwayat Pembayaran</span>
-                  </h1>
-                </Link>
-                <hr />
-                <Link to="/">
-                  <h1>
-                    <FontAwesomeIcon icon={faSignOutAlt} />
-                    <span className="link-text">Logout</span>
-                  </h1>
-                </Link>
+              </span>
+              <div className="bar">
+                <Bars />
               </div>
 
-              <div className="contactForm">
-                {/* prf */}
-                <div className="profile-picture-container">
-                  <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: "none" }} />
+              {/* prf */}
+              <div className="profile-picture-container">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  style={{ display: 'none' }}
+                />
 
-                  <div className="profile-picture-button" onClick={handleChooseFileClick}>
-                    {profilePicture && (
-                      <div className="circular-profile-picture-container">
-                        <img
-                          src={profilePicture}
-                          alt=""
-                          className="circular-profile-picture"
-                          style={{
-                            width: `${imageSize}vw`,
-                            height: "auto",
-                          }}
-                          onClick={handleImageSizeChange}
-                        />
-                      </div>
-                    )}
-                  </div>
+                <div
+                  className="profile-picture-button"
+                  onClick={handleChooseFileClick}
+                >
+                  {profilePicture && (
+                    <div className="circular-profile-picture-container">
+                      <img
+                        src={profilePicture}
+                        alt=""
+                        className="circular-profile-picture"
+                        style={{
+                          width: `${imageSize}vw`,
+                          height: 'auto',
+                        }}
+                        onClick={handleImageSizeChange}
+                      />
+                    </div>
+                  )}
                 </div>
-                {/* prf end */}
-                <div className="formBox">
-                  <div className="inputBox w100">
-                    <input type="text" name="" id="" required="" />
-                    <span>Name</span>
-                  </div>
-                  <div className="inputBox w100">
-                    <input type="email" name="" id="" required="" />
-                    <span>Email</span>
-                  </div>
-                  <div className="inputBox w100">
-                    <input type="text" name="" id="" required="" />
-                    <span>Mobile Number</span>
-                  </div>
-                  <div className="inputBox w50">
-                    <input type="text" name="" id="" required="" />
-                    <span>Negara</span>
-                  </div>
-                  <div className="inputBox w50">
-                    <input type="text" name="" id="" required="" />
-                    <span>Kota</span>
-                  </div>
-                  <div className="inputBox w100">
-                    <input type="submit" defaultValue="Submit" />
-                  </div>
+              </div>
+              {/* prf end */}
+              <div className="formBox">
+                <div className="inputBox w100">
+                  <input type="text" name="" id="" required="" />
+                  <span>Name</span>
+                </div>
+                <div className="inputBox w100">
+                  <input type="email" name="" id="" required="" />
+                  <span>Email</span>
+                </div>
+                <div className="inputBox w100">
+                  <input type="text" name="" id="" required="" />
+                  <span>Mobile Number</span>
+                </div>
+                <div className="inputBox w50">
+                  <input type="text" name="" id="" required="" />
+                  <span>Negara</span>
+                </div>
+                <div className="inputBox w50">
+                  <input type="text" name="" id="" required="" />
+                  <span>Kota</span>
+                </div>
+                <div id="tomb1" className="inputBox w100">
+                  <input type="submit" defaultValue="Submit" />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <div className="foot1">
       <Footerr/>
+      </div>
     </>
   );
 };
