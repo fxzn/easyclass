@@ -4,7 +4,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.akunPage {
+section {
   padding-top: 10px;
   display: flex;
   justify-content: center;
@@ -12,22 +12,44 @@
   min-height: auto;
 }
 
-.arrow1 {
-  cursor: pointer;
-  display: none;
-}
-
-.container-profile {
+.coniner-profile {
   position: relative;
   min-width: 1100px;
-  min-height: 560px;
+  min-height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.container-profile .profileForm {
+.coniner-profile .profileForm,
+.coniner-profile .profileFormm {
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.coniner-profile .profileInfo {
+  position: absolute;
+  width: 40%;
+  left: -30px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  height: 100%;
+  z-index: 1;
+  top: 5%;
+}
+
+.coniner-profile .profileInfo h2 {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 5% 0;
+  transition: transform 0.3s ease;
+}
+
+.coniner-profile .profileForm {
   position: absolute;
   background-color: #fff;
   height: 100%;
@@ -37,14 +59,14 @@
   border-radius: 16px;
 }
 
-.container-profile .profileFormm {
+.coniner-profile .profileFormm {
   padding-left: 300px;
   height: 100%;
   width: 90%;
   border-radius: 16px;
 }
 
-.container-profile .profileForm h1 {
+.coniner-profile .profileForm h1 {
   color: #0f3959;
   font-size: 15px;
   font-weight: 500;
@@ -54,12 +76,12 @@
   width: 100%;
 }
 
-.container-profile .profileForm h2 {
+.coniner-profile .profileForm h2 {
   font-size: 20px;
   font-weight: 500;
 }
 
-.container-profile .profileForm .formBox {
+.coniner-profile .profileForm .formBox {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -67,21 +89,21 @@
   padding-top: 20px;
 }
 
-.container-profile .profileForm .formBox .inputBox {
+.coniner-profile .profileForm .formBox .inputBox {
   position: relative;
   margin: 0 0 35px 0;
 }
 
-.container-profile .profileForm .formBox .inputBox.w50 {
+.coniner-profile .profileForm .formBox .inputBox.w50 {
   width: 47%;
 }
 
-.container-profile .profileForm .formBox .inputBox.w100 {
+.coniner-profile .profileForm .formBox .inputBox.w100 {
   width: 100%;
 }
 
-.container-profile .profileForm .formBox .inputBox input,
-.container-profile .profileForm .formBox .inputBox textarea {
+.coniner-profile .profileForm .formBox .inputBox input,
+.coniner-profile .profileForm .formBox .inputBox textarea {
   width: 100%;
   resize: none;
   padding: 10px 10px;
@@ -92,7 +114,7 @@
   border-radius: 16px;
 }
 
-.container-profile .profileForm .formBox .inputBox span {
+.coniner-profile .profileForm .formBox .inputBox span {
   position: absolute;
   left: 5px;
   padding: 5px 0;
@@ -101,17 +123,17 @@
   font-weight: 300;
 }
 
-.container-profile .profileForm .formBox .inputBox input:focus ~ span,
-.container-profile .profileForm .formBox .inputBox input:valid ~ span,
-.container-profile .profileForm .formBox .inputBox textarea:focus ~ span,
-.container-profile .profileForm .formBox .inputBox textarea:valid ~ span {
+.coniner-profile .profileForm .formBox .inputBox input:focus ~ span,
+.coniner-profile .profileForm .formBox .inputBox input:valid ~ span,
+.coniner-profile .profileForm .formBox .inputBox textarea:focus ~ span,
+.coniner-profile .profileForm .formBox .inputBox textarea:valid ~ span {
   transform: translateY(-20px);
   font-size: 12px;
   font-weight: 600;
   top: -9px;
 }
 
-.container-profile .profileForm .formBox .inputBox input[type='submit'] {
+.coniner-profile .profileForm .formBox .inputBox input[type='submit'] {
   position: relative;
   cursor: pointer;
   background-color: #000;
@@ -120,9 +142,31 @@
   padding: 12px;
 }
 
-.container-profile .profileForm .formBox .inputBox input[type='submit']:hover {
+.coniner-profile .profileForm .formBox .inputBox input[type='submit']:hover {
   background-color: #fa4c4c;
   font-weight: 500;
+}
+
+@media only screen and (max-width: 768px) {
+  .container-profile {
+    flex-direction: column;
+  }
+
+  .container-profile .profileForm {
+    padding-left: 20px;
+    margin-left: 20px;
+  }
+
+  .container-profile .profileInfo,
+  .container-profile .profileForm {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+.container-profile .profileInfo h2:hover {
+  transform: translateX(10px);
 }
 
 .inputBox {
@@ -155,6 +199,14 @@
   font-weight: 600;
 }
 
+.inputBox label {
+  left: 10px;
+  font-size: 16px;
+  color: #555;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
 .akun-header {
   background-color: #fa4c4c;
   padding: 1%;
@@ -178,50 +230,7 @@
   text-align: center;
 }
 
-.profile-picture-container {
-  position: relative;
-  cursor: pointer;
-  margin: 3% 35%;
-}
-
-.profile-picture-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px; 
-  height: 100px; 
-  border: 2px solid #fa4c4c;
-  border-radius: 50%;
-  overflow: hidden;
-  background-image: url('../../assets/gallery_5045490.png');
-  background-size: cover;
-  margin-top: 3%;
-}
-
-.circular-profile-picture-container {
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-.circular-profile-picture {
-  display: flexbox;
-  margin: 0 auto;
-  border-radius: 50%;
-  max-width: 90px;
-  object-fit: cover;
-}
-
-#tomb1 {
-  margin-top: -12px;
-}
-
 @media (max-width: 768px) {
-  .nav1,
-  .akun-header,
-  .bar {
-    display: none;
-  }
-
   .arrow1 {
     margin-left: 0;
     size: 16px;
@@ -229,12 +238,7 @@
     display: block;
   }
 
-  .akunPage {
-    width: 100%;
-    padding-top: 10px;
-  }
-
-  .container-profile {
+  .coniner-profile {
     position: relative;
     min-width: 100%;
     min-height: 100vh;
@@ -244,7 +248,7 @@
     margin-bottom: 20px;
   }
 
-  .container-profile .profileForm {
+  .coniner-profile .profileForm {
     position: absolute;
     background-color: #fff;
     height: 100%;
@@ -257,32 +261,21 @@
     align-items: center;
   }
 
-  .container-profile .profileFormm {
+  .coniner-profile .profileFormm {
     padding-left: 0;
     border-radius: 16px;
     align-items: center;
+    width: 80%;
+    margin-top: 10%;
   }
 
-  .profile-picture-container {
-    position: relative;
-    cursor: pointer;
-    margin-left: 0;
-    margin-bottom: 10%;
-  }
-
-  .container-profile .profileForm .formBox {
-    max-width: auto;
-    width: 328px;
-    position: relative;
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding-top: 20px;
+  .coniner-profile .profileForm h2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: start;
   }
 
   .foot1 {
     display: none;
   }
-  
 }

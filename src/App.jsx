@@ -6,6 +6,7 @@ import Home from './pages/home/Home';
 import Contact from './pages/contact/Contact';
 import About from './pages/about/About';
 import Notifikasi from './pages/notifikasi/Notifikasi';
+import Bar from './pages/akun/Bar';
 import Otp from './pages/otp/Otp';
 import Akun from './pages/akun/Akun';
 import ChangePass from './pages/akun/ChangePass';
@@ -28,6 +29,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/notifikasi" element={<Notifikasi />} />
         <Route path="/auth/otp" element={<Otp />} />
+        <Route path="/bar" element={<Bar />} />
         <Route path="/userprofile" element={<Akun />} />
         <Route path="/ChangePass" element={<ChangePass />} />
         <Route path="/History" element={<History />} />
