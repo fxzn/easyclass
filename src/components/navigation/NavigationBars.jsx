@@ -1,6 +1,6 @@
 import "./Navigation.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faUser, faLock, faHistory, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { Nav, NavDropdown } from "react-bootstrap";
@@ -8,10 +8,19 @@ import "react-toastify/dist/ReactToastify.css";
 
 function NavigationBars() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  // const handleLogout = () => {
+  //   setIsLoggedIn(false);
+  // };
 
   window.addEventListener("scroll", () => {
     const nav = document.querySelector(".navbar");
@@ -65,14 +74,6 @@ function NavigationBars() {
               <div className="d-flex">
                 {isLoggedIn ? (
                   <>
-                    {" "}
-                    {/* notiikasi */}
-                    <button className="btn btn-navbar" onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </>
-                ) : (
-                  <>
                     <Link to="/Notifikasi" className="notif-bell">
                       <FontAwesomeIcon icon={faBell} />
                     </Link>
@@ -93,6 +94,16 @@ function NavigationBars() {
                         </NavDropdown.Item>
                       </NavDropdown>
                     </Nav>
+                    <button className="btn btn-navbar" onClick={() => {
+                        localStorage.removeItem("token");
+                        setIsLoggedIn(false);
+                        return navigate("/");
+                      }}>
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
                     <Link to="/auth/login" className="btn btn-navbar">
                       Login
                     </Link>

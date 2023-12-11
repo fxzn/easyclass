@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import axios from 'axios'; // Import library axios untuk melakukan permintaan HTTP
 import './Otp.css';
 
 const OTPPage = () => {
@@ -9,6 +10,7 @@ const OTPPage = () => {
   const [error, setError] = useState('');
   const [resendTimer, setResendTimer] = useState(60); // Inisialisasi timer dengan 60 detik
   const [otpValid, setOTPValid] = useState(false);
+  const [userEmail, setUserEmail] = useState(''); // Tambahkan state untuk menyimpan email
 
   const handleOTPChange = (e, index) => {
     const value = e.target.value;
@@ -24,17 +26,30 @@ const OTPPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // TODO: Tambahkan logika untuk memeriksa kecocokan OTP dengan yang diharapkan
-    const expectedOTP = '123456';
+    try {
+      const response = await axios.post('https://easy-class-407401.et.r.appspot.com/api/auth/otp', {
+        otp: otp.join(''),
+      });
 
-    if (otp.join('') === expectedOTP) {
-      setOTPValid(true);
-      // TODO: Tambahkan logika untuk melanjutkan ke halaman berikutnya
-    } else {
-      setError('Maaf, kode OTP salah!');
+      if (response.data && response.data.success) {
+        setOTPValid(true);
+        // Lanjutkan ke halaman berikutnya atau tindakan lain yang diinginkan
+        // Misalnya, pindah ke halaman lain setelah 2 detik
+        setTimeout(() => {
+          // TODO: Ganti dengan logika navigasi sesuai kebutuhan
+          // history.push('/halaman-berikutnya');
+          alert('OTP berhasil diverifikasi');
+        }, 2000);
+      } else {
+        setError('Maaf, kode OTP salah!');
+        setOTPValid(false);
+      }
+    } catch (error) {
+      console.error('Error during OTP verification:', error);
+      setError('Terjadi kesalahan saat memverifikasi OTP.');
       setOTPValid(false);
     }
   };
@@ -53,12 +68,12 @@ const OTPPage = () => {
     <div className="otp">
       <div className="otp-container">
         <span className="arrow">
-          <Link to="/">
+          <Link to="/auth/register">
             <FontAwesomeIcon icon={faArrowLeft} />
           </Link>
         </span>
         <h4>Masukkan OTP</h4>
-        <p id="p1">Ketik 6 digit kode yang dikirimkan ke J*****@gmail.com</p>
+        <p id="p1">Ketik 6 digit kode yang dikirimkan ke {userEmail}</p>
         <form onSubmit={handleSubmit}>
           <div className="otp-input-container">
             {otp.map((digit, index) => (

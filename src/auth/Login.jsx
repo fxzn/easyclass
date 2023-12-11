@@ -1,11 +1,62 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
-import img1 from '../assets/image1.png';
-import img2 from '../assets/image2.png';
-import img3 from '../assets/image3.png';
-import { Link } from "react-router-dom";
+import img1 from "../assets/image1.png";
+import img2 from "../assets/image2.png";
+import img3 from "../assets/image3.png";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { Form } from "react-bootstrap";
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      let data = JSON.stringify({
+        username,
+        password,
+      });
+
+      let config = {
+        method: "post",
+        url: `${import.meta.env.VITE_BASE_URL}/api/auth/signin`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      const response = await axios.request(config);
+      console.log("Server response:", response.data);
+      const { token } = response.data;
+      console.log("Received token:", token);
+
+      // Pastikan bahwa token diterima sebelum menyimpan ke localStorage
+      if (token) {
+        localStorage.setItem("token", token);
+        console.log(localStorage.getItem("token"));
+
+        navigate("/");
+        console.log("Navigating to home");
+      } else {
+        console.error("Token not received from the server");
+        toast.error("Token not received from the server");
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error(error.message);
+      }
+    }
+  };
+
   useEffect(() => {
     const inputs = document.querySelectorAll(".input-field");
     const toggleBtns = document.querySelectorAll(".toggle");
@@ -70,27 +121,27 @@ function Login() {
       <div className="box">
         <div className="inner-box">
           <div className="forms-wrap">
-            <form autoComplete="off" className="sign-in-form">
+            <Form autoComplete="off" className="sign-in-form" onSubmit={onSubmit}>
               <div className="logo">
                 <h4>easyclass</h4>
               </div>
               <div className="heading">
                 <h2>Welcome Back</h2>
                 <h6>Not registered yet?</h6>
-                <Link to='/auth/register' className="toggle">
+                <Link to="/auth/register" className="toggle">
                   Sign up
                 </Link>
               </div>
               <div className="actual-form">
                 <div className="input-wrap">
-                  <input type="text" minLength="4" className="input-field" autoComplete="off" required />
+                  <input type="text" minLength="4" className="input-field" autoComplete="off" required value={username} onChange={(e) => setUsername(e.target.value)} />
                   <label>Name</label>
                 </div>
                 <div className="input-wrap">
-                  <input type="password" minLength="4" className="input-field" autoComplete="off" required />
+                  <input type="password" minLength="4" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                 </div>
-                <button type="submit"  className="sign-btn" >
+                <button type="submit" className="sign-btn">
                   Sign In
                 </button>
                 <p className="text">
@@ -98,7 +149,7 @@ function Login() {
                   <Link to="/auth/resetPassword">Reset password</Link>
                 </p>
               </div>
-            </form>
+            </Form>
           </div>
           <div className="carousel">
             <div className="images-wrapper">

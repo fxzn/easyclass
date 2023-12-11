@@ -1,11 +1,69 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 import img1 from "../assets/image1.png";
 import img2 from "../assets/image2.png";
 import img3 from "../assets/image3.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { Form } from "react-bootstrap";
 
 function Register() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      let data = JSON.stringify({
+        username,
+        email,
+        phonenumber,
+        city,
+        country,
+        password,
+      });
+  
+      let config = {
+        method: "post",
+        url: "https://easy-class-407401.et.r.appspot.com/api/auth/signup",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+  
+      const response = await axios.request(config);
+  
+      // Check if response.data exists and has the 'token' property
+      if (response.data && response.data.token) {
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+  
+        navigate("/auth/otp");
+        // Temporary solution
+        // window.location.href = "/";
+      } else {
+        // Handle the case where response.data or response.data.token is undefined
+        toast.error("Invalid response data");
+      }
+  
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response.data.message);
+        return;
+      }
+      toast.error(error.message);
+    }
+  };
+  
+
   useEffect(() => {
     const inputs = document.querySelectorAll(".input-field");
     const toggleBtns = document.querySelectorAll(".toggle");
@@ -69,8 +127,8 @@ function Register() {
     <main>
       <div className="box">
         <div className="inner-box">
-          <div className="forms-wrap">
-            <form autoComplete="off" className="sign-in-form">
+          <Form className="forms-wrap" onSubmit={onSubmit}>
+            <div autoComplete="off" className="sign-in-form" >
               <div className="logo">
                 <h4>easyclass</h4>
               </div>
@@ -83,33 +141,39 @@ function Register() {
               </div>
               <div className="actual-form">
                 <div className="input-wrap">
-                  <input type="text" minLength="4" className="input-field" autoComplete="off" required />
+                  <input type="text" className="input-field" autoComplete="off" required value={username} onChange={(e) => setUsername(e.target.value)} />
                   <label>Name</label>
                 </div>
                 <div className="input-wrap">
-                  <input type="email" className="input-field" autoComplete="off" required />
+                  <input type="email" className="input-field" autoComplete="off" required value={email} onChange={(e) => setEmail(e.target.value)} />
                   <label>Email</label>
                 </div>
                 <div className="input-wrap">
-                  <input type="email" className="input-field" autoComplete="off" required />
-                  <label>Number Phone</label>
+                  <input type="text" className="input-field" autoComplete="off" required value={phonenumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                  <label>Phone Number</label>
                 </div>
                 <div className="input-wrap">
-                  <input type="password" minLength="4" className="input-field" autoComplete="off" required />
+                  <input type="text" className="input-field" autoComplete="off" required value={city} onChange={(e) => setCity(e.target.value)} />
+                  <label>City</label>
+                </div>
+                <div className="input-wrap">
+                  <input type="text" className="input-field" autoComplete="off" required value={country} onChange={(e) => setCountry(e.target.value)} />
+                  <label>Country</label>
+                </div>
+                <div className="input-wrap">
+                  <input type="password" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                 </div>
-                <Link to="/auth/login">
-                  <button type="submit" value="Sign Up" className="sign-btn">
-                    Sign In
-                  </button>
-                </Link>
+                <button type="submit" className="sign-btn">
+                  Sign Up
+                </button>
                 <p className="text">
                   if you forget your password
                   <Link to="/auth/resetPassword"> Reset Password</Link>
                 </p>
               </div>
-            </form>
-          </div>
+            </div>
+          </Form>
           <div className="carousel">
             <div className="images-wrapper">
               <img src={img1} className="image img-1 show" alt="" />

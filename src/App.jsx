@@ -6,7 +6,7 @@ import Home from './pages/home/Home';
 import Contact from './pages/contact/Contact';
 import About from './pages/about/About';
 import Notifikasi from './pages/notifikasi/Notifikasi';
-import Otp from './pages/otp/Otp';
+import Otp from './auth/otp/Otp';
 import Akun from './pages/akun/Akun';
 import ChangePass from './pages/akun/ChangePass';
 import History from './pages/akun/History';
