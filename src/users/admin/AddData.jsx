@@ -5,6 +5,15 @@ import { useState } from "react";
 
 
 function AddData({ showModal, handleClose, handleSave }) {
+  const [formData, setFormData] = useState({
+    namaKelas: "",
+    kategori: "",
+    kodeKelas: "",
+    tipeKelas: "",
+    level: "",
+    harga: "",
+    materi: "",
+  })
 
 
   return (

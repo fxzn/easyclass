@@ -17,6 +17,7 @@ import DashboardAdmin from "./users/admin/DashboardAdmin";
 import KelolaKelas from "./users/admin/KelolaKelas";
 import Bars from "./pages/akun/Bar";
 import OTPPage from "./auth/otp/Otp";
+import CoursePayment from "./pages/course/CoursePayment";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/auth/resetPassword" element={<ResetPaswd />} />
         <Route path="/detailcourse" element={<DetailCourse />} />
         <Route path="/course" element={<Course />} />
+        <Route path="/course/payment" element={<CoursePayment />} />
         <Route path="/courserun" element={<CourseRun />} />
         <Route path="/admin/dashboard" element={<DashboardAdmin />} />
         <Route path="/admin/kelas" element={<KelolaKelas />} />
@@ -44,6 +46,7 @@ function App() {
       </Routes>
     </>
   );
+  
 }
 
 export default App;

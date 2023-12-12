@@ -8,7 +8,7 @@ import './Otp.css';
 const OTPPage = () => {
   const [otp, setOTP] = useState(Array(6).fill(''));
   const [error, setError] = useState('');
-  const [resendTimer, setResendTimer] = useState(60); // Inisialisasi timer dengan 60 detik
+  const [resendTimer, setResendTimer] = useState(60); 
   const [otpValid, setOTPValid] = useState(false);
   const [userEmail, setUserEmail] = useState(''); 
 
