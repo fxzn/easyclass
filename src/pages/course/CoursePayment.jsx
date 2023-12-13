@@ -1,8 +1,10 @@
 // In your CoursePayment.js file
-import { Container, } from "react-bootstrap";
+import { Card, Container, } from "react-bootstrap";
+import { faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
+import imgcourse from "../../assets/image.png";
 import "./courses.css"; // Link or import your CSS file
 
 function CoursePayment() {
@@ -23,7 +25,7 @@ function CoursePayment() {
 			<div className="container">
     <div className="row">
       
-      <div className="col-lg-9">
+      <div className="col col-md-7">
         <div className="accordion" id="accordionPayment">
           
           <div className="accordion-item mb-3">
@@ -105,10 +107,49 @@ function CoursePayment() {
         </div>
       </div>
       
-      <div className="col-lg-3">
+      <div className="col col-md-5">
         <div className="card position-sticky top-0">
           <div className="p-3 bg-light bg-opacity-10">
-            <h6 className="card-title mb-3">Order Summary</h6>
+          <Card className="modalkotakcourse">
+            <Card.Img className="img-card" variant="top" src={imgcourse} />
+            <Card.Body>
+              <div className="d-flex justify-content-between">
+                <div className="title ">UI/UX Design</div>
+                <div className="rating d-flex ">
+                  <FontAwesomeIcon icon={faStar} className="img text-warning me-1" />
+                  <p>4.5</p>
+                </div>
+              </div>
+
+              <Card.Text>
+                <div className="desc mt-1 fw-bold">Belajar Web Designer dengan Figma </div>
+                <div>by Angela Doe</div>
+              </Card.Text>
+              <div className="d-flex infocourse">
+                <div className="level me-4 d-flex">
+                  <div>
+                    <FontAwesomeIcon icon={faStar} className="img" />
+                  </div>
+                  <p className="ms-1 mt-1"> Intermediate Level</p>
+                </div>
+                <div className="level me-4 d-flex">
+                  <div>
+                    <FontAwesomeIcon icon={faBook} className="img" />
+                  </div>
+                  <p className="ms-1 mt-1">10 modul</p>
+                </div>
+                <div className="level me-4 d-flex">
+                  <div>
+                    <FontAwesomeIcon icon={faClock} className="img" />
+                  </div>
+                  <p className="ms-1 mt-1">120 menit</p>
+                </div>
+              </div>
+
+             
+            </Card.Body>
+          </Card>
+            <h6 className="card-title mb-3 mt-4">Order Summary</h6>
             <div className="d-flex justify-content-between mb-1 small">
               <span>Subtotal</span> <span>$214.50</span>
             </div>
@@ -119,21 +160,7 @@ function CoursePayment() {
               <span>Coupon (Code: NEWYEAR)</span> <span className="text-danger">-$10.00</span>
             </div>
             <hr/>
-            <div className="d-flex justify-content-between mb-4 small">
-              <span>TOTAL</span> <strong className="text-dark">$224.50</strong>
-            </div>
-            <div className="form-check mb-1 small">
-              <input className="form-check-input" type="checkbox" value="" id="tnc"/>
-              <label className="form-check-label" htmlFor="tnc">
-                I agree to the <a href="#/">terms and conditions</a>
-              </label>
-            </div>
-            <div className="form-check mb-3 small">
-              <input className="form-check-input" type="checkbox" value="" id="subscribe"/>
-              <label className="form-check-label" htmlFor="subscribe">
-                Get emails about product updates and events. If you change your mind, you can unsubscribe at any time. <a href="#/">Privacy Policy</a>
-              </label>
-            </div>
+            
             <button className="btn btn-primary w-100 mt-2">Place order</button>
           </div>
         </div>

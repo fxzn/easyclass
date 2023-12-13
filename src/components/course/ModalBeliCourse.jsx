@@ -4,8 +4,13 @@ import { Modal, Button, Card } from "react-bootstrap";
 import { faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import {  useNavigate } from "react-router-dom";
 function ModalBeliCourse({ showModal, handleCloseModal }) {
+  const navigate = useNavigate();
+
+  const handlBuyClick = () => {
+    navigate('/course/payment');
+  }
   return (
     <Modal  show={showModal} onHide={handleCloseModal} closeButton centered>
       <Modal.Header className="justify-content-center"  >
@@ -52,13 +57,13 @@ function ModalBeliCourse({ showModal, handleCloseModal }) {
                 </div>
               </div>
 
-              <Button variant="danger">Premium</Button>
+             
             </Card.Body>
           </Card>
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="danger">Beli Sekarang</Button>
+        <Button variant="primary" onClick={handlBuyClick}>Beli Sekarang</Button>
       </Modal.Footer>
     </Modal>
   );
