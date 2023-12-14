@@ -3,7 +3,7 @@ import "./style.css";
 import img1 from "../assets/image1.png";
 import img2 from "../assets/image2.png";
 import img3 from "../assets/image3.png";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Form } from "react-bootstrap";
@@ -19,7 +19,7 @@ function Register() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       let data = JSON.stringify({
         username,
@@ -29,7 +29,7 @@ function Register() {
         country,
         password,
       });
-  
+
       let config = {
         method: "post",
         url: "https://easy-class-407401.et.r.appspot.com/api/auth/signup",
@@ -38,14 +38,14 @@ function Register() {
         },
         data: data,
       };
-  
+
       const response = await axios.request(config);
-  
+
       // Check if response.data exists and has the 'token' property
       if (response.data && response.data.token) {
         const { token } = response.data;
         localStorage.setItem("token", token);
-  
+
         navigate("/auth/otp");
         // Temporary solution
         // window.location.href = "/";
@@ -53,7 +53,6 @@ function Register() {
         // Handle the case where response.data or response.data.token is undefined
         toast.error("Invalid response data");
       }
-  
     } catch (error) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response.data.message);
@@ -62,7 +61,6 @@ function Register() {
       toast.error(error.message);
     }
   };
-  
 
   useEffect(() => {
     const inputs = document.querySelectorAll(".input-field");
@@ -128,7 +126,7 @@ function Register() {
       <div className="box">
         <div className="inner-box">
           <Form className="forms-wrap" onSubmit={onSubmit}>
-            <div autoComplete="off" className="sign-in-form" >
+            <div autoComplete="off" className="sign-in-form">
               <div className="logo">
                 <h4>easyclass</h4>
               </div>
@@ -164,9 +162,12 @@ function Register() {
                   <input type="password" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                 </div>
-                <button type="submit" className="sign-btn">
-                  Sign Up
-                </button>
+                <Link to="/auth/otp">
+                  <button type="submit" className="sign-btn">
+                    Sign Up
+                  </button>
+                </Link>
+
                 <p className="text">
                   if you forget your password
                   <Link to="/auth/resetPassword"> Reset Password</Link>
