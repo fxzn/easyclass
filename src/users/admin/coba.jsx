@@ -7,16 +7,10 @@ function AddData({ showModal, handleClose }) {
   const [formData, setFormData] = useState({
     id: "",
     titleCourse: "",
-    // categories: [{
-    //   id: 0,
-    // }],
-    duration: "",
-    module: "",
-    categories: 0,
+    categories: "",
     codeCourse: "",
     isPremium: false,
     priceCourse: 0,
-    levelCourse: "",
     teacher: "",
     aboutCourse: "",
   });
@@ -33,21 +27,23 @@ function AddData({ showModal, handleClose }) {
     isPremium: false,
   });
 
-  const handleSubjectSubmit = async () => {
+  const handleCourseSubmit = async () => {
     try {
       const response = await axios.post(
-        "https://easy-class-407401.et.r.appspot.com/api/admin/subject/add",
+        "https://easy-class-407401.et.r.appspot.com/api/admin/course/add",
         {
-          code: subjectData.code,
-          title: subjectData.title,
-          linkVideo: subjectData.linkVideo,
-          description: subjectData.description,
-          isPremium: subjectData.isPremium,
+          id: formData.id,
+          titleCourse: formData.titleCourse,
+          categories: formData.categories,
+          codeCourse: formData.codeCourse,
+          isPremium: formData.isPremium,
+          priceCourse: formData.priceCourse,
+          teacher: formData.teacher,
+          aboutCourse: formData.aboutCourse,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json",
           },
         }
       );
@@ -56,30 +52,21 @@ function AddData({ showModal, handleClose }) {
       console.error(error);
     }
   };
-  
-  const handleCourseSubmit = async () => {
+
+  const handleSubjectSubmit = async () => {
     try {
       const response = await axios.post(
-        "https://easy-class-407401.et.r.appspot.com/api/admin/course/add",
+        "https://easy-class-407401.et.r.appspot.com/api/admin/subject/add",
         {
-          // id: formData.id,
-          titleCourse: formData.titleCourse,
-          categories: [
-            {
-              id: formData.categories.id,
-              // categoryName: "Placeholder",
-            },
-          ],
-          duration: formData.duration,
-          module: formData.module,
-          codeCourse: formData.codeCourse,
-          priceCourse: formData.priceCourse,
-          levelCourse: formData.levelCourse,
-          teacher: formData.teacher,
-          aboutCourse: formData.aboutCourse,
-          isPremium: formData.isPremium,
-
-        
+          id: subjectData.id,
+          course: {
+            id: formData.id,
+          },
+          code: subjectData.code,
+          title: subjectData.title,
+          linkVideo: subjectData.linkVideo,
+          description: subjectData.description,
+          isPremium: subjectData.isPremium,
         },
         {
           headers: {
@@ -107,17 +94,7 @@ function AddData({ showModal, handleClose }) {
 
           <Form.Group controlId="categories">
             <Form.Label>Categories</Form.Label>
-            <Form.Control type="number" name="categories" value={formData.categories.id} onChange={(e) => setFormData({ ...formData, categories: {id: e.target.value} })} />
-          </Form.Group>
-
-          <Form.Group controlId="duration">
-            <Form.Label>Duration</Form.Label>
-            <Form.Control type="text" name="duration" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: e.target.value })} />
-          </Form.Group>
-
-          <Form.Group controlId="module">
-            <Form.Label>Modul</Form.Label>
-            <Form.Control type="text" name="module" value={formData.module} onChange={(e) => setFormData({ ...formData, module: e.target.value })} />
+            <Form.Control type="text" name="categories" value={formData.categories} onChange={(e) => setFormData({ ...formData, categories: e.target.value })} />
           </Form.Group>
 
           <Form.Group controlId="codeCourse">

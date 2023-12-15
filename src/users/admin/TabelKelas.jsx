@@ -4,10 +4,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./Tabelkelola.css";
 import AddData from "./AddData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function TabelKelas() {
   const [showModal, setShowModal] = useState(false);
+  const [kelasData, setKelasData] = useState([]);
+
+  useEffect(() => {
+    async function getCourseList() {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/course/get`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        setKelasData(response.data.data);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          toast.error(error.response.data.message);
+          return;
+        }
+        toast.error(error.message);
+      }
+    }
+    getCourseList();
+  }, []);
 
   const handleTambahClick = () => {
     setShowModal(true);
@@ -18,9 +41,29 @@ function TabelKelas() {
   };
 
   const handleSaveData = () => {
-    // Add your save logic here
-    handleCloseModal(); // Close the modal after saving
+    handleCloseModal(); 
   };
+
+  const handleEdit = (courseCode) => {
+    console.log(`Edit course with ID: ${courseCode}`);
+  };
+
+  const handleDelete = async (courseCode) => {
+    try {
+      const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/admin/course/delete/${courseCode}`);
+
+      if (response.status === 200) {
+        toast.success("Course deleted successfully");
+
+
+      } else {
+        toast.error("Failed to delete course");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <>
       <div className="content">
@@ -36,7 +79,6 @@ function TabelKelas() {
                     Tambah
                     <FontAwesomeIcon icon={faPlus} className="ms-2" />
                   </button>
-                  <AddData/>
                 </div>
                 <div className="table-responsive">
                   <table className="table">
@@ -52,60 +94,32 @@ function TabelKelas() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>jhon@email.com</td>
-                        <td>USA</td>
-                        <td>123</td>
-                        <td>
-                          <div>
-                            <button type="button" className="btn btn-edit">
-                              <FontAwesomeIcon icon={faEdit} />
-                            </button>
-                            <button type="button" className="btn btn-delete">
-                              <FontAwesomeIcon icon={faTrash} />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>mark@email.com</td>
-                        <td>UK</td>
-                        <td>456</td>
-                        <td>
-                          <div>
-                            <button type="button" className="btn btn-edit">
-                              <FontAwesomeIcon icon={faEdit} />
-                            </button>
-                            <button type="button" className="btn btn-delete">
-                              <FontAwesomeIcon icon={faTrash} />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>jacob@email.com</td>
-                        <td>AU</td>
-                        <td>789</td>
-                        <td>
-                          <div>
-                            <button type="button" className="btn btn-edit">
-                              <FontAwesomeIcon icon={faEdit} />
-                            </button>
-                            <button type="button" className="btn btn-delete">
-                              <FontAwesomeIcon icon={faTrash} />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
+                      {kelasData && kelasData.length > 0 ? (
+                        kelasData.map((course) => (
+                          <tr key={course.id}>
+                            <td>{course.code}</td>
+                            <td>{course.categories && course.categories.length > 0 ? course.categories.map((category) => category.categoryName).join(",") : "No category"}</td>
+                            <td>{course.title}</td>
+                            <td>{course.isPremium ? "Yes" : "No"}</td>
+                            <td>{course.level}</td>
+                            <td>Rp. {course.price}</td>
+                            <td>
+                              <div>
+                                <button type="button" className="btn btn-edit" onClick={() => handleEdit(course.code)}>
+                                  <FontAwesomeIcon icon={faEdit} />
+                                </button>
+                                <button type="button" className="btn btn-delete" onClick={() => handleDelete(course.code)}>
+                                  <FontAwesomeIcon icon={faTrash} />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="7">No data available</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -114,7 +128,13 @@ function TabelKelas() {
           </div>
         </div>
       </div>
-      <AddData showModal={showModal} handleClose={handleCloseModal} handleSave={handleSaveData} />
+      {showModal && (
+        <AddData
+          showModal={showModal}
+          handleClose={handleCloseModal}
+          handleSave={handleSaveData}
+        />
+      )}
     </>
   );
 }

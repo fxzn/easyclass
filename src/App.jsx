@@ -18,6 +18,7 @@ import KelolaKelas from "./users/admin/KelolaKelas";
 import Bars from "./pages/akun/Bar";
 import OTPPage from "./auth/otp/Otp";
 import CoursePayment from "./pages/course/CoursePayment";
+import AddData from "./users/admin/AddData";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Route path="/courserun" element={<CourseRun />} />
         <Route path="/admin/dashboard" element={<DashboardAdmin />} />
         <Route path="/admin/kelas" element={<KelolaKelas />} />
+        <Route path="/admin/kelas/add" element={<AddData />} />
         <Route />
       </Routes>
     </>
