@@ -1,25 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Detailcourse.css";
 import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalBeliCourse from "../../components/course/ModalBeliCourse";
-
-
+import { getCourseDetail } from "../../../service/Course.service";
 
 function DetailCourse() {
   const [showModal, setShowModal] = useState(false);
+  const [courseDetail, setCourseDetail] = useState([]);
+  const { title } = useParams();
 
   const handleOpenModal = () => {
     setShowModal(true);
   };
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
   
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getCourseDetail(title);
+        setCourseDetail(response.data.addCourseResponse);
+      } catch (error) {
+        console.error("Error fetching course details:", error);
+      }
+    };
+
+    fetchData();
+  }, [title]);
+
+
   return (
     <>
       <NavigationBars />
@@ -34,30 +50,32 @@ function DetailCourse() {
             </div>
             <div className="course-details">
               <div className="d-flex justify-content-between align-items-center mb-">
-                <h5 className="text-judul">UI/UX Design</h5>
+                <h5 className="text-judul">{courseDetail.title}</h5>
                 <span className="d-flex ">
                   <FontAwesomeIcon icon={faStar} className="" />
                   <p className="rating">4.7</p>
                 </span>
               </div>
-              <h5 className="font-weight-bold mb-1">Intro to Basic of User Interaction Design</h5>
-              <p className="fasilator-name">by Simon Doe</p>
+              <h5 className="font-weight-bold mb-1">{courseDetail.about}</h5>
+              <p className="fasilator-name">By {courseDetail.teacher}</p>
               <div className="d-flex flex-wrap align-items-center mb-3 info-course">
                 <div className="d-flex mb-2">
                   <FontAwesomeIcon icon={faShield} className="" />
-                  <p className="text-course-info">Beginner Level</p>
+                  <p className="text-course-info">{courseDetail.level}</p>
                 </div>
                 <span className="d-flex mb-2">
                   <FontAwesomeIcon icon={faBook} />
-                  <p className="text-course-info">10 Modul</p>
+                  <p className="text-course-info">{courseDetail.module} Module</p>
                 </span>
                 <span className="d-flex mb-2">
                   <FontAwesomeIcon icon={faClock} />
-                  <p className="text-course-info">120 Menit</p>
+                  <p className="text-course-info">{courseDetail.duration}</p>
                 </span>
               </div>
               <div>
-                <button className="btn btn-telegram" onClick={handleOpenModal}>Beli kelas</button>
+                <button className="btn btn-telegram" onClick={handleOpenModal}>
+                {courseDetail.price > 0 ? "Premium" : "Gratis"}
+                </button>
               </div>
             </div>
             <div>
@@ -66,17 +84,7 @@ function DetailCourse() {
             <div className="tentang-kelas">
               <h1 className="font-weight-bold mb-3 mt-7">Tentang Kelas</h1>
               <p>
-                Design system adalah kumpulan komponen design, code, ataupun dokumentasi yang dapat digunakan sebagai panduan utama yang memungkinkan designer serta developer memiliki lebih banyak kontrol atas berbagai platform. Dengan
-                hadirnya design system, dapat menjaga konsistensi tampilan user interface dan meningkatkan user experience menjadi lebih baik. Disisi bisnis, design system sangat berguna dalam menghemat waktu dan biaya ketika mengembangkan
-                suatu produk.
-              </p>
-              <p>
-                Bersama mentor XXX, kita akan mempelajari design system dari mulai manfaat, alur kerja pembuatannya, tools yang digunakan, hingga pada akhirnya, kita akan membuat MVP dari design system. Selain itu, mentor juga akan
-                menjelaskan berbagai resource yang dibutuhkan untuk mencari inspirasi mengenai design system.
-              </p>
-              <p>
-                Kelas ini sesuai untuk Anda yang ingin memahami apa itu design system. Tidak hanya ditujukan untuk UI/UX Designer ataupun Developer, kelas ini sangat sesuai untuk stakeholder lain agar dapat memudahkan tim dalam bekerja
-                sama. Yuk segera daftar dan kami tunggu di kelas ya!
+                {courseDetail.description}
               </p>
             </div>
             <div className="mb-5">
@@ -174,7 +182,7 @@ function DetailCourse() {
         </div>
       </div>
       <ModalBeliCourse showModal={showModal} handleCloseModal={handleCloseModal} />
-      <Footerr/>
+      <Footerr />
     </>
   );
 }
