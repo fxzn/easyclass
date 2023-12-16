@@ -1,16 +1,19 @@
-import CardInfo from "./CardInfo";
-import NavAdmin from "./NavAdmin";
+import CardInfo from "../CardInfo";
+import NavAdmin from "../NavAdmin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import "./Tabelkelola.css";
-import AddData from "./AddData";
+import "../Tabelkelola.css";
+import AddData from "../AddData";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import EditKelas from "../EditKelas";
 
 function TabelKelas() {
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [kelasData, setKelasData] = useState([]);
+  const [editCourseData, setEditCourseData] = useState(null);
 
   useEffect(() => {
     async function getCourseList() {
@@ -38,14 +41,18 @@ function TabelKelas() {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    setShowEditModal(false);
+    setEditCourseData(null);
   };
 
   const handleSaveData = () => {
-    handleCloseModal(); 
+    handleCloseModal();
   };
 
   const handleEdit = (courseCode) => {
-    console.log(`Edit course with ID: ${courseCode}`);
+    const editedCourse = kelasData.find((course) => course.code === courseCode);
+    setEditCourseData(editedCourse);
+    setShowEditModal(true);
   };
 
   const handleDelete = async (courseCode) => {
@@ -54,8 +61,6 @@ function TabelKelas() {
 
       if (response.status === 200) {
         toast.success("Course deleted successfully");
-
-
       } else {
         toast.error("Failed to delete course");
       }
@@ -128,13 +133,8 @@ function TabelKelas() {
           </div>
         </div>
       </div>
-      {showModal && (
-        <AddData
-          showModal={showModal}
-          handleClose={handleCloseModal}
-          handleSave={handleSaveData}
-        />
-      )}
+      {editCourseData && <EditKelas editCourseData={editCourseData} showModal={showEditModal} handleClose={handleCloseModal} handleSave={handleSaveData} />}
+      {showModal && <AddData showModal={showModal} handleClose={handleCloseModal} handleSave={handleSaveData} />}
     </>
   );
 }

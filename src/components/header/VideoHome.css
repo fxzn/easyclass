@@ -1,4 +1,4 @@
-/* Add these styles to center the modal with space between close button and video */
+
 .video-modal-overlay {
     position: fixed;
     top: 0;
@@ -22,6 +22,30 @@
     color: black;
     font-size: 34px;
     cursor: pointer;
-    margin-bottom: auto; /* Adjust the margin to create space between close button and video */
+    margin-bottom: auto; 
   }
   
+  @media (max-width: 767px) {
+    .video-modal {
+      width: 90%;
+      padding: 10px;
+    }
+  
+    .close {
+      top: 5px;
+      right: 5px;
+      font-size: 20px;
+    }
+  }
+  @media (max-width: 480px) {
+    .video-modal {
+      width: 95%;
+      padding: 10px;
+    }
+  
+    .close {
+      top: 5px;
+      right: 5px;
+      font-size: 18px;
+    }
+  }

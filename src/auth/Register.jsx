@@ -41,17 +41,8 @@ function Register() {
 
       const response = await axios.request(config);
 
-      // Check if response.data exists and has the 'token' property
-      if (response.data && response.data.token) {
-        const { token } = response.data;
-        localStorage.setItem("token", token);
-
-        navigate("/auth/otp");
-        // Temporary solution
-        // window.location.href = "/";
-      } else {
-        // Handle the case where response.data or response.data.token is undefined
-        toast.error("Invalid response data");
+      if (response.status === 200) {
+        navigate("/auth/otp", {replace: true});
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -162,11 +153,11 @@ function Register() {
                   <input type="password" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                 </div>
-                <Link to="/auth/otp">
-                  <button type="submit" className="sign-btn">
-                    Sign Up
-                  </button>
-                </Link>
+                {/* <Link to="/auth/otp"> */}
+                <button type="submit" className="sign-btn" onSubmit={onSubmit} navigate={"/auth/otp"}>
+                  Sign Up
+                </button>
+                {/* </Link> */}
 
                 <p className="text">
                   if you forget your password

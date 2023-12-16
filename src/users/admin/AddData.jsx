@@ -7,9 +7,6 @@ function AddData({ showModal, handleClose }) {
   const [formData, setFormData] = useState({
     id: "",
     titleCourse: "",
-    // categories: [{
-    //   id: 0,
-    // }],
     duration: "",
     module: "",
     categories: 0,
@@ -21,53 +18,15 @@ function AddData({ showModal, handleClose }) {
     aboutCourse: "",
   });
 
-  const [subjectData, setSubjectData] = useState({
-    course: {
-      id: "",
-    },
-    id: "",
-    code: "",
-    title: "",
-    linkVideo: "",
-    description: "",
-    isPremium: false,
-  });
-
-  const handleSubjectSubmit = async () => {
-    try {
-      const response = await axios.post(
-        "https://easy-class-407401.et.r.appspot.com/api/admin/subject/add",
-        {
-          code: subjectData.code,
-          title: subjectData.title,
-          linkVideo: subjectData.linkVideo,
-          description: subjectData.description,
-          isPremium: subjectData.isPremium,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-          },
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
   const handleCourseSubmit = async () => {
     try {
       const response = await axios.post(
         "https://easy-class-407401.et.r.appspot.com/api/admin/course/add",
         {
-          // id: formData.id,
           titleCourse: formData.titleCourse,
           categories: [
             {
               id: formData.categories.id,
-              // categoryName: "Placeholder",
             },
           ],
           duration: formData.duration,
@@ -78,8 +37,6 @@ function AddData({ showModal, handleClose }) {
           teacher: formData.teacher,
           aboutCourse: formData.aboutCourse,
           isPremium: formData.isPremium,
-
-        
         },
         {
           headers: {
@@ -92,6 +49,7 @@ function AddData({ showModal, handleClose }) {
       console.error(error);
     }
   };
+
 
   return (
     <Modal show={showModal} onHide={handleClose}>
@@ -107,8 +65,9 @@ function AddData({ showModal, handleClose }) {
 
           <Form.Group controlId="categories">
             <Form.Label>Categories</Form.Label>
-            <Form.Control type="number" name="categories" value={formData.categories.id} onChange={(e) => setFormData({ ...formData, categories: {id: e.target.value} })} />
+            <Form.Control type="number" name="categories" value={formData.categories.id} onChange={(e) => setFormData({ ...formData, categories: { id: e.target.value } })} />
           </Form.Group>
+
 
           <Form.Group controlId="duration">
             <Form.Label>Duration</Form.Label>
@@ -176,7 +135,9 @@ function AddData({ showModal, handleClose }) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="warning" onClick={handleSubjectSubmit}>Upload Video</Button>
+        <Button variant="warning" onClick={handleSubjectSubmit}>
+          Upload Video
+        </Button>
         <Button variant="danger" onClick={handleCourseSubmit}>
           Simpan
         </Button>

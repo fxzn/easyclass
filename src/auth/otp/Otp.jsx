@@ -1,64 +1,87 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import axios from 'axios'; // Import library axios untuk melakukan permintaan HTTP
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Otp.css';
 
 const OTPPage = () => {
   const [otp, setOTP] = useState(Array(6).fill(''));
   const [error, setError] = useState('');
-  const [resendTimer, setResendTimer] = useState(60); 
+  const [resendTimer, setResendTimer] = useState(60);
   const [otpValid, setOTPValid] = useState(false);
-  const [userEmail, setUserEmail] = useState(''); 
+  const [userEmail, setUserEmail] = useState('');
+  const navigate = useNavigate();
+
+  const inputRefs = Array(6).fill(null).map(() => useRef(null));
 
   const handleOTPChange = (e, index) => {
     const value = e.target.value;
-
-    if (/^[0-9]$/.test(value)) {
+  
+    if (/^[0-9]$/.test(value) || value === '') {
       const newOTP = [...otp];
       newOTP[index] = value;
       setOTP(newOTP);
       setError('');
-      setOTPValid(false); 
+      setOTPValid(false);
+  
+      if (value !== '' && index < inputRefs.length - 1) {
+        inputRefs[index + 1].current.focus();
+      }
     } else {
       setError('Harap masukkan angka.');
     }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // Check if any digit in the OTP is empty
+    if (otp.some((digit) => digit === '')) {
+      setError('Harap masukkan semua digit OTP.');
+      setOTPValid(false);
+      return;
+    }
+  
     try {
       const response = await axios.post('https://easy-class-407401.et.r.appspot.com/api/auth/otp', {
         otp: otp.join(''),
       });
-
-      if (response.data && response.data.success) {
+  
+      if (response.status === 200) {
+        // Navigate to the login page (replace the path with your login route)
+        navigate("/auth/login", { replace: true });
+      } else if (response.data && response.data.success) {
         setOTPValid(true);
-       
+
         setTimeout(() => {
+          toast.success('OTP berhasil diverifikasi');
           
-          alert('OTP berhasil diverifikasi');
+          // Navigate to another page (replace the path with your desired route)
+          navigate("/auth/success", { replace: true });
         }, 2000);
-      } else {
-        setError('Maaf, kode OTP salah!');
-        setOTPValid(false);
+        toast.success('OTP berhasil diverifikasi');
+        setOTPValid(true);
+        // setError('Maaf, kode OTP salah!');
+        // setOTPValid(false);
+        // toast.error('Gagal verifikasi OTP');
       }
     } catch (error) {
       console.error('Error during OTP verification:', error);
       setError('Terjadi kesalahan saat memverifikasi OTP.');
       setOTPValid(false);
+      toast.error('Terjadi kesalahan saat memverifikasi OTP.');
     }
   };
 
   useEffect(() => {
-    
     const intervalId = setInterval(() => {
       setResendTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 0));
     }, 1000);
 
-    
     return () => clearInterval(intervalId);
   }, []);
 
@@ -82,6 +105,7 @@ const OTPPage = () => {
                 value={digit}
                 onChange={(e) => handleOTPChange(e, index)}
                 maxLength="1"
+                ref={inputRefs[index]}
               />
             ))}
           </div>
@@ -91,9 +115,7 @@ const OTPPage = () => {
               Simpan
             </button>
             <div className="atention">
-              {otpValid && (
-                <p className="success-message">Registrasi berhasil</p>
-              )}
+              {otpValid && <p className="success-message">Verifikasi berhasil</p>}
               {error && !otpValid && <p className="error-message">{error}</p>}
             </div>
           </div>

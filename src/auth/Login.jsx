@@ -33,17 +33,17 @@ function Login() {
       };
 
       const response = await axios.request(config);
-      console.log("Server response:", response.data);
+      // console.log("Server response:", response.data);
       const { token } = response.data;
-      console.log("Received token:", token);
+      // console.log("Received token:", token);
 
      
       if (token) {
         localStorage.setItem("token", token);
-        console.log(localStorage.getItem("token"));
+        // console.log(localStorage.getItem("token"));
 
         navigate("/");
-        console.log("Navigating to home");
+        // console.log("Navigating to home");
       } else {
         console.error("Token not received from the server");
         toast.error("Token not received from the server");

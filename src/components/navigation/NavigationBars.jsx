@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faUser, faLock, faHistory, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import { Nav, NavDropdown } from "react-bootstrap";
+import {  NavDropdown } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function NavigationBars() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,9 +20,20 @@ function NavigationBars() {
     }
   }, []);
 
-  // const handleLogout = () => {
-  //   setIsLoggedIn(false);
-  // };
+  const handleDelete = async (username) => {
+    try {
+      const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/user/delete/${username}`);
+
+      if (response.status === 200) {
+        toast.success("Course deleted successfully");
+      } else {
+        toast.error("Failed to delete course");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    console.log(handleDelete);
+  };
 
   window.addEventListener("scroll", () => {
     const nav = document.querySelector(".navbar");
@@ -33,7 +46,7 @@ function NavigationBars() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light sticky-top bg-white py-3">
+      <nav className="navbar navbar-expand-lg navbar-light sticky-top bg-white py-2">
         <div className="container px-2">
           <Link to="/" className="navbar-brand">
             <span className="fw-bolder text-dark">easyclass</span>
@@ -51,7 +64,7 @@ function NavigationBars() {
             <div className="offcanvas-body">
               <ul className="navbar-nav mx-auto mb-2 mb-lg-0 small fw-bolder">
                 <li className="nav-item">
-                  <Link to="/" className="nav-link mx-3" href="index.html">
+                  <Link to="/" className="nav-link mx-3" >
                     Home
                   </Link>
                 </li>
@@ -77,9 +90,8 @@ function NavigationBars() {
                     <Link to="/Notifikasi" className="notif-bell">
                       <FontAwesomeIcon icon={faBell} />
                     </Link>
-                    {/* profile */}
-                    <Nav className="profil">
-                      <NavDropdown title={<FontAwesomeIcon icon={faUser} />} id="basic-nav-dropdown">
+                    <div className="profil">
+                      <NavDropdown title={<FontAwesomeIcon icon={faUser} />} className="icon-user" id="basic-nav-dropdown">
                         <NavDropdown.Item href="/userprofile">
                           <FontAwesomeIcon icon={faUser} className="icon" /> Profil Saya
                         </NavDropdown.Item>
@@ -90,17 +102,26 @@ function NavigationBars() {
                           <FontAwesomeIcon icon={faHistory} className="icon" /> History Pembayaran
                         </NavDropdown.Item>
                         <NavDropdown.Item href="/">
-                          <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Log Out
+                          <FontAwesomeIcon
+                            icon={faSignOutAlt}
+                            className="icon"
+                            onClick={() => {
+                              localStorage.removeItem("token");
+                              setIsLoggedIn(false);
+                              return navigate("/");
+                            }}
+                          />{" "}
+                          Log Out
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={() => {
+                            handleDelete(/* pass the username here */);
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Delete Account
                         </NavDropdown.Item>
                       </NavDropdown>
-                    </Nav>
-                    <button className="btn btn-navbar" onClick={() => {
-                        localStorage.removeItem("token");
-                        setIsLoggedIn(false);
-                        return navigate("/");
-                      }}>
-                      Logout
-                    </button>
+                    </div>
                   </>
                 ) : (
                   <>

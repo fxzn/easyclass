@@ -1,11 +1,13 @@
 import SideBar from "./SideBar";
-import TabelKelas from "./TabelKelas";
+import TabelKelas from "./tabelKelas/TabelKelas";
+import TabelVideo from "./tabelKelas/TabelVideo";
 
 function KelolaKelas() {
   return (
     <>
-    <SideBar/>
-    <TabelKelas/>
+      <SideBar />
+      <TabelKelas />
+      <TabelVideo/>
     </>
   );
 }
