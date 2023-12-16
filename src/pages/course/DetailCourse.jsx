@@ -5,13 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
+
 import { useEffect, useState } from "react";
 import ModalBeliCourse from "../../components/course/ModalBeliCourse";
 import { getCourseDetail } from "../../../service/Course.service";
+// import getVideoId from 'get-video-id';
 
 function DetailCourse() {
   const [showModal, setShowModal] = useState(false);
   const [courseDetail, setCourseDetail] = useState([]);
+  const [subjectResponse, setsubjectresponse] = useState([]);
   const { title } = useParams();
 
   const handleOpenModal = () => {
@@ -27,13 +30,21 @@ function DetailCourse() {
       try {
         const response = await getCourseDetail(title);
         setCourseDetail(response.data.addCourseResponse);
+        setsubjectresponse(response.data.subjectResponse);
+  
+        if (response.data.subjectResponse.code) {
+          console.log("ID Video:", response.data.subjectResponse.code);
+        } else {
+          console.error("Tidak ada ID video ditemukan di subjectResponse.");
+        }
       } catch (error) {
-        console.error("Error fetching course details:", error);
+        console.error("Error saat mengambil detail kursus:", error);
       }
     };
-
+  
     fetchData();
   }, [title]);
+  
 
 
   return (
@@ -79,8 +90,22 @@ function DetailCourse() {
               </div>
             </div>
             <div>
-              <div className="video-section mb-3" />
-            </div>
+            <div className="video-section mb-3">
+            {subjectResponse.length > 0 && (
+                  <iframe
+                  className="vidio"
+                    
+                    src="https://www.youtube.com/embed/VM3rwdMBORY?si=FmDhRMdAA7LpvjWp"
+                    title="YouTube video player"
+                   
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                )}
+        </div>
+        </div>
+            
+         
             <div className="tentang-kelas">
               <h1 className="font-weight-bold mb-3 mt-7">Tentang Kelas</h1>
               <p>
@@ -119,7 +144,7 @@ function DetailCourse() {
                     <li className="my-2 d-flex justify-content-between align-items-center">
                       <p className="d-flex gap-3 align-items-center list-item">
                         <span className="p-1 align-items-center justify-content-center">1.</span>
-                        Anda yang ingin memahami poin penting design system
+                        
                       </p>
                       <FontAwesomeIcon icon={faPlayCircle} className="icon-play text-success w-10 h-full" />
                     </li>
@@ -181,7 +206,7 @@ function DetailCourse() {
           </div>
         </div>
       </div>
-      <ModalBeliCourse showModal={showModal} handleCloseModal={handleCloseModal} />
+      <ModalBeliCourse title={courseDetail.title} showModal={showModal} handleCloseModal={handleCloseModal} />
       <Footerr />
     </>
   );
