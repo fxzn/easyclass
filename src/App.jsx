@@ -37,7 +37,7 @@ function App() {
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
         <Route path="/auth/resetPassword" element={<ResetPaswd />} />
-        <Route path="/detailcourse/:title" element={<DetailCourse />} />
+        <Route path="/detailcourse" element={<DetailCourse />} />
         <Route path="/course" element={<Course />} />
         <Route path="/course/payment" element={<CoursePayment />} />
         <Route path="/courserun" element={<CourseRun />} />

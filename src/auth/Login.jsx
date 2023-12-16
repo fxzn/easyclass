@@ -138,7 +138,7 @@ function Login() {
                   <label>Name</label>
                 </div>
                 <div className="input-wrap">
-                  <input type="password" minLength="4" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <input type="password" minLength="0" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                 </div>
                 <button type="submit" className="sign-btn">

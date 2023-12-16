@@ -5,14 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ModalBeliCourse from "../../components/course/ModalBeliCourse";
-import { getCourseDetail } from "../../../service/Course.service";
+
+
 
 function DetailCourse() {
   const [showModal, setShowModal] = useState(false);
-  const [courseDetail, setCourseDetail] = useState([]);
-  const { title } = useParams();
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -21,20 +20,7 @@ function DetailCourse() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getCourseDetail(title);
-        setCourseDetail(response.data.addCourseResponse);
-      } catch (error) {
-        console.error("Error fetching course details:", error);
-      }
-    };
-
-    fetchData();
-  }, [title]);
-
+  
   return (
     <>
       <NavigationBars />
@@ -72,17 +58,41 @@ function DetailCourse() {
                 </span>
               </div>
               <div>
-                <button className="btn btn-telegram" onClick={handleOpenModal}>
-                  {courseDetail.price > 0 ? "Premium" : "Gratis"}
-                </button>
+                <button className="btn btn-telegram" onClick={handleOpenModal}>Beli kelas</button>
               </div>
             </div>
             <div>
-              <div className="video-section mb-3" />
-            </div>
+            <div className="video-content mb-3">
+            {subjectResponse.length > 0 && (
+                  <iframe
+                  className="vidio"
+                    
+                    src="https://www.youtube.com/embed/VM3rwdMBORY?si=FmDhRMdAA7LpvjWp"
+                    title="YouTube video player"
+                   
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                )}
+        </div>
+        </div>
+            
+         
             <div className="tentang-kelas">
               <h1 className="font-weight-bold mb-3 mt-7">Tentang Kelas</h1>
-              <p>{courseDetail.description}</p>
+              <p>
+                Design system adalah kumpulan komponen design, code, ataupun dokumentasi yang dapat digunakan sebagai panduan utama yang memungkinkan designer serta developer memiliki lebih banyak kontrol atas berbagai platform. Dengan
+                hadirnya design system, dapat menjaga konsistensi tampilan user interface dan meningkatkan user experience menjadi lebih baik. Disisi bisnis, design system sangat berguna dalam menghemat waktu dan biaya ketika mengembangkan
+                suatu produk.
+              </p>
+              <p>
+                Bersama mentor XXX, kita akan mempelajari design system dari mulai manfaat, alur kerja pembuatannya, tools yang digunakan, hingga pada akhirnya, kita akan membuat MVP dari design system. Selain itu, mentor juga akan
+                menjelaskan berbagai resource yang dibutuhkan untuk mencari inspirasi mengenai design system.
+              </p>
+              <p>
+                Kelas ini sesuai untuk Anda yang ingin memahami apa itu design system. Tidak hanya ditujukan untuk UI/UX Designer ataupun Developer, kelas ini sangat sesuai untuk stakeholder lain agar dapat memudahkan tim dalam bekerja
+                sama. Yuk segera daftar dan kami tunggu di kelas ya!
+              </p>
             </div>
             <div className="mb-5">
               <h1 className="font-weight-bold mb-3">Kelas Ini Ditujukan Untuk</h1>
@@ -116,7 +126,7 @@ function DetailCourse() {
                     <li className="my-2 d-flex justify-content-between align-items-center">
                       <p className="d-flex gap-3 align-items-center list-item">
                         <span className="p-1 align-items-center justify-content-center">1.</span>
-                        Anda yang ingin memahami poin penting design system
+                        
                       </p>
                       <FontAwesomeIcon icon={faPlayCircle} className="icon-play text-success w-10 h-full" />
                     </li>
@@ -179,7 +189,7 @@ function DetailCourse() {
         </div>
       </div>
       <ModalBeliCourse showModal={showModal} handleCloseModal={handleCloseModal} />
-      <Footerr />
+      <Footerr/>
     </>
   );
 }

@@ -5,7 +5,7 @@ import { faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  useNavigate } from "react-router-dom";
-function ModalBeliCourse({ showModal, handleCloseModal }) {
+function ModalBeliCourse({ showModal, handleCloseModal,title }) {
   const navigate = useNavigate();
 
   const handlBuyClick = () => {
@@ -25,7 +25,7 @@ function ModalBeliCourse({ showModal, handleCloseModal }) {
             <Card.Img className="img-card" variant="top" src={imgcourse} />
             <Card.Body>
               <div className="d-flex justify-content-between">
-                <div className="title ">UI/UX Design</div>
+                <div className="title ">{title}</div>
                 <div className="rating d-flex ">
                   <FontAwesomeIcon icon={faStar} className="img text-warning me-1" />
                   <p>4.5</p>
