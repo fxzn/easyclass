@@ -90,7 +90,7 @@ function DetailCourse() {
               </div>
             </div>
             <div>
-            <div className="video-section mb-3">
+            <div className="video-content mb-3">
             {subjectResponse.length > 0 && (
                   <iframe
                   className="vidio"
