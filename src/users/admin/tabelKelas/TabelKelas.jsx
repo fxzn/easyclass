@@ -1,24 +1,24 @@
-import CardInfo from "../CardInfo";
-import NavAdmin from "../NavAdmin";
+import CardInfo from "../component/CardInfo";
+import NavAdmin from "../component/NavAdmin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "../Tabelkelola.css";
-import AddData from "../AddData";
+import AddData from "../crud/AddData";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import EditKelas from "../EditKelas";
+import EditKelas from "../crud/EditKelas";
 
 function TabelKelas() {
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [kelasData, setKelasData] = useState([]);
-  const [editCourseData, setEditCourseData] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   useEffect(() => {
     async function getCourseList() {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/course/get`, {
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/course/getAll`, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -39,20 +39,14 @@ function TabelKelas() {
     setShowModal(true);
   };
 
+  const handleEditClick = (code) => {
+    setSelectedCourse(code);
+    setShowEditModal(true);
+  };
+
   const handleCloseModal = () => {
     setShowModal(false);
     setShowEditModal(false);
-    setEditCourseData(null);
-  };
-
-  const handleSaveData = () => {
-    handleCloseModal();
-  };
-
-  const handleEdit = (courseCode) => {
-    const editedCourse = kelasData.find((course) => course.code === courseCode);
-    setEditCourseData(editedCourse);
-    setShowEditModal(true);
   };
 
   const handleDelete = async (courseCode) => {
@@ -100,17 +94,17 @@ function TabelKelas() {
                     </thead>
                     <tbody>
                       {kelasData && kelasData.length > 0 ? (
-                        kelasData.map((course) => (
-                          <tr key={course.id}>
+                        kelasData.map((course, index) => (
+                          <tr key={index}>
                             <td>{course.code}</td>
                             <td>{course.categories && course.categories.length > 0 ? course.categories.map((category) => category.categoryName).join(",") : "No category"}</td>
                             <td>{course.title}</td>
-                            <td>{course.isPremium ? "Yes" : "No"}</td>
+                            <td>{course.isPremium ? "Premium" : "Free"}</td>
                             <td>{course.level}</td>
                             <td>Rp. {course.price}</td>
                             <td>
                               <div>
-                                <button type="button" className="btn btn-edit" onClick={() => handleEdit(course.code)}>
+                                <button type="button" className="btn btn-edit" onClick={() => handleEditClick(course.code)}>
                                   <FontAwesomeIcon icon={faEdit} />
                                 </button>
                                 <button type="button" className="btn btn-delete" onClick={() => handleDelete(course.code)}>
@@ -133,8 +127,14 @@ function TabelKelas() {
           </div>
         </div>
       </div>
-      {editCourseData && <EditKelas editCourseData={editCourseData} showModal={showEditModal} handleClose={handleCloseModal} handleSave={handleSaveData} />}
-      {showModal && <AddData showModal={showModal} handleClose={handleCloseModal} handleSave={handleSaveData} />}
+      <EditKelas
+        showModal={showEditModal}
+        handleCloseModal={handleCloseModal}
+        selectedCourse={selectedCourse}
+        code={selectedCourse} 
+      />
+
+      {showModal && <AddData showModal={showModal} handleClose={handleCloseModal} />}
     </>
   );
 }

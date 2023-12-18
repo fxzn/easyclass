@@ -2,8 +2,8 @@ import "./Navigation.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faUser, faLock, faHistory, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import {  NavDropdown } from "react-bootstrap";
+import { faBell, faUser, faLock, faHistory, faSignOutAlt, faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
+import { NavDropdown } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -64,7 +64,7 @@ function NavigationBars() {
             <div className="offcanvas-body">
               <ul className="navbar-nav mx-auto mb-2 mb-lg-0 small fw-bolder">
                 <li className="nav-item">
-                  <Link to="/" className="nav-link mx-3" >
+                  <Link to="/" className="nav-link mx-3">
                     Home
                   </Link>
                 </li>
@@ -101,21 +101,23 @@ function NavigationBars() {
                         <NavDropdown.Item href="/History">
                           <FontAwesomeIcon icon={faHistory} className="icon" /> History Pembayaran
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="/">
-                          <FontAwesomeIcon
-                            icon={faSignOutAlt}
-                            className="icon"
-                            onClick={() => {
-                              localStorage.removeItem("token");
-                              setIsLoggedIn(false);
-                              return navigate("/");
-                            }}
-                          />{" "}
-                          Log Out
+                        <NavDropdown.Item
+                          href="/"
+                          onClick={(e) => {
+                            e.preventDefault(); // Prevent default anchor link behavior
+                            localStorage.removeItem("token");
+                            setIsLoggedIn(false);
+                            navigate("/");
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Log Out
                         </NavDropdown.Item>
+
                         <NavDropdown.Item
                           onClick={() => {
-                            handleDelete(/* pass the username here */);
+                            const token = localStorage.getItem("token");
+                            const username = token ? JSON.parse(atob(token.split(".")[1])).username : null;
+                            handleDelete(username);
                           }}
                         >
                           <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Delete Account

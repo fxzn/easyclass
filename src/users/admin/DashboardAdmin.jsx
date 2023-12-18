@@ -1,13 +1,12 @@
-import SideBar from "./SideBar";
-import "./Style.css";
-import TabelDashboard from "./TabelDashboard";
-
+import SideBar from "./component/SideBar";
+import "./component/Style.css";
+import TabelDashboard from "./tabelTransaksi/TabelDashboard";
 
 function DashboardAdmin() {
   return (
     <>
       <SideBar />
-      <TabelDashboard/>
+      <TabelDashboard />
     </>
   );
 }

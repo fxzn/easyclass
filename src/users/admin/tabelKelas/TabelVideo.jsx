@@ -1,23 +1,23 @@
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "../Tabelkelola.css";
-import AddData from "../AddData";
+import AddData from "../crud/AddData";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import EditKelas from "../EditKelas";
+
+import EditVideo from "../crud/EditVideo";
 
 function TabelVideo() {
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [kelasData, setKelasData] = useState([]);
-  const [editCourseData, setEditCourseData] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
     async function getCourseList() {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/subject/get`, {
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/subject/getAllSubject`, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -37,22 +37,20 @@ function TabelVideo() {
   const handleTambahClick = () => {
     setShowModal(true);
   };
+  const handleEditClick = (code) => {
+    setSelectedVideo(code);
+    setShowEditModal(true);
+  };
 
   const handleCloseModal = () => {
     setShowModal(false);
     setShowEditModal(false);
-    setEditCourseData(null);
   };
 
   const handleSaveData = () => {
-    handleCloseModal(); 
+    handleCloseModal();
   };
 
-  const handleEdit = (courseCode) => {
-    const editedCourse = kelasData.find((course) => course.code === courseCode);
-    setEditCourseData(editedCourse);
-    setShowEditModal(true);
-  };
 
   const handleDelete = async (code) => {
     try {
@@ -60,8 +58,6 @@ function TabelVideo() {
 
       if (response.status === 200) {
         toast.success("Course deleted successfully");
-
-
       } else {
         toast.error("Failed to delete course");
       }
@@ -88,31 +84,30 @@ function TabelVideo() {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col">Kode Kelas</th>
-                        <th scope="col">Kategori</th>
-                        <th scope="col">Nama Kelas</th>
+                        <th scope="col">Kode </th>
+                        <th scope="col">Judul</th>
                         <th scope="col">Tipe Kelas</th>
-                        <th scope="col">Level</th>
-                        <th scope="col">Harga Kelas</th>
+                        <th scope="col">Link Video</th>
+                        <th scope="col">Deskripsi</th>
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       {kelasData && kelasData.length > 0 ? (
-                        kelasData.map((course) => (
-                          <tr key={course.id}>
-                            <td>{course.code}</td>
-                            <td>{course.categories && course.categories.length > 0 ? course.categories.map((category) => category.categoryName).join(",") : "No category"}</td>
-                            <td>{course.title}</td>
-                            <td>{course.isPremium ? "Yes" : "No"}</td>
-                            <td>{course.level}</td>
-                            <td>Rp. {course.price}</td>
+                        kelasData.map((subject, index) => (
+                          <tr key={index}>
+                            <td>{subject.code}</td>
+                            <td>{subject.title}</td>
+                            <td>{subject.isPremium ? "Premium" : "Free"}</td>
+                            <td>{subject.link}</td>
+                            <td>{subject.description}</td>
+
                             <td>
                               <div>
-                                <button type="button" className="btn btn-edit" onClick={() => handleEdit(course.code)}>
+                                <button type="button" className="btn btn-edit" onClick={() => handleEditClick(subject.code)}>
                                   <FontAwesomeIcon icon={faEdit} />
                                 </button>
-                                <button type="button" className="btn btn-delete" onClick={() => handleDelete(course.code)}>
+                                <button type="button" className="btn btn-delete" onClick={() => handleDelete(subject.code)}>
                                   <FontAwesomeIcon icon={faTrash} />
                                 </button>
                               </div>
@@ -132,21 +127,13 @@ function TabelVideo() {
           </div>
         </div>
       </div>
-      {editCourseData && (
-        <EditKelas
-        editCourseData={editCourseData}
+      <EditVideo
         showModal={showEditModal}
-        handleClose={handleCloseModal}
-        handleSave={handleSaveData}
-        />
-      )}
-      {showModal && (
-        <AddData
-          showModal={showModal}
-          handleClose={handleCloseModal}
-          handleSave={handleSaveData}
-        />
-      )}
+        handleCloseModal={handleCloseModal}
+        selectedCourse={selectedVideo}
+        code={selectedVideo} 
+      />
+      {showModal && <AddData showModal={showModal} handleClose={handleCloseModal} handleSave={handleSaveData} />}
     </>
   );
 }

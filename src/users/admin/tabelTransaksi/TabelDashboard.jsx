@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CardInfo from "./CardInfo";
-import NavAdmin from "./NavAdmin";
-import "./Style.css";
+import CardInfo from "../component/CardInfo";
+import NavAdmin from "../component/NavAdmin";
+import "../component/Style.css";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 function TabelDashboard() {

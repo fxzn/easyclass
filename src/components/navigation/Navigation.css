@@ -41,6 +41,7 @@
   margin-left: 20px;
   background-color: var(--black-color);
   color: var(--white-color);
+  margin-top: 13px;
 }
 
 .btn-navbar {
@@ -48,6 +49,7 @@
   margin-left: 20px;
   border-radius: 14px;
   width: 100px;
+  height: 40px;
 }
 
 .btn-navbar:hover {
