@@ -9,7 +9,7 @@ function VideoHome({ isOpen, onClose }) {
             <span className="close" onClick={onClose}>
               &times;
             </span>
-            <iframe width="560" height="355" src="https://youtu.be/ixOd42SEUF0" title="YouTube video player" frameBorder="5" allowFullScreen></iframe>
+            <iframe width="560" height="355" src=" https://www.youtube.com/embed/ixOd42SEUF0?si=NRz0mkus-c82Fnmh" title="YouTube video player" frameBorder="5" allowFullScreen></iframe>
           </div>
         </div>
       )}

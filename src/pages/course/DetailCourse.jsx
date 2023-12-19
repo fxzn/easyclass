@@ -7,7 +7,7 @@ import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
 
 import { useEffect, useState } from "react";
-import ModalBeliCourse from "../../components/course/ModalBeliCourse";
+import ModalBeliCourse from "./ModalBeliCourse";
 import { getCourseDetail } from "../../../service/Course.service";
 // import getVideoId from 'get-video-id';
 
@@ -94,16 +94,16 @@ function DetailCourse() {
             </div>
             <div>
               <div className="video-content mb-3">
-                {subjectResponse.length > 0 && (
+                {subjectResponse.map((subject, index) => (
                   <iframe
+                    key={index}
                     className="vidio"
-                    // src={subjectResponse.link}
-                    src="https://www.youtube.com/embed/VM3rwdMBORY?si=FmDhRMdAA7LpvjWp"
+                    src={subject.link}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
+                    allowFullScreen 
                   ></iframe>
-                )}
+                ))}
               </div>
             </div>
 

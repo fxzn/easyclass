@@ -10,7 +10,7 @@ function Services() {
       <section className="services text-center">
         <div className="container">
           <span className="text-primary">Services</span>
-          <h2 className="fw-bold text-dark mt-3">Our top courses</h2>
+          <h2 className="fw-bold text-dark ">Our top courses</h2>
           <div className="row">
             <div className="col-lg-4 col-md-6 content-services mt-5" data-aos="fade-up" data-aos-duration={1000}>
               <img src={react} alt="React Logo" />

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "../Tabelkelola.css";
-import AddData from "../crud/AddData";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import EditVideo from "../crud/EditVideo";
 
 function TabelVideo() {
-  const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [kelasData, setKelasData] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -34,22 +33,16 @@ function TabelVideo() {
     getCourseList();
   }, []);
 
-  const handleTambahClick = () => {
-    setShowModal(true);
-  };
   const handleEditClick = (code) => {
     setSelectedVideo(code);
     setShowEditModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+
     setShowEditModal(false);
   };
 
-  const handleSaveData = () => {
-    handleCloseModal();
-  };
 
 
   const handleDelete = async (code) => {
@@ -74,12 +67,6 @@ function TabelVideo() {
             <div className="col-12">
               <div className="bg-light rounded h-100 p-4">
                 <h6 className="mb-4">Video</h6>
-                <div className="d-flex justify-content-between align-items-center mb-3">
-                  <button type="button" className="btn btn-tambahclass mb-3" onClick={handleTambahClick}>
-                    Tambah
-                    <FontAwesomeIcon icon={faPlus} className="ms-2" />
-                  </button>
-                </div>
                 <div className="table-responsive">
                   <table className="table">
                     <thead>
@@ -133,7 +120,6 @@ function TabelVideo() {
         selectedCourse={selectedVideo}
         code={selectedVideo} 
       />
-      {showModal && <AddData showModal={showModal} handleClose={handleCloseModal} handleSave={handleSaveData} />}
     </>
   );
 }

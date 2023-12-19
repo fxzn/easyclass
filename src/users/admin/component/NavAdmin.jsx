@@ -1,16 +1,23 @@
+// NavAdmin.jsx
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Style.css";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import SideBar from "./SideBar";
+import "./Style.css";
 
 function NavAdmin() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const handleSidebarToggle = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <>
       <nav className="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-        <a href="#" className="sidebar-toggler flex-shrink-0">
+        <button className="sidebar-toggler flex-shrink-0" onClick={handleSidebarToggle}>
           <FontAwesomeIcon icon={faBars} />
-        </a>
+        </button>
         <form className="d-none d-md-flex ms-4">
           <input className="form-control border-0" type="search" placeholder="Search" />
         </form>
@@ -28,6 +35,8 @@ function NavAdmin() {
           </div>
         </div>
       </nav>
+
+      <SideBar isSidebarOpen={isSidebarOpen} handleSidebarToggle={handleSidebarToggle} />
     </>
   );
 }

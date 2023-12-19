@@ -3,8 +3,33 @@ import CardInfo from "../component/CardInfo";
 import NavAdmin from "../component/NavAdmin";
 import "../component/Style.css";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function TabelDashboard() {
+  const [transaksi, setTransaksi] = useState();
+
+  useEffect(() => {
+    async function getTranskasiAll() {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/order/getAllOrderTransactions`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        setTransaksi(response.data.data);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          toast.error(error.response.data.message);
+          return;
+        }
+        toast.error(error.message);
+      }
+    }
+    getTranskasiAll();
+  }, []);
+
   return (
     <>
       <div className="content">
@@ -26,42 +51,29 @@ function TabelDashboard() {
                     <thead>
                       <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Kategori</th>
-                        <th scope="col">Kelas Premium</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Metode Pembayaran</th>
                         <th scope="col">Tanggal Bayar</th>
+                        <th scope="col">Payment Method</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>jhon@email.com</td>
-                        <td>USA</td>
-                        <td>123</td>
-                        <td>Member</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>mark@email.com</td>
-                        <td>UK</td>
-                        <td>456</td>
-                        <td>Member</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>jacob@email.com</td>
-                        <td>AU</td>
-                        <td>789</td>
-                        <td>Member</td>
-                      </tr>
+                    {transaksi && transaksi.length > 0 ? (
+                        transaksi.map((data, index) =>
+                          data.orderResponses.map((order, orderIndex) => (
+                            <tr key={orderIndex}>
+                              {orderIndex === 0 && <td rowSpan={data.orderResponses.length}>{data.id}</td>}
+                              <td>{order.time}</td>
+                              <td>{order.paymentMethod}</td>
+                              <td>{order.completed ? "Completed" : "Pending"}</td>
+                            </tr>
+                          ))
+                        )
+                      ) : (
+                        <tr>
+                          <td colSpan="4">No data available</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>
