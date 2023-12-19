@@ -42,7 +42,7 @@ function Register() {
       const response = await axios.request(config);
 
       if (response.status === 200) {
-        navigate("/auth/otp", {replace: true});
+        navigate("/auth/otp", { replace: true });
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {

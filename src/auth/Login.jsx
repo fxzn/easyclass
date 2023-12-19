@@ -13,7 +13,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -33,17 +32,13 @@ function Login() {
       };
 
       const response = await axios.request(config);
-      // console.log("Server response:", response.data);
-      const { token } = response.data;
-      // console.log("Received token:", token);
 
-     
+      const { token } = response.data;
+
       if (token) {
         localStorage.setItem("token", token);
-        // console.log(localStorage.getItem("token"));
 
         navigate("/");
-        // console.log("Navigating to home");
       } else {
         console.error("Token not received from the server");
         toast.error("Token not received from the server");
