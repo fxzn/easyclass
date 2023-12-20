@@ -9,12 +9,17 @@ import Footerr from "../../components/footer/Footerr";
 import { useEffect, useState } from "react";
 import ModalBeliCourse from "./ModalBeliCourse";
 import { getCourseDetail } from "../../../service/Course.service";
-// import getVideoId from 'get-video-id';
+
 
 function DetailCourse() {
   const [showModal, setShowModal] = useState(false);
   const [courseDetail, setCourseDetail] = useState([]);
   const [subjectResponse, setsubjectresponse] = useState([]);
+  const [linkVidio, setLinkVidio] = useState("https://www.youtube.com/embed/R4eWTI-07QY?si=lJXsrRVwUOkorJWl");
+  const [description,setdescription] = useState("Hallo calon programmer selamat datant di easyclass")
+  const [titleAktive, settitleAktive] = useState(null);
+  const [loadingVidio, setLoadingvidio] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { title } = useParams();
 
@@ -30,8 +35,8 @@ function DetailCourse() {
     const fetchData = async () => {
       try {
         const response = await getCourseDetail(title);
+        setLoading(false);
         setCourseDetail(response.data.addCourseResponse);
-
         setsubjectresponse(response.data.subjectResponse);
       } catch (error) {
         console.error("Error saat mengambil detail kursus:", error);
@@ -41,23 +46,33 @@ function DetailCourse() {
     fetchData();
   }, [title]);
 
-  // console.log(subjectResponse.title);
-  // subjectResponse.map((subject) => {
-  //   console.log("Title:", subject.title);
-  //   console.log("Code:", subject.code);
-  //   console.log("Link:", subject.link);
-  //   console.log("Description:", subject.description);
-  //   console.log("Is Premium:", subject.isPremium);
-  // });
+  const clickTitle = (link,description ,index) => {
+    setLoadingvidio(true);
+    setTimeout(() => {
+      setLinkVidio(link);
+      setdescription(description)
+      settitleAktive(index);
+      setLoadingvidio(false);
+    }, 1500);
+  };
+
+ 
 
   return (
     <>
-      <NavigationBars />
+
+    {loading ? (
+      <div className=".loader-container">
+      <span className="loader"></span>
+    </div>
+    ): (
+<>
+<NavigationBars />
       <div className="container detail-course">
         <div className="row">
           <div className="col-md-8 left-content">
             <div className="top-navigation">
-              <Link to="/" className="d-flex align-items-start ">
+              <Link to="/course" className="d-flex align-items-start ">
                 <FontAwesomeIcon icon={faArrowLeft} />
                 <p className="kelas-lain">Kelas Lainnya</p>
               </Link>
@@ -94,23 +109,20 @@ function DetailCourse() {
             </div>
             <div>
               <div className="video-content mb-3">
-                {subjectResponse.map((subject, index) => (
-                  <iframe
-                    key={index}
-                    className="vidio"
-                    src={subject.link}
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen 
-                  ></iframe>
-                ))}
+                {loadingVidio ? (
+                  <div className="loader-vidio-content">
+                    <span className="loader-vidio"></span>
+                  </div>
+                ) : (
+                  <iframe className="vidio" src={linkVidio} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                )}
               </div>
             </div>
 
             <div className="tentang-kelas">
               <h1 className="font-weight-bold mb-3 mt-7">Tentang Kelas</h1>
 
-              <p>{courseDetail.description}</p>
+              <p>{description}</p>
             </div>
             <div className="mb-5">
               <h1 className="font-weight-bold mb-3">Kelas Ini Ditujukan Untuk</h1>
@@ -143,11 +155,14 @@ function DetailCourse() {
 
                   <ol>
                     {subjectResponse.map((subject, index) => (
-                      <li key={index} className="my-2 d-flex justify-content-between align-items-center">
-                        <p className="d-flex gap-3 align-items-center">
-                          <span className="p-1 align-items-center justify-content-center">{index + 1}</span>
+                      <li key={index} className="my-2 d-flex justify-content-between align-items-center pointer">
+                        <p onClick={() => clickTitle(subject.link,subject.description, index)} className={`d-flex gap-3 align-items-center ${titleAktive === index ? "text-success fw-bold" : null}`}>
+                          <span onClick={() => clickTitle(subject.link)} className="p-1 align-items-center justify-content-center">
+                            {index + 1}
+                          </span>
                           {subject.title}
                         </p>
+
                         <FontAwesomeIcon icon={faPlayCircle} className="icon-play text-dark w-10 h-full" />
                       </li>
                     ))}
@@ -199,6 +214,10 @@ function DetailCourse() {
       <ModalBeliCourse title={courseDetail.title} showModal={showModal} handleCloseModal={handleCloseModal} />
 
       <Footerr />
+</>
+
+    )}
+     
     </>
   );
 }
