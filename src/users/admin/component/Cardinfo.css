@@ -17,9 +17,13 @@
     font-family: "Poppins", sans-serif;
   }
 
+  .content-card{
+    margin-top: 7rem;
+  }
 
 .card-info{
     background-color: var(--pink-color);
+    /* margin-top: 7rem; */
 }
 
 .text-cardinfo{

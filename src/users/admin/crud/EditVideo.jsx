@@ -67,32 +67,33 @@ function EditVideo(props) {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group controlId="titleCourse">
+            <Form.Group controlId="titleVideo">
               <Form.Label>Title Video</Form.Label>
-              <Form.Control type="text" name="titleCourse" value={videoData.title} onChange={handleChange} />
+              <Form.Control type="text" name="title" value={videoData.title} onChange={handleChange} />
             </Form.Group>
 
-            <Form.Group controlId="codeCourse">
+            <Form.Group controlId="codeVideo">
               <Form.Label>Code Course</Form.Label>
-              <Form.Control type="text" name="codeCourse" value={videoData.code} onChange={handleChange} />
+              <Form.Control type="text" name="code" value={videoData.code} onChange={handleChange} />
             </Form.Group>
 
-            <Form.Group controlId="duration">
+            <Form.Group controlId="linkVideo">
               <Form.Label>Link</Form.Label>
-              <Form.Control type="text" name="duration" value={videoData.link} onChange={handleChange} />
+              <Form.Control type="text" name="link" value={videoData.link} onChange={handleChange} />
             </Form.Group>
 
-            <Form.Group controlId="module">
+            <Form.Group controlId="description">
               <Form.Label>Description</Form.Label>
-              <Form.Control type="text" name="module" value={videoData.description} onChange={handleChange} />
+              <Form.Control type="text" name="description" value={videoData.description} onChange={handleChange} />
             </Form.Group>
 
-            
             <Form.Group controlId="isPremium">
               <Form.Label>Is Premium</Form.Label>
-              <Form.Control type="text" name="isPremium" value={videoData.isPremium} />
+              <Form.Control as="select" name="isPremium" value={videoData.isPremium} onChange={handleChange}>
+                <option value={false}>False</option>
+                <option value={true}>True</option>
+              </Form.Control>
             </Form.Group>
-
           </Form>
         </Modal.Body>
         <Modal.Footer>

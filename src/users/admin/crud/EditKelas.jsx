@@ -77,17 +77,17 @@ function EditKelas(props) {
           <Form>
             <Form.Group controlId="titleCourse">
               <Form.Label>Title Course</Form.Label>
-              <Form.Control type="text" name="titleCourse" value={courseData.title} onChange={handleChange} />
+              <Form.Control type="text" name="title" value={courseData.title || ""} onChange={handleChange} />
+            </Form.Group>
+
+            <Form.Group controlId="codeCourse">
+              <Form.Label>Code Course</Form.Label>
+              <Form.Control type="text" name="code" value={courseData.code || ""} onChange={handleChange} />
             </Form.Group>
 
             <Form.Group controlId="categories">
               <Form.Label>Categories</Form.Label>
-              <Form.Control
-                as="select"
-                name="categories"
-                value={courseData.categories[0].id} // Assuming you want to display the first category's id
-                onChange={handleChange}
-              >
+              <Form.Control as="select" name="categories" value={courseData.categories[0].id} onChange={handleChange}>
                 {courseData.categories.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.categoryName}
@@ -98,37 +98,35 @@ function EditKelas(props) {
 
             <Form.Group controlId="duration">
               <Form.Label>Duration</Form.Label>
-              <Form.Control type="text" name="duration" value={courseData.duration} onChange={handleChange} />
+              <Form.Control type="text" name="duration" value={courseData.duration || ""} onChange={handleChange} />
             </Form.Group>
 
             <Form.Group controlId="module">
               <Form.Label>Modul</Form.Label>
-              <Form.Control type="text" name="module" value={courseData.module} onChange={handleChange} />
-            </Form.Group>
-
-            <Form.Group controlId="codeCourse">
-              <Form.Label>Code Course</Form.Label>
-              <Form.Control type="text" name="codeCourse" value={courseData.code} onChange={handleChange} />
-            </Form.Group>
-
-            <Form.Group controlId="isPremium">
-              <Form.Label>Is Premium</Form.Label>
-              <Form.Control type="text" name="isPremium" value={courseData.isPremium} />
+              <Form.Control type="text" name="module" value={courseData.module || ""} onChange={handleChange} />
             </Form.Group>
 
             <Form.Group controlId="priceCourse">
               <Form.Label>Price Course</Form.Label>
-              <Form.Control type="number" name="priceCourse" value={courseData.price} onChange={handleChange} />
+              <Form.Control type="number" name="price" value={courseData.price || 0} onChange={handleChange} />
             </Form.Group>
 
             <Form.Group controlId="levelCourse">
               <Form.Label>Level Course</Form.Label>
-              <Form.Control type="text" name="levelCourse" value={courseData.level} onChange={handleChange} />
+              <Form.Control type="text" name="levelCourse" value={courseData.level || ""} onChange={handleChange} />
             </Form.Group>
 
             <Form.Group controlId="teacher">
               <Form.Label>Teacher</Form.Label>
-              <Form.Control type="text" name="teacher" value={courseData.teacher} onChange={handleChange} />
+              <Form.Control type="text" name="teacher" value={courseData.teacher || ""} onChange={handleChange} />
+            </Form.Group>
+
+            <Form.Group controlId="isPremium">
+              <Form.Label>Is Premium</Form.Label>
+              <Form.Control as="select" name="isPremium" value={courseData.isPremium} onChange={handleChange}>
+                <option value={false}>False</option>
+                <option value={true}>True</option>
+              </Form.Control>
             </Form.Group>
 
             {/* <Form.Group controlId="aboutCourse">

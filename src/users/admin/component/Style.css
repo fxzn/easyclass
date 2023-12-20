@@ -85,6 +85,7 @@
     background: var(--light);
     transition: 0.5s;
     z-index: 999;
+    /* margin-top: 3rem; */
 }
 
 .content {
@@ -130,7 +131,7 @@
 }
 
 
-/*** Navbar ***/
+/*** navbar ***/
 .sidebar .navbar .navbar-nav .nav-link {
     margin-bottom: 5px;
     padding: 7px 20px;

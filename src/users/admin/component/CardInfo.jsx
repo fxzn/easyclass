@@ -6,7 +6,7 @@ function CardInfo() {
   return (
     <>
       <div className="container-fluid pt-4 px-4">
-        <div className="row g-4">
+        <div className="row g-4 content-card">
           <div className="col-sm-6 col-xl-4 ">
             <div className="card-info rounded d-flex align-items-center justify-content-between p-4">
               <FontAwesomeIcon icon={faUser} className="fa-3x icon-cardinfo" />

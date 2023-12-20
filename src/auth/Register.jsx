@@ -11,7 +11,7 @@ import { Form } from "react-bootstrap";
 function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [phonenumber, setPhoneNumber] = useState("");
+  const [phonenumber, setPhoneNumber] = useState('');
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
@@ -19,28 +19,27 @@ function Register() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      let data = JSON.stringify({
+      const userData = {
         username,
         email,
-        phonenumber,
-        city,
-        country,
         password,
-      });
-
-      let config = {
-        method: "post",
-        url: "https://easy-class-407401.et.r.appspot.com/api/auth/signup",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
+        phoneNumber: phonenumber, // make sure to use the correct casing
+        country,
+        city,
       };
-
-      const response = await axios.request(config);
-
+  
+      const response = await axios.post(
+        "https://easy-class-407401.et.r.appspot.com/api/auth/signup",
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
       if (response.status === 200) {
         navigate("/auth/otp", { replace: true });
       }
@@ -52,6 +51,7 @@ function Register() {
       toast.error(error.message);
     }
   };
+  
 
   useEffect(() => {
     const inputs = document.querySelectorAll(".input-field");
@@ -138,7 +138,7 @@ function Register() {
                   <label>Email</label>
                 </div>
                 <div className="input-wrap">
-                  <input type="text" className="input-field" autoComplete="off" required value={phonenumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                  <input type="number" className="input-field" autoComplete="off" required value={phonenumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                   <label>Phone Number</label>
                 </div>
                 <div className="input-wrap">

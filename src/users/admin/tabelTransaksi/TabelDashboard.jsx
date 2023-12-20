@@ -54,7 +54,6 @@ function TabelDashboard() {
                         <th scope="col">Tanggal Bayar</th>
                         <th scope="col">Payment Method</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>

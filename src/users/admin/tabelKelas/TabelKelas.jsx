@@ -49,9 +49,9 @@ function TabelKelas() {
     setShowEditModal(false);
   };
 
-  const handleDelete = async (courseCode) => {
+  const handleDelete = async (codeCourse) => {
     try {
-      const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/admin/course/delete/${courseCode}`);
+      const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/admin/course/delete/${codeCourse}`);
 
       if (response.status === 200) {
         toast.success("Course deleted successfully");
@@ -127,12 +127,7 @@ function TabelKelas() {
           </div>
         </div>
       </div>
-      <EditKelas
-        showModal={showEditModal}
-        handleCloseModal={handleCloseModal}
-        selectedCourse={selectedCourse}
-        code={selectedCourse} 
-      />
+      <EditKelas showModal={showEditModal} handleCloseModal={handleCloseModal} selectedCourse={selectedCourse} code={selectedCourse} />
 
       {showModal && <AddData showModal={showModal} handleClose={handleCloseModal} />}
     </>

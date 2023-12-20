@@ -184,6 +184,7 @@ form.sign-up-form {
 .text {
   color: #bbb;
   font-size: 0.7rem;
+  margin-top: -14px;
 }
 
 .text a {
