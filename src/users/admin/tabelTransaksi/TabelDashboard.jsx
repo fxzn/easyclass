@@ -39,7 +39,7 @@ function TabelDashboard() {
           <div className="row g-4">
             <div className="col-12">
               <div className="bg-light rounded h-100 p-4">
-                <h6 className="mb-4">Status Pembayaran</h6>
+                <h6 className="mb-4">Status Pembayaran Course</h6>
                 <div className="d-flex justify-content-between align-items-center mb-3">
                   <button type="button" className="btn btn-tambahclass mb-3">
                     Filter

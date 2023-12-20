@@ -39,6 +39,7 @@ function App() {
         <Route path="/course" element={<Course />} />
         <Route path="/course/payment" element={<CoursePayment />} />
         <Route path="/courserun" element={<CourseRun />} />
+       
         <Route path="/admin/dashboard" element={<DashboardAdmin />} />
         <Route path="/admin/kelas" element={<KelolaKelas />} />
         <Route path="" />
