@@ -53,8 +53,8 @@ const Akun = () => {
           });
 
           // Set the image URL to state if it exists
-          if (user.profilePicture) {
-            setImageURL(user.profilePicture);
+          if (user.linkPhoto) {
+            setImageURL(user.linkPhoto);
           }
         } else {
           console.error('Pengguna tidak ditemukan berdasarkan token.');
