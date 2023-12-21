@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
+
 import { useEffect, useState } from "react";
-// import ModalBeliCourse from "./ModalBeliCourse";
+
 import { getCourseDetail } from "../../../service/Course.service";
 
 function DetailCourse() {
@@ -14,11 +15,11 @@ function DetailCourse() {
   const [courseDetail, setCourseDetail] = useState([]);
   const [subjectResponse, setsubjectresponse] = useState([]);
   const [linkVidio, setLinkVidio] = useState("https://www.youtube.com/embed/R4eWTI-07QY?si=lJXsrRVwUOkorJWl");
-  const [description, setdescription] = useState("Hallo calon programmer selamat datang di easyclass");
+  const [description, setdescription] = useState("Hallo calon programmer selamat datant di easyclass");
   const [titleAktive, settitleAktive] = useState(null);
   const [loadingVidio, setLoadingvidio] = useState(false);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const navigate = useNavigate;
 
   const { title } = useParams();
 
@@ -47,19 +48,10 @@ function DetailCourse() {
     }, 1500);
   };
 
-  const handlBuyClick = () => {
-    console.log("Tombol Premium diklik");
-    navigate(`/course/payment/${title}`);
-  };  
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
   return (
     <>
       {loading ? (
-        <div className="loader-container">
+        <div className=".loader-container">
           <span className="loader"></span>
         </div>
       ) : (
@@ -99,9 +91,10 @@ function DetailCourse() {
                     </span>
                   </div>
                   <div>
-                    <button className="btn btn-telegram" onClick={handlBuyClick}>
+                    <button className="btn btn-telegram" >
                       {courseDetail.isPremium ? "Premium" : "Free"}
                     </button>
+                    
                   </div>
                 </div>
                 <div>
@@ -118,6 +111,7 @@ function DetailCourse() {
 
                 <div className="tentang-kelas">
                   <h1 className="font-weight-bold mb-3 mt-7">Tentang Kelas</h1>
+
                   <p>{description}</p>
                 </div>
                 <div className="mb-5">
@@ -206,7 +200,6 @@ function DetailCourse() {
               </div>
             </div>
           </div>
-          {/* <ModalBeliCourse title={courseDetail.title} duration={courseDetail.duration} module={courseDetail.module} level={courseDetail.level} showModal={showModal} handleCloseModal={handleCloseModal} /> */}
           <Footerr />
         </>
       )}

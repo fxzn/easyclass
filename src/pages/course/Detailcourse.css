@@ -175,6 +175,10 @@
   animation: rotation 1s linear infinite;
 }
 
+.text-rating{
+  margin-top: 3px;
+}
+
 
 /* .course-description {
   margin-bottom: 5rem;
