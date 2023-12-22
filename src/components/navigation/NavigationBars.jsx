@@ -22,40 +22,6 @@ function NavigationBars() {
     }
   }, []);
 
-  const handleDeleteClick = () => {
-    setShowConfirmationModal(true);
-  };
-
-  const handleCancel = () => {
-    setShowConfirmationModal(false);
-  };
-
-  const handleConfirmDelete = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.delete("http://easy-class-407401.et.r.appspot.com/api/user/delete", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.status === 200) {
-        toast.success("Account deleted successfully");
-        // Perform any other actions after successful account deletion
-        localStorage.removeItem("token"); // Remove token after successful deletion
-        setIsLoggedIn(false);
-        navigate("/");
-      } else {
-        toast.error("Failed to delete account");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    } finally {
-      // Close the modal after confirming the account deletion
-      setShowConfirmationModal(false);
-    }
-  };
-
   window.addEventListener("scroll", () => {
     const nav = document.querySelector(".navbar");
     if (window.pageYOffset > 0) {
@@ -133,25 +99,6 @@ function NavigationBars() {
                           <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Log Out
                         </NavDropdown.Item>
 
-                        <NavDropdown.Item onClick={handleDeleteClick}>
-                          <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Delete Account
-                        </NavDropdown.Item>
-
-                        {/* Modal Konfirmasi */}
-                        <Modal show={showConfirmationModal} onHide={handleCancel}>
-                          <Modal.Header closeButton>
-                            <Modal.Title>Confirmation</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body>Are you sure you want to delete your account?</Modal.Body>
-                          <Modal.Footer>
-                            <Button variant="secondary" onClick={handleCancel}>
-                              Cancel
-                            </Button>
-                            <Button variant="danger" onClick={handleConfirmDelete}>
-                              Delete
-                            </Button>
-                          </Modal.Footer>
-                        </Modal>
                       </NavDropdown>
                     </div>
                   </>
