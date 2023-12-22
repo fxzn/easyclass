@@ -40,8 +40,9 @@ function NavigationBars() {
       });
 
       if (response.status === 200) {
-        toast.success("Account deleted successfully");  
-        localStorage.removeItem("token"); 
+        toast.success("Account deleted successfully");
+        // Perform any other actions after successful account deletion
+        localStorage.removeItem("token"); // Remove token after successful deletion
         setIsLoggedIn(false);
         navigate("/");
       } else {
@@ -50,6 +51,7 @@ function NavigationBars() {
     } catch (error) {
       console.error("Error:", error);
     } finally {
+      // Close the modal after confirming the account deletion
       setShowConfirmationModal(false);
     }
   };
@@ -132,7 +134,7 @@ function NavigationBars() {
                         </NavDropdown.Item>
 
                         <NavDropdown.Item onClick={handleDeleteClick}>
-                          <FontAwesomeIcon icon={faTrashCan} className="icon" /> Delete Account
+                          <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Delete Account
                         </NavDropdown.Item>
 
                         {/* Modal Konfirmasi */}
