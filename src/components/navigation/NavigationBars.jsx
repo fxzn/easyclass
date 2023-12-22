@@ -134,7 +134,7 @@ function NavigationBars() {
                         </NavDropdown.Item>
 
                         <NavDropdown.Item onClick={handleDeleteClick}>
-                          <FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Delete Account
+                          <FontAwesomeIcon icon={faTrashCan} className="icon" /> Delete Account
                         </NavDropdown.Item>
 
                         {/* Modal Konfirmasi */}
