@@ -41,8 +41,7 @@ function NavigationBars() {
 
       if (response.status === 200) {
         toast.success("Account deleted successfully");
-        // Perform any other actions after successful account deletion
-        localStorage.removeItem("token"); // Remove token after successful deletion
+        localStorage.removeItem("token");
         setIsLoggedIn(false);
         navigate("/");
       } else {
@@ -51,7 +50,7 @@ function NavigationBars() {
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      // Close the modal after confirming the account deletion
+
       setShowConfirmationModal(false);
     }
   };
@@ -112,17 +111,16 @@ function NavigationBars() {
                     </Link>
                     <div className="profil">
                       <NavDropdown title={<FontAwesomeIcon icon={faUser} />} className="icon-user" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/userprofile">
+                        <NavDropdown.Item onClick={() => navigate("/userprofile")}>
                           <FontAwesomeIcon icon={faUser} className="icon" /> Profil Saya
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="/ChangePass">
+                        <NavDropdown.Item onClick={() => navigate("/changePass")}>
                           <FontAwesomeIcon icon={faLock} className="icon" /> Ubah Password
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="/History">
+                        <NavDropdown.Item onClick={() => navigate("/history")}>
                           <FontAwesomeIcon icon={faHistory} className="icon" /> History Pembayaran
                         </NavDropdown.Item>
                         <NavDropdown.Item
-                          href="/"
                           onClick={(e) => {
                             e.preventDefault();
                             localStorage.removeItem("token");
