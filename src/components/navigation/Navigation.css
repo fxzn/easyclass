@@ -92,23 +92,15 @@
   transition: all 0.3s ease; /* Add transition for smoother effects */
 }
 
-/* Style the dropdown items */
-/* .profil .dropdown-menu a {
-  color: #333;
-  padding: 10px 20px; 
-  transition: background-color 0.3s ease;
-  font-size: 15px; 
-} */
-
-
-
+.dropdown-toggle::after {
+  display: none !important;
+}
 
 /* Style the font-awesome icon color */
 .profil .dropdown-toggle {
   color: #333;
   transition: color 0.3s ease; 
 }
-
 
 .profil .dropdown-toggle:hover {
   color: var(--black-color);
