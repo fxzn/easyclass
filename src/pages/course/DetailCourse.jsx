@@ -6,7 +6,7 @@ import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } 
 import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
 import { useEffect, useState } from "react";
-// import ModalBeliCourse from "./ModalBeliCourse";
+
 import { getCourseDetail } from "../../../service/Course.service";
 
 function DetailCourse() {

@@ -8,9 +8,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { Form } from "react-bootstrap";
 
+
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [fieldLogin, setFieldLogin] = useState("");
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
@@ -36,14 +39,23 @@ function Login() {
 
       if (token) {
         localStorage.setItem("token", token);
+
         if (roles && roles.includes("ROLE_ADMIN")) {
           navigate("/admin/dashboard");
         } else {
           navigate("/");
         }
+
+        setUsername("");
+        setPassword("");
+        setFieldLogin("");
       } else {
-        console.error("Token not received from the server");
-        toast.error("Token not received from the server");
+        console.error("Token tidak diterima dari server");
+        toast.error("Token tidak diterima dari server");
+        setFieldLogin("Password atau Username salah");
+
+        setUsername("");
+        setPassword("");
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -52,7 +64,13 @@ function Login() {
       } else {
         console.error("General Error:", error.message);
         toast.error(error.message);
+        toast.error("Login gagal. Harap periksa kredensial Anda.");
       }
+
+      // Mengatur pesan kesalahan dan input
+      setFieldLogin("Password atau Username salah");
+      setUsername("");
+      setPassword("");
     }
   };
 
@@ -140,6 +158,7 @@ function Login() {
                   <input type="password" minLength="0" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                 </div>
+                {fieldLogin && <p className="text-danger text-center">{fieldLogin}</p>}
                 <button type="submit" className="sign-btn">
                   Sign In
                 </button>
