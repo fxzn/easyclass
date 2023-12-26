@@ -25,13 +25,13 @@ function Register() {
         username,
         email,
         password,
-        phoneNumber: phonenumber, // make sure to use the correct casing
+        phoneNumber: phonenumber, 
         country,
         city,
       };
   
       const response = await axios.post(
-        "https://easy-class-407401.et.r.appspot.com/api/auth/signup",
+        `${import.meta.env.VITE_BASE_URL}/api/auth/signup`,
         userData,
         {
           headers: {
@@ -153,15 +153,14 @@ function Register() {
                   <input type="password" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                 </div>
-                {/* <Link to="/auth/otp"> */}
                 <button type="submit" className="sign-btn" onSubmit={onSubmit} navigate={"/auth/otp"}>
                   Sign Up
                 </button>
-                {/* </Link> */}
+
 
                 <p className="text">
                   if you forget your password
-                  <Link to="/auth/resetPassword"> Reset Password</Link>
+                  <Link to="/auth/forgotpassword"> Reset Password</Link>
                 </p>
               </div>
             </div>
