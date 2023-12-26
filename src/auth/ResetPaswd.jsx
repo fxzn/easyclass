@@ -23,6 +23,12 @@ function ResetPaswd() {
         return;
       }
 
+      if (newPassword === "" || confirmPassword === "") {
+        console.log("Input values are empty");
+      } else {
+        console.log("Both inputs have values");
+      }
+
       const data = {
         newPassword,
         confirmPassword,
