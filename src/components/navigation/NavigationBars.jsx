@@ -30,7 +30,7 @@ function NavigationBars() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light sticky-top bg-white py-2">
+      <nav className="navbar navbar-expand-lg navbar-light sticky-top py-2">
         <div className="container px-2">
           <Link to="/" className="navbar-brand">
             <span className="fw-bolder text-dark">easyclass</span>
