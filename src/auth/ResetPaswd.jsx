@@ -1,120 +1,105 @@
-import { useEffect } from "react";
-import "./style.css";
-import img1 from "../assets/image1.png";
-import img2 from "../assets/image2.png";
-import img3 from "../assets/image3.png";
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./PostUsername.css";
+import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import { Form } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ResetPaswd() {
-  useEffect(() => {
-    const inputs = document.querySelectorAll(".input-field");
-    const toggleBtns = document.querySelectorAll(".toggle");
-    const main = document.querySelector("main");
-    const bullets = document.querySelectorAll(".bullets span");
-    const images = document.querySelectorAll(".image");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setNewConfirmPassword] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const token = new URLSearchParams(location.search).get("token");
 
-    inputs.forEach((inp) => {
-      inp.addEventListener("focus", () => {
-        inp.classList.add("active");
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      inp.addEventListener("blur", () => {
-        if (inp.value !== "") return;
-        inp.classList.remove("active");
-      });
-    });
+    try {
+      if (!token) {
+        console.error("Token not found in the URL.");
+        return;
+      }
 
-    toggleBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        main.classList.toggle("sign-up-mode");
-      });
-    });
+      const data = {
+        newPassword,
+        confirmPassword,
+      };
 
-    function moveSlider() {
-      let index = this.dataset.value;
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/auth/resetPassword?token=${token}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      let currentImage = document.querySelector(`.img-${index}`);
-      images.forEach((img) => img.classList.remove("show"));
-      currentImage.classList.add("show");
+      console.log("Full Response:", response);
 
-      const textSlider = document.querySelector(".text-group");
-      textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
-
-      bullets.forEach((bull) => bull.classList.remove("active"));
-      this.classList.add("active");
+      if (response.status === 200) {
+        console.log("Password changed successfully!");
+        navigate("/auth/login", { replace: true });
+      } else {
+        console.error("Unexpected response status:", response.status);
+        toast.error("Unexpected response status");
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Axios Error:", error.response?.data.message || "Unknown error");
+        toast.error(error.response?.data.message || "Unknown error");
+      } else {
+        console.error("General Error:", error.message || "Unknown error");
+        toast.error(error.message || "Unknown error");
+      }
     }
-
-    bullets.forEach((bullet) => {
-      bullet.addEventListener("click", moveSlider);
-    });
-
-    // Cleanup event listeners when the component unmounts
-    return () => {
-      inputs.forEach((inp) => {
-        inp.removeEventListener("focus", () => {});
-        inp.removeEventListener("blur", () => {});
-      });
-
-      toggleBtns.forEach((btn) => {
-        btn.removeEventListener("click", () => {});
-      });
-
-      bullets.forEach((bullet) => {
-        bullet.removeEventListener("click", moveSlider);
-      });
-    };
-  }, []);
+  };
 
   return (
     <>
       <main>
-        <div className="box">
-          <div className="inner-box">
-            <div className="forms-wrap">
-              <form autoComplete="off" className="sign-in-form">
-                <div className="logo">
-                  <h4>easyclass</h4>
+        <div className="box-forgot">
+          <div className="inner-forgot">
+            <div className="forms-username">
+              <Form autoComplete="off" className="form" onSubmit={handleSubmit}>
+                <div className="icon-username">
+                  <FontAwesomeIcon icon={faCircleUser} />
                 </div>
-                <div className="heading">
-                  <h2>Reset Password</h2>
+                <div className="heading-username">
+                  <h2>Trouble logging in ?</h2>
+                  <p>Enter your new password, and we'll reset your account.</p>
                 </div>
                 <div className="actual-form">
-                  <div className="input-wrap">
-                    <input type="text" minLength="4" className="input-field" autoComplete="off" required />
-                    <label>Password</label>
+                  <div className="input-password">
+                    <input
+                      type="password"
+                      className="input-field"
+                      autoComplete="off"
+                      required
+                      placeholder="New Password"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                    />
                   </div>
-                  <div className="input-wrap">
-                    <input type="password" minLength="4" className="input-field" autoComplete="off" required />
-                    <label>Password</label>
+                  <div className="input-password">
+                    <input
+                      type="password"
+                      className="input-field"
+                      autoComplete="off"
+                      required
+                      placeholder="Confirm Password"
+                      value={confirmPassword}
+                      onChange={(e) => setNewConfirmPassword(e.target.value)}
+                    />
                   </div>
-                  <Link to="/auth/login">
-                    <button type="submit" className="sign-btn">
-                      Submit
-                    </button>
-                  </Link>
+                  <button type="submit" className="sign-btn">
+                    Update
+                  </button>
                 </div>
-              </form>
-            </div>
-            <div className="carousel">
-              <div className="images-wrapper">
-                <img src={img1} className="image img-1 show" alt="" />
-                <img src={img2} className="image img-2" alt="" />
-                <img src={img3} className="image img-3" alt="" />
-              </div>
-              <div className="text-slider">
-                <div className="text-wrap">
-                  <div className="text-group">
-                    <h4>Create your own courses</h4>
-                    <h4>Customize as you like</h4>
-                    <h4>Invite students to your class</h4>
-                  </div>
-                </div>
-                <div className="bullets">
-                  <span className="active" data-value="1"></span>
-                  <span data-value="2"></span>
-                  <span data-value="3"></span>
-                </div>
-              </div>
+              </Form>
             </div>
           </div>
         </div>

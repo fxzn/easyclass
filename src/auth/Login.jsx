@@ -145,7 +145,7 @@ function Login() {
                 </button>
                 <p className="text">
                   Forgotten your password or your login details?
-                  <Link to="/auth/resetPassword">Reset password</Link>
+                  <Link to="/auth/forgotpassword">Reset password</Link>
                 </p>
               </div>
             </Form>
