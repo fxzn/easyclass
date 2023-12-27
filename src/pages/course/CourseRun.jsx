@@ -1,6 +1,6 @@
 import "./courses.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Accordion, Button, Card, Col, Container, Form, ProgressBar, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, ProgressBar, Row } from "react-bootstrap";
 import { faSearch, faClock, faBook, faStar } from "@fortawesome/free-solid-svg-icons";
 import imgcourse from "../../assets/image.png";
 import NavigationBars from "../../components/navigation/NavigationBars";
@@ -40,14 +40,6 @@ function CourseRun() {
   const handleCardClick = (coursetitle) => {
     navigate(`/detailcourse/${coursetitle}`);
   };
-
-
-  // useEffect(() => {
-  //   GetMyClass((data) => {
-  //     setCourse(data);
-  //     setLoading(false);
-  //   });
-  // }, []);
 
   return (
     <>
@@ -111,7 +103,7 @@ function CourseRun() {
                             </div>
 
                             <Card.Text>
-                              <div className="desc mt-1 fw-bold">{index.description}</div>
+                              <div className="desc mt-1 fw-bold">{index.about}</div>
                               <div>{index.teacher}</div>
                             </Card.Text>
                             <div className="d-flex infocourse">

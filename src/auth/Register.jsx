@@ -153,7 +153,7 @@ function Register() {
                   <input type="password" className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                 </div>
-                <button type="submit" className="sign-btn" onSubmit={onSubmit} navigate={"/auth/otp"}>
+                <button type="submit" className="sign-btn" onSubmit={onSubmit}>
                   Sign Up
                 </button>
 

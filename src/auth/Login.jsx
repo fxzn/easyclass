@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Form } from "react-bootstrap";
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -65,6 +67,10 @@ function Login() {
         toast.error(error.message);
         toast.error("Login gagal. Harap periksa kredensial Anda.");
       }
+
+      setFieldLogin("Password atau Username salah");
+      setUsername("");
+      setPassword("");
     }
   };
 
@@ -152,7 +158,7 @@ function Login() {
                   <label>Name</label>
                 </div>
                 <div className="input-wrap">
-                  <input type={showPassword ? "text" : "password"} className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <input type={showPassword ? "text" : "password"} className="input-field" autoComplete="off" required  value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                   <FontAwesomeIcon className="icon-eye" icon={showPassword ? faEyeSlash : faEye} onClick={togglePasswordVisibility} />
                 </div>
@@ -162,7 +168,7 @@ function Login() {
                 </button>
                 <p className="text">
                   Forgotten your password or your login details?
-                  <Link to="/auth/forgotpassword">Forgot password</Link>
+                  <Link to="/auth/forgotpassword">Reset password</Link>
                 </p>
               </div>
             </Form>
