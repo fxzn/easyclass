@@ -160,7 +160,7 @@ function Register() {
 
                 <p className="text">
                   if you forget your password
-                  <Link to="/auth/forgotpassword"> Reset Password</Link>
+                  <Link to="/auth/forgotpassword">Forgot password</Link>
                 </p>
               </div>
             </div>

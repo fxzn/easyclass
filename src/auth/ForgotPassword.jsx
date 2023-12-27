@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./PostUsername.css";
+import "./ForgotPassword.css";
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
-function PostUsername() {
+function ForgotPassword() {
   const [username, setUsername] = useState("");
 
   const handleSubmitUsername = async (e) => {
@@ -21,6 +21,7 @@ function PostUsername() {
         }
       );
       console.log("Response:", response.data);
+      toast.success("Token sent successfully!");
     } catch (error) {
       console.error("Error:", error);
 
@@ -64,4 +65,4 @@ function PostUsername() {
   );
 }
 
-export default PostUsername;
+export default ForgotPassword;
