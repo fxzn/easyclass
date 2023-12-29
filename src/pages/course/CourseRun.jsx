@@ -38,7 +38,7 @@ function CourseRun() {
   }, []);
 
   const handleCardClick = (coursetitle) => {
-    navigate(`/detailcourse/${coursetitle}`);
+    navigate(`/detailcourserun/${coursetitle}`);
   };
 
   return (

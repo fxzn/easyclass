@@ -1,16 +1,14 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Detailcourse.css";
 import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faClock, faLock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faClock, faShield, faStar, faPlayCircle, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import NavigationBars from "../../components/navigation/NavigationBars";
 import Footerr from "../../components/footer/Footerr";
 import { useEffect, useState } from "react";
 import { getCourseDetail } from "../../../service/Course.service";
 
-
-function DetailCourse() {
-  const [showModal, setShowModal] = useState(false);
+function DetailCourseRun() {
   const [courseDetail, setCourseDetail] = useState([]);
   const [subjectResponse, setsubjectresponse] = useState([]);
   const [linkVidio, setLinkVidio] = useState("https://www.youtube.com/embed/R4eWTI-07QY?si=lJXsrRVwUOkorJWl");
@@ -18,7 +16,7 @@ function DetailCourse() {
   const [titleAktive, settitleAktive] = useState(null);
   const [loadingVidio, setLoadingvidio] = useState(false);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { title } = useParams();
 
@@ -47,16 +45,7 @@ function DetailCourse() {
     }, 1500);
   };
 
-  const handlBuyClick = () => {
-    console.log("Tombol Premium diklik");
-    navigate(`/course/payment/${title}`);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const handleJoinTelegram = () => {};
+  
 
   return (
     <>
@@ -82,7 +71,7 @@ function DetailCourse() {
 
                     <span className="d-flex ">
                       <FontAwesomeIcon icon={faStar} className="icon-rating" />
-                      <p className="rating-text">4.7</p>
+                      <p className="rating">4.7</p>
                     </span>
                   </div>
                   <h4 className="text-about mb-1">{courseDetail.about}</h4>
@@ -104,15 +93,11 @@ function DetailCourse() {
                     </span>
                   </div>
                   <div>
-                    {courseDetail.isPremium ? (
-                      <button className="btn btn-telegram" onClick={handlBuyClick}>
-                        Premium
-                      </button>
-                    ) : (
-                      <button className="btn btn-telegram" onClick={handleJoinTelegram}>
+                    <a href="">
+                      <Link to={courseDetail.linkTelegram} className="btn btn-telegram" target="_blank" rel="noopener noreferrer">
                         Join Telegram
-                      </button>
-                    )}
+                      </Link>
+                    </a>
                   </div>
                 </div>
                 <div>
@@ -142,77 +127,43 @@ function DetailCourse() {
                 </div>
               </div>
               <div className="col-md-4 ">
-                <Card className="mb-2 card-video">
+                <Card className="mb-2">
                   <Card.Body className="jutify-content-center ">
                     <div className="d-flex align-items-center gap-2=">
                       <div className="d-flex justify-content-between w-50 align-items-center">
                         <h1 className="header-content">Materi Belajar</h1>
                       </div>
+                     
                     </div>
 
                     <div>
+                      <div className="d-flex justify-content-between mt-5 mb-3 header-chapter">
+                        <p className="text-dark">Chapter 1 - Pendahuluan</p>
+                        <p className="text-dark"> 40 Menit</p>
+                      </div>
+
                       <ol>
                         {subjectResponse.map((subject, index) => (
                           <li key={index} className="my-2 d-flex justify-content-between align-items-center pointer">
-                            <p
-                              onClick={() => {
-                                subject.isPremium ? handlBuyClick() : clickTitle(subject.link, subject.description, index);
-                              }}
-                              className={`d-flex gap-3 align-items-center title-video ${titleAktive === index ? "text-success fw-bold" : null}`}
-                            >
+                            <p onClick={() => clickTitle(subject.link, subject.description, index)} className={`d-flex gap-3 align-items-center ${titleAktive === index ? "text-success fw-bold" : null}`}>
                               <span onClick={() => clickTitle(subject.link)} className="p-1 align-items-center justify-content-center">
-                                {index + 1}.
+                                {index + 1}
                               </span>
                               {subject.title}
                             </p>
-                            {courseDetail.isPremium ? <FontAwesomeIcon icon={faLock} className="icon-lock" /> : <FontAwesomeIcon icon={faPlayCircle} className="icon-play text-dark w-10 h-full" />}
+                            <FontAwesomeIcon icon={faPlayCircle} className="icon-play text-dark w-10 h-full" />
                           </li>
                         ))}
                       </ol>
                     </div>
 
-                    {/* <div>
-                      <div className="d-flex justify-content-between header-chapter">
-                        <p className="text-dark font-weight-bold">Chapter 2 - Materi</p>
-                        <p className="text-dark font-weight-bold"> 120 Menit</p>
-                      </div>
-                      <ol>
-                        <li className="my-2 d-flex justify-content-between align-items-center">
-                          <p className="d-flex gap-3 align-items-center">
-                            <span className="p-1 align-items-center justify-content-center">1</span>
-                            Anda yang ingin memahami poin penting design system
-                          </p>
-                          <FontAwesomeIcon icon={faLock} className="icon-lock" />
-                        </li>
-                        <li className="my-2 d-flex justify-content-between align-items-center">
-                          <p className="d-flex gap-3 align-items-center">
-                            <span className="p-1 align-items-center justify-content-center">2</span>
-                            Anda yang ingin memahami poin penting design system
-                          </p>
-                          <FontAwesomeIcon icon={faLock} className="icon-lock" />
-                        </li>
-                        <li className="my-2 d-flex justify-content-between align-items-center">
-                          <p className="d-flex gap-3 align-items-center">
-                            <span className="p-1 align-items-center justify-content-center">3</span>
-                            Anda yang ingin memahami poin penting design system
-                          </p>
-                          <FontAwesomeIcon icon={faLock} className="icon-lock" />
-                        </li>
-                        <li className="my-2 d-flex justify-content-between align-items-center">
-                          <p className="d-flex gap-3 align-items-center">
-                            <span className="p-1 align-items-center justify-content-center">4</span>
-                            Anda yang ingin memahami poin penting design system
-                          </p>
-                          <FontAwesomeIcon icon={faLock} className="icon-lock" />
-                        </li>
-                      </ol>
-                    </div> */}
+                   
                   </Card.Body>
                 </Card>
               </div>
             </div>
           </div>
-          {/* <ModalBeliCourse title={courseDetail.title} duration={courseDetail.duration} module={courseDetail.module} level={courseDetail.level} showModal={showModal} handleCloseModal={handleCloseModal} /> */}
+
           <Footerr />
         </>
       )}
@@ -220,4 +171,4 @@ function DetailCourse() {
   );
 }
 
-export default DetailCourse;
+export default DetailCourseRun;
