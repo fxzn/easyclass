@@ -39,7 +39,7 @@ function CourseRun() {
     }
   };
   const handleCardClick = (coursetitle) => {
-    navigate(`/detailcourse/${coursetitle}`);
+    navigate(`/detailcourserun/${coursetitle}`);
   };
 
   const handleSearchInputChange = (event) => {

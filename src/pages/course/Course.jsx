@@ -193,7 +193,14 @@ function Course() {
                                 <p className="ms-1 mt-1">{courseData.duration} menit</p>
                               </div>
                             </div>
-                            <Button variant="danger">{courseData.isPremium ? "Premium" : "Gratis"}</Button>
+                            {courseData.isPremium ? (
+                              <Button variant="danger">
+                              Rp.{courseData.price.toLocaleString("id-ID", { currency: "IDR" })}
+                            </Button>
+
+                            ) :(
+                              <Button variant="danger">gratis</Button>
+                            )};
                           </Card.Body>
                         </Card>
                       </Col>
