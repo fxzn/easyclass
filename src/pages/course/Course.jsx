@@ -29,10 +29,10 @@ function Course() {
   const handleShowLoginModal = () => setShowLoginModal(true);
   const handleCloseLoginModal = () => setShowLoginModal(false);
 
-  // Fungsi untuk mendapatkan status login dari token
+
   const userIsLoggedIn = () => {
     const token = localStorage.getItem("token");
-    return !!token; // Mengembalikan true jika token ada, false jika tidak
+    return !!token;
   };
 
   const handleCardClick = (coursetitle) => {
@@ -200,7 +200,7 @@ function Course() {
 
                             ) :(
                               <Button variant="danger">gratis</Button>
-                            )};
+                            )}
                           </Card.Body>
                         </Card>
                       </Col>

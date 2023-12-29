@@ -71,7 +71,7 @@ function DetailCourseRun() {
 
                     <span className="d-flex ">
                       <FontAwesomeIcon icon={faStar} className="icon-rating" />
-                      <p className="rating">4.7</p>
+                      <p className="rating-text">4.7</p>
                     </span>
                   </div>
                   <h4 className="text-about mb-1">{courseDetail.about}</h4>
@@ -127,7 +127,7 @@ function DetailCourseRun() {
                 </div>
               </div>
               <div className="col-md-4 ">
-                <Card className="mb-2">
+                <Card className="mb-2 card-video">
                   <Card.Body className="jutify-content-center ">
                     <div className="d-flex align-items-center gap-2=">
                       <div className="d-flex justify-content-between w-50 align-items-center">
