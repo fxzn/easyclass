@@ -10,13 +10,14 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GetCourse } from "../../../service/Course.service";
 import LoginModal from "./LoginModal";
-
+import axios from "axios";
 
 function Course() {
   const navigate = useNavigate();
   const [course, setCourse] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     GetCourse((data) => {
@@ -39,6 +40,35 @@ function Course() {
       navigate(`/detailcourse/${coursetitle}`);
     } else {
       handleShowLoginModal();
+    }
+  };
+
+  const handleSearchInputChange = (event) => {
+    const inputValue = event.target.value;
+    setSearchInput(inputValue);
+    if (inputValue === "") {
+      GetCourse((data) => {
+        setCourse(data);
+      });
+    }
+  };
+
+  const handleSearch = async () => {
+    try {
+      if (searchInput) {
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/course/searchingCourseByTitle`, {
+          params: {
+            title: searchInput,
+          },
+        });
+        setCourse(response.data);
+      } else {
+        GetCourse((data) => {
+          setCourse(data);
+        });
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -79,7 +109,6 @@ function Course() {
                         </Form>
                       </div>
                       <div className="mt-4">
-                        
                         <p className="fw-bold">Level Kesulitan</p>
                         <Form className="mt-1">
                           <Form.Check inline label="Semua Level" name="group1" id="checkbox1" className="mt-2" />
@@ -99,11 +128,9 @@ function Course() {
               </Col>
               <Col md={9}>
                 <div className="d-flex justify-content-end">
-                  {" "}
-                  {/* Tambahkan d-flex dan justify-content-end di sini */}
                   <div className="search d-flex p-3">
-                    <input type="text" />
-                    <div className="iconsearh m-1 text-danger">
+                    <input type="text" value={searchInput} onChange={handleSearchInputChange} onKeyDown={(e) => e.key === "Enter" && handleSearch()} />
+                    <div className="iconsearh m-1 text-danger" onClick={handleSearch}>
                       <FontAwesomeIcon icon={faSearch} />
                     </div>
                   </div>
@@ -129,8 +156,7 @@ function Course() {
 
                 {/* Card */}
                 <Row className="mt-4">
-                  {course.data &&
-                    course.data.length > 0 &&
+                  {course.data && course.data.length > 0 ? (
                     course.data.map((courseData) => (
                       <Col key={courseData.code} md={6} className="d-flex justify-content-center mt-3">
                         <Card className="kotakcourse" onClick={() => handleCardClick(courseData.title)}>
@@ -140,7 +166,6 @@ function Course() {
                               <div className="title">{courseData.title}</div>
                               <div className="rating d-flex">
                                 <FontAwesomeIcon icon={faStar} className="img text-warning me-1" />
-                                {/* <p>{courseData.rating}</p> */}
                                 <p className="rate-card">0</p>
                               </div>
                             </div>
@@ -172,7 +197,12 @@ function Course() {
                           </Card.Body>
                         </Card>
                       </Col>
-                    ))}
+                    ))
+                  ) : (
+                    <Col md={12} className="text-center mt-3">
+                      <p>No results found</p>
+                    </Col>
+                  )}
                 </Row>
               </Col>
             </Row>
