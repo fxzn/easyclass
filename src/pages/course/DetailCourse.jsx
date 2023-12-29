@@ -8,7 +8,6 @@ import Footerr from "../../components/footer/Footerr";
 import { useEffect, useState } from "react";
 import { getCourseDetail } from "../../../service/Course.service";
 
-
 function DetailCourse() {
   const [showModal, setShowModal] = useState(false);
   const [courseDetail, setCourseDetail] = useState([]);
@@ -151,6 +150,10 @@ function DetailCourse() {
                     </div>
 
                     <div>
+                      <div className="d-flex justify-content-between mt-5 mb-3 header-chapter">
+                        <p className="text-dark">Chapter 1 - Pendahuluan</p>
+                        <p className="text-dark"> 40 Menit</p>
+                      </div>
                       <ol>
                         {subjectResponse.map((subject, index) => (
                           <li key={index} className="my-2 d-flex justify-content-between align-items-center pointer">
