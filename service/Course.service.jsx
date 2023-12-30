@@ -34,3 +34,5 @@ export async function getCourseDetail(title) {
     throw error;
   }
 }
+
+
