@@ -14,19 +14,21 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fieldLogin, setFieldLogin] = useState("");
+  const [loading, setLoading] = useState(false); // State untuk menandai loading
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      // Set loading menjadi true saat proses login dimulai
+      setLoading(true);
+
       let data = JSON.stringify({
         username,
         password,
@@ -67,16 +69,16 @@ function Login() {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Axios Error:", error.response.data.message);
-        // toast.error(error.response.data.message);
       } else {
         console.error("General Error:", error.message);
-        // toast.error(error.message);
-        // toast.error("Login gagal. Harap periksa kredensial Anda.");
       }
 
       setFieldLogin("Password atau Username salah");
       setUsername("");
       setPassword("");
+    } finally {
+      // Set loading menjadi false setelah operasi login selesai
+      setLoading(false);
     }
   };
 
@@ -165,13 +167,14 @@ function Login() {
                   <FontAwesomeIcon className="icon-eye" icon={showPassword ? faEyeSlash : faEye} onClick={togglePasswordVisibility} />
                 </div>
                 {fieldLogin && <p className="text-danger text-center">{fieldLogin}</p>}
-                <button type="submit" className="sign-btn">
-                  Sign In
-                </button>
-                <p className="text">
-                  Forgotten your password or your login details?
-                  <Link to="/auth/forgotpassword">Forgot password</Link>
-                </p>
+                <button type="submit" className="sign-btn" disabled={loading}>
+                {loading ? <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> : null}
+                Sign In
+              </button>
+              <p className="text">
+                Forgotten your password or your login details?
+                <Link to="/auth/forgotpassword">Forgot password</Link>
+              </p>
               </div>
             </Form>
           </div>
