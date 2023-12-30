@@ -262,7 +262,7 @@ function AddData(props) {
           >
             Upload Video
           </Button>
-          <Button variant="danger" onClick={handleCourseSubmit}>
+          <Button variant="success" onClick={handleCourseSubmit}>
             Simpan
           </Button>
         </Modal.Footer>
