@@ -162,19 +162,19 @@ function Login() {
                   <label>Name</label>
                 </div>
                 <div className="input-wrap">
-                  <input type={showPassword ? "text" : "password"} className="input-field" autoComplete="off" required  value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <input type={showPassword ? "text" : "password"} className="input-field" autoComplete="off" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label>Password</label>
                   <FontAwesomeIcon className="icon-eye" icon={showPassword ? faEyeSlash : faEye} onClick={togglePasswordVisibility} />
                 </div>
                 {fieldLogin && <p className="text-danger text-center">{fieldLogin}</p>}
                 <button type="submit" className="sign-btn" disabled={loading}>
-                {loading ? <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> : null}
-                Sign In
-              </button>
-              <p className="text">
-                Forgotten your password or your login details?
-                <Link to="/auth/forgotpassword">Forgot password</Link>
-              </p>
+                  {loading ? <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> : null}
+                  Sign In
+                </button>
+                <p className="text">
+                  Forgotten your password or your login details?
+                  <Link to="/auth/forgotpassword">Forgot password</Link>
+                </p>
               </div>
             </Form>
           </div>
